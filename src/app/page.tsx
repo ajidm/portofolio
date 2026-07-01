@@ -52,10 +52,10 @@ export default function HomePage() {
           </h1>
 
           <p className="text-lg max-w-2xl mb-10" style={{ color: "#94a3b8", lineHeight: "1.8" }}>
-            Senior engineer dengan <strong style={{ color: "#e2e8f0" }}>3+ tahun</strong> pengalaman membangun
-            platform SaaS rekrutmen berbasis AI di{" "}
-            <strong style={{ color: "#e2e8f0" }}>ASTRNT</strong>. Spesialisasi di full-stack development —
-            Next.js, Laravel, integrasi LLM, dan sistem background job skala production.
+            Senior engineer with <strong style={{ color: "#e2e8f0" }}>3+ years</strong> of experience building
+            an AI-powered recruitment SaaS platform at{" "}
+            <strong style={{ color: "#e2e8f0" }}>ASTRNT</strong>. Specialized in full-stack development —
+            Next.js, Laravel, LLM integration, and production-grade background job systems.
           </p>
 
           {/* Stats */}
@@ -79,7 +79,7 @@ export default function HomePage() {
         <div className="mb-10">
           <h2 className="text-2xl font-bold text-white mb-2">All Projects</h2>
           <p className="text-sm" style={{ color: "#64748b" }}>
-            {projects.length} repository dikerjakan di ASTRNT — klik untuk lihat detail
+            {projects.length} repositories built at ASTRNT — click any card to see the full detail
           </p>
         </div>
 
@@ -163,14 +163,13 @@ export default function HomePage() {
             <div>
               <h2 className="text-2xl font-bold text-white mb-6">About Me</h2>
               <p className="text-sm mb-4" style={{ color: "#94a3b8", lineHeight: "1.9" }}>
-                Software engineer yang membangun produk dari nol hingga production di{" "}
-                <strong style={{ color: "#e2e8f0" }}>ASTRNT</strong>, startup teknologi rekrutmen berbasis AI.
-                Bekerja di seluruh stack — database schema, REST API, background workers, hingga UI/UX.
+                Software engineer who has shipped products from zero to production at{" "}
+                <strong style={{ color: "#e2e8f0" }}>ASTRNT</strong>, an AI-driven recruitment tech startup.
+                Comfortable working across the full stack — database schema design, REST APIs, background workers, and UI/UX implementation.
               </p>
               <p className="text-sm" style={{ color: "#94a3b8", lineHeight: "1.9" }}>
-                Berpengalaman mengintegrasikan multi-LLM provider (Claude, Gemini, OpenAI) ke dalam product
-                features yang real, membangun event-driven notification systems, dan mendesain multi-tenant
-                SaaS architecture yang scalable.
+                Experienced in integrating multi-LLM providers (Claude, Gemini, OpenAI) into real product features,
+                building event-driven notification systems, and designing scalable multi-tenant SaaS architectures.
               </p>
             </div>
             <div>

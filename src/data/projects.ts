@@ -37,22 +37,22 @@ export const projects: Project[] = [
   {
     slug: "astrnt-dashboard-v2",
     title: "ASTRNT Dashboard v2",
-    subtitle: "Platform SaaS Rekrutmen Full-Stack Berbasis AI",
+    subtitle: "AI-Powered Full-Stack SaaS Recruitment Platform",
     description:
-      "Platform rekrutmen SaaS enterprise yang dibangun ulang dari nol dengan Next.js 15, React 19, TypeScript, dan multi-LLM integration. Menangani seluruh siklus rekrutmen end-to-end: AI job generation, campaign management, video interview assessment, proctoring, AI candidate matching, talent pools, review collaboration, bulk import, engagement sequences, dan credit-based billing via Stripe — semuanya dalam satu monolith yang dioptimasi untuk skala enterprise.",
+      "Enterprise SaaS recruitment platform rebuilt from scratch with Next.js 15, React 19, TypeScript, and multi-LLM integration. Handles the entire end-to-end recruitment cycle: AI job generation, campaign management, video interview assessment, proctoring, AI candidate matching, talent pools, review collaboration, bulk import, engagement sequences, and credit-based billing via Stripe — all in one monolith optimized for enterprise scale.",
     role: "Lead Frontend & Full-Stack Engineer",
     period: "2024 – 2026",
     status: "production",
     category: "platform",
     highlights: [
-      "Multi-LLM integration (Claude, Gemini, OpenAI) dengan key rotation otomatis saat rate limit — zero downtime",
-      "383+ API routes, 24 scheduled cron jobs via GitHub Actions, background queue dengan atomic job claiming",
-      "128 Cypress E2E specs + Vitest unit test wajib 80% coverage — mandatory gate sebelum setiap merge",
-      "AI Job Generator: recruiter cukup deskripsikan posisi, Claude generate job posting lengkap dengan pertanyaan interview",
-      "Review System multi-layer: swipe interface, deep review, public sharing via token, batch decision, @mention comments",
-      "Proctoring (anti-cheat) per kandidat, MCQ auto-disqualify, progressive profiling, personalized questions",
-      "Talent Pool management: kumpulkan kandidat lintas job, matching, assign ke job/review baru",
-      "Competency Framework builder: buat framework, tambah kompetensi + indikator, publish, link ke job",
+      "Multi-LLM integration (Claude, Gemini, OpenAI) with automatic key rotation on rate limit — zero downtime",
+      "383+ API routes, 24 scheduled cron jobs via GitHub Actions, background queue with atomic job claiming",
+      "128 Cypress E2E specs + Vitest unit tests with mandatory 80% coverage — required gate before every merge",
+      "AI Job Generator: recruiter describes a position in natural language, Claude generates a complete job posting with interview questions",
+      "Multi-layer Review System: swipe interface, deep review, public sharing via token, batch decision, @mention comments",
+      "Per-candidate proctoring (anti-cheat), MCQ auto-disqualify, progressive profiling, personalized questions",
+      "Talent Pool management: collect candidates across jobs, AI matching, assign to job/review session",
+      "Competency Framework builder: create framework, add competencies + indicators, publish, link to job",
     ],
     techStack: [
       {
@@ -65,7 +65,7 @@ export const projects: Project[] = [
       },
       {
         category: "Database & ORM",
-        items: ["MySQL / MariaDB", "Prisma ORM 7", "@prisma/adapter-mariadb", "Redis (ioredis)", "MongoDB (opsional)"],
+        items: ["MySQL / MariaDB", "Prisma ORM 7", "@prisma/adapter-mariadb", "Redis (ioredis)", "MongoDB (optional)"],
       },
       {
         category: "AI & Machine Learning",
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     ],
     integrations: [
       { name: "Anthropic Claude", purpose: "Job generation, CV enrichment, candidate scoring, AI feedback", type: "ai" },
-      { name: "Google Gemini", purpose: "Fallback LLM untuk matching & rekomendasi", type: "ai" },
+      { name: "Google Gemini", purpose: "Fallback LLM for matching & recommendations", type: "ai" },
       { name: "OpenAI GPT", purpose: "Third fallback LLM provider", type: "ai" },
       { name: "Stripe", purpose: "Credit-based billing, Checkout Sessions, Webhooks", type: "payment" },
       { name: "SendGrid", purpose: "Transactional & campaign email delivery", type: "email" },
@@ -107,118 +107,118 @@ export const projects: Project[] = [
       { name: "Azure Blob Storage", purpose: "CV, video, media, document storage + SAS URL", type: "storage" },
       { name: "Sentry", purpose: "Error tracking, performance monitoring, Web Vitals", type: "monitoring" },
       { name: "Redis", purpose: "Rate limiting, enrichment cache, session state, queue", type: "database" },
-      { name: "MongoDB", purpose: "AI generation log storage (opsional)", type: "database" },
+      { name: "MongoDB", purpose: "AI generation log storage (optional)", type: "database" },
       { name: "ESP Webhook", purpose: "Email delivery event tracking (open, click, bounce)", type: "email" },
     ],
     features: [
       {
         title: "AI Job Generator",
         description:
-          "Recruiter mendeskripsikan posisi dalam bahasa natural, Claude meng-generate job posting lengkap: deskripsi, requirements, dan pertanyaan interview. Hasil bisa di-edit, di-accept, di-reject, atau di-regenerate. Log setiap generasi disimpan untuk audit.",
+          "Recruiter describes a position in natural language, Claude generates a complete job posting: description, requirements, and interview questions. Results can be edited, accepted, rejected, or regenerated. Every generation is logged for auditing.",
       },
       {
         title: "Multi-Step Job Creation Wizard",
         description:
-          "Flow 8 langkah: describe → details → pipeline stages → profile setup → review → publish. Termasuk draft auto-save, clone job, custom pipeline stages (drag-reorder), welcome video upload, landing page customization, dan anonymous mode.",
+          "8-step flow: describe → details → pipeline stages → profile setup → review → publish. Includes auto-save draft, clone job, custom pipeline stages (drag-reorder), welcome video upload, landing page customization, and anonymous mode.",
       },
       {
         title: "Campaign Management System",
         description:
-          "Buat campaign per job dengan lifecycle penuh: draft → validate → launch → pause → resume → cancel. Fitur: duplicate campaign, per-channel configuration, smart-send (5 menit cron), cascade retry, automated reminders, bounce alerts, email history tracking dengan export.",
+          "Create campaigns per job with full lifecycle: draft → validate → launch → pause → resume → cancel. Features: duplicate campaign, per-channel configuration, smart-send (5-minute cron), cascade retry, automated reminders, bounce alerts, email history tracking with export.",
       },
       {
         title: "Candidate Profile & Review",
         description:
-          "Profil kandidat menyeluruh: jawaban video/teks, dokumen, riwayat pendidikan & pekerjaan, skills, achievements, notes, dan email history. Scoring per section, voting system, proctoring evidence, generate ART PDF dan Special PDF laporan.",
+          "Comprehensive candidate profile: video/text answers, documents, education & work history, skills, achievements, notes, and email history. Scoring per section, voting system, proctoring evidence, generate ART PDF and Special PDF reports.",
       },
       {
         title: "Review Collaboration System",
         description:
-          "Multi-user review dengan swipe interface (kanan/kiri), deep review mode, batch decision, bookmark kandidat, komentar dengan @mention anggota tim, undo keputusan, sesi review dengan timer dan summary, serta public sharing via token untuk stakeholder eksternal.",
+          "Multi-user review with swipe interface (right/left), deep review mode, batch decision, candidate bookmarking, comments with @mention team members, undo decisions, review sessions with timer and summary, and public sharing via token for external stakeholders.",
       },
       {
-        title: "Bulk Import dengan Duplicate Resolution",
+        title: "Bulk Import with Duplicate Resolution",
         description:
-          "Import kandidat via CSV/Excel dengan column mapping yang bisa disimpan sebagai profil. Validasi baris per baris, tampilkan error rows, deteksi duplikat (single + batch resolution), dan progress tracking real-time. CV batch import dengan AI enrichment queue.",
+          "Import candidates via CSV/Excel with column mapping that can be saved as a profile. Row-by-row validation, display error rows, duplicate detection (single + batch resolution), and real-time progress tracking. Batch CV import with AI enrichment queue.",
       },
       {
         title: "Talent Pool Management",
         description:
-          "Kumpulkan kandidat terbaik lintas job ke dalam talent pools. Fitur: AI matching per pool, check availability, assign ke job aktif, assign ke review session, dan overlap detection antar pool.",
+          "Collect top candidates from across jobs into talent pools. Features: AI matching per pool, availability check, assign to active job, assign to review session, and overlap detection between pools.",
       },
       {
         title: "Assessment Interview Builder",
         description:
-          "Buat assessment interview custom dengan pertanyaan video/audio/dokumen. Upload media langsung ke Azure Blob Storage. Preview QnA sebelum publish, test send ke email, dan assign ke multiple jobs.",
+          "Create custom assessment interviews with video/audio/document questions. Upload media directly to Azure Blob Storage. Preview QnA before publishing, test-send to email, and assign to multiple jobs.",
       },
       {
         title: "Competency Framework Builder",
         description:
-          "Buat framework kompetensi custom: tambah kompetensi, definisikan indicators per kompetensi, drag-reorder, publish. Framework bisa di-link ke job untuk scoring yang konsisten dan terstandar.",
+          "Create custom competency frameworks: add competencies, define indicators per competency, drag-reorder, publish. Frameworks can be linked to jobs for consistent and standardized scoring.",
       },
       {
         title: "24 Scheduled Cron Jobs",
         description:
-          "Sistem automation via GitHub Actions: smart-send (5 min), cascade retry, reminders, notification-processor (1 min), sequence-processor & triggers, recommendation-availability, MCQ auto-disqualify, candidate-spotlight-digest, early-signal-digest, no-applicants-digest, job-deadline-alerts, cleanup-drafts, expire-demos, dan lebih banyak lagi.",
+          "Automation system via GitHub Actions: smart-send (5 min), cascade retry, reminders, notification-processor (1 min), sequence-processor & triggers, recommendation-availability, MCQ auto-disqualify, candidate-spotlight-digest, early-signal-digest, no-applicants-digest, job-deadline-alerts, cleanup-drafts, expire-demos, and more.",
       },
       {
         title: "Background Job Queue System",
         description:
-          "bg_transactions table sebagai persistent queue: atomic claiming mencegah race condition, priority-based processing, stale job recovery (timeout 30 menit), progress tracking via processed_data counter. Dipakai untuk import, CV enrichment, bulk retake, dan matching.",
+          "bg_transactions table as persistent queue: atomic claiming prevents race conditions, priority-based processing, stale job recovery (30-minute timeout), progress tracking via processed_data counter. Used for import, CV enrichment, bulk retake, and matching.",
       },
       {
         title: "Credit-Based Billing (Stripe)",
         description:
-          "Monetisasi berbasis kredit: Stripe Checkout Session, webhook handling untuk payment confirmation, credit expiry tracking, automated alerts (warning → critical → expired), credit usage per company, dan credit transaction per kandidat.",
+          "Credit-based monetization: Stripe Checkout Session, webhook handling for payment confirmation, credit expiry tracking, automated alerts (warning → critical → expired), credit usage per company, and credit transactions per candidate.",
       },
       {
         title: "Engagement Sequences",
         description:
-          "Define automated multi-step communication workflows: email → delay → SMS → in-app notification. Sequence triggers otomatis berdasarkan event kandidat, processor berjalan tiap 30 menit.",
+          "Define automated multi-step communication workflows: email → delay → SMS → in-app notification. Sequence triggers automatically based on candidate events, processor runs every 30 minutes.",
       },
       {
         title: "Fast Apply (Open Code)",
         description:
-          "Kandidat apply via link open code tanpa akun recruiter. Flow: register → upload CV → CV parse otomatis → profile setup → progressive profiling questions. Dirancang untuk konversi tinggi di mobile.",
+          "Candidates apply via open code link without a recruiter account. Flow: register → upload CV → auto CV parse → profile setup → progressive profiling questions. Designed for high conversion on mobile.",
       },
       {
         title: "Interview Handoff Flow (/j/[code])",
         description:
-          "Kandidat yang sudah di-invite mengakses interview via unique code. Flow: confirm → profile → upload dokumen → progressive profiling → finish. CV di-parse otomatis saat upload.",
+          "Invited candidates access the interview via a unique code. Flow: confirm → profile → upload documents → progressive profiling → finish. CV is automatically parsed on upload.",
       },
       {
         title: "Proctoring & Anti-Cheat",
         description:
-          "Monitoring proctoring per kandidat per job: rekam aktivitas mencurigakan selama interview (tab switch, fullscreen exit, dll). Evidence tersimpan dan bisa di-review recruiter di halaman proctoring.",
+          "Per-candidate per-job proctoring monitoring: records suspicious activity during the interview (tab switch, fullscreen exit, etc.). Evidence is stored and can be reviewed by recruiters on the proctoring page.",
       },
       {
         title: "Email Template Customization",
         description:
-          "Recruiter bisa customize template email per job dengan rich text editor (TipTap). Placeholder detection untuk mencegah email terkirim dengan variabel yang belum diisi.",
+          "Recruiters can customize email templates per job using a rich text editor (TipTap). Placeholder detection prevents emails from being sent with unfilled variables.",
       },
       {
         title: "Microsoft SSO & Multi-Company Auth",
         description:
-          "Login via Microsoft OAuth untuk enterprise. Platform switch antar sistem ASTRNT, company switch untuk user yang join ke multiple company, support dashboard impersonation untuk CS team.",
+          "Login via Microsoft OAuth for enterprise. Switch between ASTRNT systems, company switch for users who join multiple companies, support dashboard impersonation for the CS team.",
       },
       {
         title: "Internal Admin Tools",
         description:
-          "Halaman internal untuk ASTRNT team: AI API key management (rotasi key Claude), feature flags per company, IP blocking, question library, org setup, CDC company management, matching engine health check & cache clear.",
+          "Internal pages for the ASTRNT team: AI API key management (Claude key rotation), feature flags per company, IP blocking, question library, org setup, CDC company management, matching engine health check & cache clear.",
       },
       {
         title: "Email Open & Click Tracking",
         description:
-          "Tracking email opens dan link clicks via pixel & redirect token (/api/track/open, /api/track/click). Data digunakan untuk campaign analytics dan engagement scoring.",
+          "Track email opens and link clicks via pixel & redirect token (/api/track/open, /api/track/click). Data is used for campaign analytics and engagement scoring.",
       },
       {
         title: "Notification Preferences & History",
         description:
-          "User bisa set preferensi notifikasi per kategori (email/in-app). History notifikasi tersimpan, unsubscribe per kategori, dan opt-out global via email link.",
+          "Users can set notification preferences per category (email/in-app). Notification history is stored, unsubscribe per category, and global opt-out via email link.",
       },
     ],
     architecture:
-      "Next.js Full-Stack Monolith dengan App Router. Server Components + Server Actions untuk form submissions; API Routes untuk REST endpoints, webhooks, dan cron triggers. Business logic di src/lib/ (265+ file) dan src/services/. Data access via Prisma ORM dengan raw SQL untuk query kritis. Background jobs: GitHub Actions trigger → POST /api/cron/* → enqueue ke bg_transactions → worker scripts (tsx) claim & proses. Redis untuk rate limiting dan cache. Azure Blob Storage untuk semua file/media dengan SAS token generation.",
+      "Next.js Full-Stack Monolith with App Router. Server Components + Server Actions for form submissions; API Routes for REST endpoints, webhooks, and cron triggers. Business logic in src/lib/ (265+ files) and src/services/. Data access via Prisma ORM with raw SQL for critical queries. Background jobs: GitHub Actions trigger → POST /api/cron/* → enqueue to bg_transactions → worker scripts (tsx) claim & process. Redis for rate limiting and caching. Azure Blob Storage for all files/media with SAS token generation.",
     metrics: [
       { label: "API Routes", value: "383+" },
       { label: "Pages & Flows", value: "40+" },
@@ -235,22 +235,22 @@ export const projects: Project[] = [
   {
     slug: "recruiter",
     title: "ASTRNT Recruiter (Main App)",
-    subtitle: "Platform Rekrutmen Enterprise — Laravel + React SPA Skala Besar",
+    subtitle: "Enterprise Recruitment Platform — Large-Scale Laravel + React SPA",
     description:
-      "Backbone platform rekrutmen ASTRNT generasi pertama. Laravel monolith dengan Dingo API sebagai REST backend, melayani React SPA (416 JSX files, Redux + redux-saga) sebagai frontend. Menangani video interview, beragam jenis assessment psikometri, speech-to-text otomatis, video transcoding via FFmpeg, multiple payment gateway, multi-tenant client module, dan integrasi enterprise SSO — dalam satu platform yang sudah digunakan oleh perusahaan-perusahaan besar seperti Gojek, BCA, Sephora, Deloitte.",
+      "The backbone of ASTRNT's first-generation recruitment platform. Laravel monolith with Dingo API as the REST backend, serving a React SPA (416 JSX files, Redux + redux-saga) as the frontend. Handles video interviews, diverse psychometric assessment types, automatic speech-to-text, video transcoding via FFmpeg, multiple payment gateways, multi-tenant client modules, and enterprise SSO integration — in a single platform used by major companies like Gojek, BCA, Sephora, and Deloitte.",
     role: "Full-Stack Engineer",
     period: "2022 – 2024",
     status: "production",
     category: "platform",
     highlights: [
-      "416 JSX files React SPA dengan Redux, redux-saga, redux-form, dan Storybook component library",
-      "Google Cloud Speech-to-Text untuk auto-transkripsi jawaban video kandidat",
-      "FFmpeg video transcoding + JWPlayer streaming untuk playback video interview",
-      "Tesseract OCR untuk ekstraksi teks dari dokumen gambar",
+      "416 JSX files React SPA with Redux, redux-saga, redux-form, and Storybook component library",
+      "Google Cloud Speech-to-Text for automatic transcription of candidate video answers",
+      "FFmpeg video transcoding + JWPlayer streaming for interview video playback",
+      "Tesseract OCR for text extraction from image-based documents",
       "Multi-payment gateway: Stripe (global) + Veritrans/Midtrans (Indonesia)",
-      "SAML2 SSO untuk enterprise client (Gojek, BCA, dll) dengan custom auth flow",
-      "8+ jenis assessment psikometri: ART, RIASEC, Creative Thinking, Writing Test, Reading Test, Values Reflection, dll",
-      "Client-specific module per perusahaan: BCA, Gojek, Deloitte, Sephora, Homecredit, Ristekdikti, dll",
+      "SAML2 SSO for enterprise clients (Gojek, BCA, etc.) with custom auth flow",
+      "8+ psychometric assessment types: ART, RIASEC, Creative Thinking, Writing Test, Reading Test, Values Reflection, etc.",
+      "Client-specific modules per company: BCA, Gojek, Deloitte, Sephora, Homecredit, Ristekdikti, etc.",
     ],
     techStack: [
       {
@@ -295,82 +295,82 @@ export const projects: Project[] = [
       },
     ],
     integrations: [
-      { name: "Google Cloud Speech", purpose: "Auto-transkripsi jawaban video kandidat ke teks", type: "ai" },
-      { name: "Stripe", purpose: "Global payment & subscription enterprise", type: "payment" },
-      { name: "Veritrans/Midtrans", purpose: "Payment gateway Indonesia", type: "payment" },
-      { name: "SAML2 SSO", purpose: "Enterprise SSO untuk Gojek, BCA, dan klien besar lainnya", type: "infra" },
-      { name: "JWPlayer", purpose: "Video streaming dan playback interview", type: "storage" },
-      { name: "AWS S3", purpose: "Video, audio, dokumen storage", type: "storage" },
-      { name: "Azure Blob Storage", purpose: "Secondary storage untuk media", type: "storage" },
-      { name: "Elasticsearch", purpose: "Full-text search kandidat dan job", type: "database" },
-      { name: "MongoDB", purpose: "Log dan data dokumen non-relasional", type: "database" },
+      { name: "Google Cloud Speech", purpose: "Auto-transcription of candidate video answers to text", type: "ai" },
+      { name: "Stripe", purpose: "Global payment & enterprise subscription", type: "payment" },
+      { name: "Veritrans/Midtrans", purpose: "Indonesian payment gateway", type: "payment" },
+      { name: "SAML2 SSO", purpose: "Enterprise SSO for Gojek, BCA, and other major clients", type: "infra" },
+      { name: "JWPlayer", purpose: "Video streaming and interview playback", type: "storage" },
+      { name: "AWS S3", purpose: "Video, audio, document storage", type: "storage" },
+      { name: "Azure Blob Storage", purpose: "Secondary storage for media", type: "storage" },
+      { name: "Elasticsearch", purpose: "Full-text search for candidates and jobs", type: "database" },
+      { name: "MongoDB", purpose: "Logs and non-relational document data", type: "database" },
       { name: "Redis", purpose: "Session, queue cache, rate limiting", type: "database" },
-      { name: "Sentry", purpose: "Error tracking production", type: "monitoring" },
+      { name: "Sentry", purpose: "Production error tracking", type: "monitoring" },
     ],
     features: [
       {
-        title: "Video Interview dengan Speech-to-Text",
+        title: "Video Interview with Speech-to-Text",
         description:
-          "Kandidat merekam jawaban video yang di-stream via JWPlayer. Google Cloud Speech-to-Text secara otomatis men-transkripsi setiap jawaban menjadi teks untuk mempermudah review recruiter.",
+          "Candidates record video answers that are streamed via JWPlayer. Google Cloud Speech-to-Text automatically transcribes each answer into text to make recruiter reviews easier.",
       },
       {
-        title: "8+ Jenis Assessment Psikometri",
+        title: "8+ Psychometric Assessment Types",
         description:
-          "Platform mendukung berbagai tes: Analytical Reasoning Test (ART), RIASEC career interest, Creative Thinking Assessment, Reading Test, Writing Test, Values Reflection Assessment, General Scoring, dan PsychoMetric. Setiap tes punya scoring engine sendiri.",
+          "The platform supports a variety of tests: Analytical Reasoning Test (ART), RIASEC career interest, Creative Thinking Assessment, Reading Test, Writing Test, Values Reflection Assessment, General Scoring, and PsychoMetric. Each test has its own scoring engine.",
       },
       {
         title: "Multi-Tenant Client Modules",
         description:
-          "Setiap klien enterprise (Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, dll) memiliki modul Laravel tersendiri dengan custom flow, branding, dan assessment khusus sesuai kebutuhan mereka.",
+          "Each enterprise client (Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, etc.) has its own Laravel module with custom flow, branding, and assessments tailored to their needs.",
       },
       {
         title: "Video Transcoding via FFmpeg",
         description:
-          "Video jawaban kandidat diproses oleh php-ffmpeg untuk konversi format, kompresi, dan thumbnail generation sebelum di-serve via JWPlayer. Mendukung chunk upload untuk file besar.",
+          "Candidate video answers are processed by php-ffmpeg for format conversion, compression, and thumbnail generation before being served via JWPlayer. Supports chunk upload for large files.",
       },
       {
         title: "PDF Report Generation",
         description:
-          "Generate laporan PDF kandidat via multiple engine: DOMPDF, Snappy (wkhtmltopdf), dan FPDI. Mendukung custom PDF dengan branding klien, laporan assessment, dan export bulk.",
+          "Generate candidate PDF reports via multiple engines: DOMPDF, Snappy (wkhtmltopdf), and FPDI. Supports custom PDFs with client branding, assessment reports, and bulk export.",
       },
       {
         title: "Proctoring & Anti-Cheat",
         description:
-          "Sistem proctoring mendeteksi aktivitas mencurigakan: tab switch, fullscreen exit, copy-paste. Evidence direkam dan tersedia untuk review recruiter di halaman proctoring.",
+          "Proctoring system detects suspicious activity: tab switch, fullscreen exit, copy-paste. Evidence is recorded and available for recruiter review on the proctoring page.",
       },
       {
         title: "Talent Pool & Team Management",
         description:
-          "Recruiter bisa kumpulkan kandidat terbaik ke Talent Pool, assign hiring team member ke job, dan set permission per member untuk akses review.",
+          "Recruiters can collect top candidates into a Talent Pool, assign hiring team members to jobs, and set permissions per member for review access.",
       },
       {
         title: "Competency Generation",
         description:
-          "Generate kompetensi yang relevan untuk sebuah posisi secara otomatis berdasarkan job description dan industri.",
+          "Automatically generate relevant competencies for a position based on job description and industry.",
       },
       {
         title: "Multi-Payment Gateway",
         description:
-          "Mendukung Stripe untuk klien global dan Veritrans/Midtrans untuk klien Indonesia. Payment management, invoice, dan subscription handling per klien.",
+          "Supports Stripe for global clients and Veritrans/Midtrans for Indonesian clients. Payment management, invoicing, and subscription handling per client.",
       },
       {
         title: "SAML2 Enterprise SSO",
         description:
-          "Enterprise client bisa login via SSO perusahaan mereka masing-masing menggunakan SAML2. Custom IdP configuration per klien (Gojek, BCA, dll).",
+          "Enterprise clients can log in via their company's own SSO using SAML2. Custom IdP configuration per client (Gojek, BCA, etc.).",
       },
       {
         title: "Excel & CSV Import/Export",
         description:
-          "Import kandidat massal via Excel (maatwebsite/excel), export laporan ke CSV (league/csv), dan export data kandidat dengan format yang bisa dikustomisasi per klien.",
+          "Bulk import candidates via Excel (maatwebsite/excel), export reports to CSV (league/csv), and export candidate data in a format customizable per client.",
       },
       {
-        title: "Tesseract OCR untuk Dokumen",
+        title: "Tesseract OCR for Documents",
         description:
-          "Ekstraksi teks otomatis dari dokumen berupa gambar (foto KTP, ijazah, sertifikat) menggunakan Tesseract OCR untuk verifikasi dan pengisian profil kandidat.",
+          "Automatic text extraction from image-based documents (ID photos, diplomas, certificates) using Tesseract OCR for verification and candidate profile filling.",
       },
     ],
     architecture:
-      "Laravel monolith dengan nwidart/laravel-modules untuk isolasi per domain/klien. Dingo API untuk versioned REST endpoints, JWT Auth untuk stateless authentication. React SPA (416 JSX files) dibangun dengan Webpack 4, state management via Redux + redux-saga. Media pipeline: upload → AWS S3/Azure → FFmpeg transcoding → JWPlayer streaming. Speech-to-text via Google Cloud Speech API. PDF via multiple engine (DOMPDF, Snappy, FPDI).",
+      "Laravel monolith with nwidart/laravel-modules for per-domain/client isolation. Dingo API for versioned REST endpoints, JWT Auth for stateless authentication. React SPA (416 JSX files) built with Webpack 4, state management via Redux + redux-saga. Media pipeline: upload → AWS S3/Azure → FFmpeg transcoding → JWPlayer streaming. Speech-to-text via Google Cloud Speech API. PDF via multiple engines (DOMPDF, Snappy, FPDI).",
     metrics: [
       { label: "React JSX Files", value: "416" },
       { label: "PHP Controllers", value: "60+" },
@@ -385,20 +385,20 @@ export const projects: Project[] = [
   {
     slug: "api-qna",
     title: "API QnA",
-    subtitle: "Backend API Platform Interview Asynchronous — Laravel Full-Featured",
+    subtitle: "Asynchronous Interview Platform API Backend — Full-Featured Laravel",
     description:
-      "Laravel API backend yang melayani seluruh kebutuhan platform interview asynchronous ASTRNT. Kandidat menjawab pertanyaan video/audio/teks/MCQ/dokumen secara mandiri kapan saja. Backend menangani session management, media upload dan transcoding, speech-to-text otomatis, multiple assessment types (ART, RIASEC, Creative Thinking), proctoring, PDF report generation, dan sinkronisasi data dengan platform recruiter. Stack identik dengan Recruiter namun fokus pada candidate-facing interview flow.",
+      "Laravel API backend serving all needs of the ASTRNT asynchronous interview platform. Candidates answer video/audio/text/MCQ/document questions independently at any time. The backend handles session management, media upload and transcoding, automatic speech-to-text, multiple assessment types (ART, RIASEC, Creative Thinking), proctoring, PDF report generation, and data synchronization with the recruiter platform. The stack is identical to Recruiter but focused on the candidate-facing interview flow.",
     role: "Backend Engineer",
     period: "2022 – 2024",
     status: "production",
     category: "api",
     highlights: [
-      "Google Cloud Speech-to-Text untuk auto-transkripsi jawaban video kandidat",
-      "FFmpeg video transcoding + JWPlayer streaming untuk playback interview",
-      "5+ jenis assessment: ART, RIASEC, Creative Thinking, General Scoring, Values Reflection",
-      "Chunk upload untuk video besar + AWS S3 / Azure Blob dual storage",
-      "Proctoring evidence tracking per sesi interview",
-      "OTP authentication untuk kandidat tanpa akun",
+      "Google Cloud Speech-to-Text for automatic transcription of candidate video answers",
+      "FFmpeg video transcoding + JWPlayer streaming for interview playback",
+      "5+ assessment types: ART, RIASEC, Creative Thinking, General Scoring, Values Reflection",
+      "Chunk upload for large videos + AWS S3 / Azure Blob dual storage",
+      "Proctoring evidence tracking per interview session",
+      "OTP authentication for candidates without an account",
     ],
     techStack: [
       {
@@ -423,46 +423,46 @@ export const projects: Project[] = [
       },
     ],
     integrations: [
-      { name: "Google Cloud Speech", purpose: "Auto-transkripsi video jawaban kandidat", type: "ai" },
+      { name: "Google Cloud Speech", purpose: "Auto-transcription of candidate video answers", type: "ai" },
       { name: "AWS S3", purpose: "Primary video & document storage", type: "storage" },
       { name: "Azure Blob Storage", purpose: "Secondary media storage", type: "storage" },
-      { name: "JWPlayer", purpose: "Video streaming dan playback", type: "storage" },
-      { name: "MongoDB", purpose: "Log dan dokumen non-relasional", type: "database" },
+      { name: "JWPlayer", purpose: "Video streaming and playback", type: "storage" },
+      { name: "MongoDB", purpose: "Logs and non-relational documents", type: "database" },
       { name: "Redis", purpose: "Queue, session cache", type: "database" },
-      { name: "Sentry", purpose: "Error tracking production", type: "monitoring" },
+      { name: "Sentry", purpose: "Production error tracking", type: "monitoring" },
     ],
     features: [
       {
         title: "Async Interview Session Management",
-        description: "Kandidat mendapat link unik dengan kode interview. Backend melacak progress tiap section, status jawaban, dan completion state secara real-time.",
+        description: "Candidates receive a unique link with an interview code. The backend tracks progress per section, answer status, and completion state in real-time.",
       },
       {
         title: "Multi-Type Question Answering",
-        description: "Mendukung berbagai tipe jawaban: video recording, audio recording, teks bebas (freetext), MCQ, rating scale, dan upload dokumen — semua dalam satu sesi interview.",
+        description: "Supports multiple answer types: video recording, audio recording, free text (freetext), MCQ, rating scale, and document upload — all in one interview session.",
       },
       {
-        title: "Speech-to-Text Otomatis",
-        description: "Setiap jawaban video di-transkripsi secara otomatis oleh Google Cloud Speech API. Transkrip tersimpan dan bisa digunakan recruiter untuk review tanpa harus menonton video.",
+        title: "Automatic Speech-to-Text",
+        description: "Every video answer is automatically transcribed by the Google Cloud Speech API. Transcripts are saved and can be used by recruiters for review without watching the video.",
       },
       {
         title: "Video Transcoding Pipeline",
-        description: "Upload video kandidat → FFmpeg transcoding untuk kompres & format standar → simpan di S3/Azure → stream via JWPlayer. Chunk upload untuk file besar (pion/laravel-chunk-upload).",
+        description: "Candidate video upload → FFmpeg transcoding for compression & standard format → stored on S3/Azure → streamed via JWPlayer. Chunk upload for large files (pion/laravel-chunk-upload).",
       },
       {
-        title: "5+ Assessment Psikometri",
-        description: "Mendukung Analytical Reasoning Test (ART), RIASEC career interest, Creative Thinking Assessment, General Scoring, Values Reflection Assessment. Scoring engine per tipe tes.",
+        title: "5+ Psychometric Assessments",
+        description: "Supports Analytical Reasoning Test (ART), RIASEC career interest, Creative Thinking Assessment, General Scoring, Values Reflection Assessment. Scoring engine per test type.",
       },
       {
         title: "Proctoring Evidence Recording",
-        description: "Merekam bukti proctoring selama sesi interview (tab switch, kamera, dll) dan menyimpannya untuk ditinjau recruiter.",
+        description: "Records proctoring evidence during the interview session (tab switch, camera, etc.) and stores it for recruiter review.",
       },
       {
         title: "PDF Report Generation",
-        description: "Generate laporan hasil assessment per kandidat dalam format PDF via DOMPDF, Snappy, dan FPDI. Mendukung custom branding per klien.",
+        description: "Generates assessment result reports per candidate in PDF format via DOMPDF, Snappy, and FPDI. Supports custom branding per client.",
       },
     ],
     architecture:
-      "Laravel monolith dengan nwidart/laravel-modules (Astronaut, AssessmentContent, JobLanding, TDL, Ecourse modules). Dingo API untuk REST versioning, JWT Auth stateless. Media pipeline: chunk upload → S3/Azure → FFmpeg transcoding → JWPlayer streaming. Speech-to-text via Google Cloud Speech API. PDF via multi-engine. Elasticsearch untuk search, Redis untuk queue.",
+      "Laravel monolith with nwidart/laravel-modules (Astronaut, AssessmentContent, JobLanding, TDL, Ecourse modules). Dingo API for REST versioning, stateless JWT Auth. Media pipeline: chunk upload → S3/Azure → FFmpeg transcoding → JWPlayer streaming. Speech-to-text via Google Cloud Speech API. PDF via multi-engine. Elasticsearch for search, Redis for queue.",
     metrics: [
       { label: "API Endpoints", value: "80+" },
       { label: "Laravel Modules", value: "6" },
@@ -475,20 +475,20 @@ export const projects: Project[] = [
   {
     slug: "qna-web",
     title: "QnA Web",
-    subtitle: "Aplikasi Interview Asynchronous — Candidate-Facing React SPA",
+    subtitle: "Asynchronous Interview Application — Candidate-Facing React SPA",
     description:
-      "React SPA (320 JS/JSX files) yang menjadi antarmuka utama kandidat dalam mengikuti sesi interview asynchronous ASTRNT. Mendukung 6 tipe pertanyaan: video recording (WebRTC + RecordRTC), audio recording, teks bebas, MCQ, rating scale, dan upload dokumen. Dilengkapi OTP authentication, pre-interview device check, proctoring monitoring, session recovery via localforage, real-time progress tracking via Socket.io, dan activity logging custom.",
+      "React SPA (320 JS/JSX files) serving as the primary interface for candidates participating in ASTRNT asynchronous interview sessions. Supports 6 question types: video recording (WebRTC + RecordRTC), audio recording, free text, MCQ, rating scale, and document upload. Features OTP authentication, pre-interview device check, proctoring monitoring, session recovery via localforage, real-time progress tracking via Socket.io, and custom activity logging.",
     role: "Frontend Engineer",
     period: "2022 – 2024",
     status: "production",
     category: "frontend",
     highlights: [
-      "RecordRTC + WebRTC untuk recording video/audio langsung di browser tanpa plugin",
-      "6 tipe pertanyaan: video, audio, freetext, MCQ, rating scale, document upload",
-      "OTP authentication flow untuk kandidat tanpa akun",
-      "Session recovery via localforage — kandidat bisa lanjut dari titik terakhir jika browser crash",
-      "Pre-interview device check via DetectRTC (kamera, mikrofon, koneksi internet)",
-      "Real-time progress dan countdown timer via Socket.io",
+      "RecordRTC + WebRTC for video/audio recording directly in the browser without plugins",
+      "6 question types: video, audio, freetext, MCQ, rating scale, document upload",
+      "OTP authentication flow for candidates without an account",
+      "Session recovery via localforage — candidates can continue from their last point if the browser crashes",
+      "Pre-interview device check via DetectRTC (camera, microphone, internet connection)",
+      "Real-time progress and countdown timer via Socket.io",
     ],
     techStack: [
       {
@@ -514,42 +514,42 @@ export const projects: Project[] = [
     ],
     integrations: [
       { name: "AWS Amplify", purpose: "Candidate authentication & session management", type: "infra" },
-      { name: "Socket.io", purpose: "Real-time progress sync dan countdown timer", type: "realtime" },
+      { name: "Socket.io", purpose: "Real-time progress sync and countdown timer", type: "realtime" },
       { name: "Sentry", purpose: "Production error tracking & monitoring", type: "monitoring" },
-      { name: "AWS SDK Mobile Analytics", purpose: "Usage analytics kandidat", type: "monitoring" },
+      { name: "AWS SDK Mobile Analytics", purpose: "Candidate usage analytics", type: "monitoring" },
     ],
     features: [
       {
         title: "Multi-Type Question Answering Interface",
-        description: "UI lengkap untuk 6 tipe soal: video interview (record + playback preview), audio recording, freetext dengan rich editor, MCQ pilihan ganda, rating scale slider, dan document upload dengan preview.",
+        description: "Complete UI for 6 question types: video interview (record + playback preview), audio recording, freetext with rich editor, multiple choice MCQ, rating scale slider, and document upload with preview.",
       },
       {
         title: "Browser Video & Audio Recording (RecordRTC)",
-        description: "Video dan audio direkam langsung di browser via RecordRTC + WebRTC API tanpa perlu install plugin. Mendukung countdown timer per pertanyaan, retry recording, dan preview sebelum submit.",
+        description: "Video and audio are recorded directly in the browser via RecordRTC + WebRTC API without installing plugins. Supports countdown timer per question, retry recording, and preview before submitting.",
       },
       {
         title: "OTP Authentication Flow",
-        description: "Kandidat masuk via OTP yang dikirim ke email/HP — tanpa perlu buat akun. Aman dan friction-minimal untuk konversi maksimal.",
+        description: "Candidates log in via OTP sent to their email/phone — no account creation needed. Secure and low-friction for maximum conversion.",
       },
       {
         title: "Pre-Interview Device Check",
-        description: "DetectRTC memvalidasi ketersediaan kamera, mikrofon, dan kecepatan koneksi sebelum sesi dimulai. Kandidat diberi panduan troubleshooting jika ada masalah.",
+        description: "DetectRTC validates camera availability, microphone, and connection speed before the session starts. Candidates are given troubleshooting guidance if there are issues.",
       },
       {
         title: "Session Recovery via localforage",
-        description: "Progress interview disimpan lokal menggunakan localforage. Jika browser crash atau koneksi terputus, kandidat bisa lanjut dari pertanyaan terakhir tanpa kehilangan jawaban.",
+        description: "Interview progress is stored locally using localforage. If the browser crashes or the connection drops, candidates can continue from their last question without losing answers.",
       },
       {
         title: "Real-time Progress via Socket.io",
-        description: "Status progres kandidat di-sync secara real-time ke server via Socket.io. Countdown timer dan section progress diupdate live.",
+        description: "Candidate progress status is synced to the server in real-time via Socket.io. Countdown timer and section progress are updated live.",
       },
       {
         title: "Activity & Event Logging",
-        description: "Setiap aksi kandidat (mulai rekam, submit, pause, dll) dicatat oleh qna-activity-log dan astrnt-web-logger untuk audit trail dan proctoring evidence.",
+        description: "Every candidate action (start recording, submit, pause, etc.) is logged by qna-activity-log and astrnt-web-logger for audit trail and proctoring evidence.",
       },
     ],
     architecture:
-      "React SPA dengan Redux + redux-saga untuk async state management. 320 JS/JSX files mencakup pages (home, sessions, interviews, mcqs, freetext, rating_scale, document, sections, otp, errors), components, sagas, reducers, dan selectors. Recording via RecordRTC, storage via AWS Amplify, real-time via Socket.io client.",
+      "React SPA with Redux + redux-saga for async state management. 320 JS/JSX files covering pages (home, sessions, interviews, mcqs, freetext, rating_scale, document, sections, otp, errors), components, sagas, reducers, and selectors. Recording via RecordRTC, storage via AWS Amplify, real-time via Socket.io client.",
     metrics: [
       { label: "JS/JSX Files", value: "320" },
       { label: "Question Types", value: "6" },
@@ -562,20 +562,20 @@ export const projects: Project[] = [
   {
     slug: "public-web",
     title: "Public Web",
-    subtitle: "Website Publik & Marketing Site ASTRNT — Dual React Architecture",
+    subtitle: "ASTRNT Public Website & Marketing Site — Dual React Architecture",
     description:
-      "Website publik ASTRNT yang melayani halaman marketing, landing page produk, blog, developer portal, dan job-specific landing pages. Dibangun sebagai dua komponen React terpisah (component_public & component_job_landing) yang di-build independen lalu di-serve dalam satu Express.js server. Multi-environment build untuk AWS (production) dan Azure (staging/beta) dengan env vars yang berbeda per target.",
+      "ASTRNT's public website serving marketing pages, product landing pages, blog, developer portal, and job-specific landing pages. Built as two separate React components (component_public & component_job_landing) that are built independently then served by a single Express.js server. Multi-environment build for AWS (production) and Azure (staging/beta) with different env vars per target.",
     role: "Frontend Engineer",
     period: "2022 – 2023",
     status: "production",
     category: "frontend",
     highlights: [
-      "Dual React app architecture — public site + job landing page sebagai komponen independen",
-      "Single Express.js server melayani dua build React dari folder berbeda",
-      "Multi-environment CI build: AWS production vs Azure staging dengan env vars terpisah",
-      "Google Analytics (react-ga) untuk tracking traffic dan konversi",
-      "Styled Components untuk theming konsisten di seluruh site",
-      "Route-based job landing page — tiap job punya URL dan konten tersendiri",
+      "Dual React app architecture — public site + job landing page as independent components",
+      "Single Express.js server serving two React builds from different folders",
+      "Multi-environment CI build: AWS production vs Azure staging with separate env vars",
+      "Google Analytics (react-ga) for traffic and conversion tracking",
+      "Styled Components for consistent theming across the entire site",
+      "Route-based job landing page — each job has its own URL and content",
     ],
     techStack: [
       {
@@ -592,24 +592,24 @@ export const projects: Project[] = [
       },
     ],
     integrations: [
-      { name: "Google Analytics", purpose: "Traffic, halaman yang dikunjungi, dan konversi Apply", type: "monitoring" },
+      { name: "Google Analytics", purpose: "Traffic, visited pages, and Apply conversion tracking", type: "monitoring" },
     ],
     features: [
       {
         title: "Dual React App Architecture",
-        description: "component_public (marketing site) dan component_job_landing (job-specific pages) di-build secara independen dengan Webpack, lalu di-serve bersama via satu Express.js server — memungkinkan deployment partial tanpa rebuild keduanya.",
+        description: "component_public (marketing site) and component_job_landing (job-specific pages) are built independently with Webpack, then served together via a single Express.js server — enabling partial deployment without rebuilding both.",
       },
       {
         title: "Job-Specific Landing Pages",
-        description: "Setiap job posting punya landing page tersendiri dengan URL unik, deskripsi job, dan tombol Apply yang terhubung ke flow QnA interview.",
+        description: "Each job posting has its own landing page with a unique URL, job description, and an Apply button connected to the QnA interview flow.",
       },
       {
         title: "Multi-Environment Build Pipeline",
-        description: "Script build terpisah untuk AWS (astrnt.co) dan Azure (beta.astrnt.co) dengan REACT_APP_* env vars berbeda: API host, QnA host, EU host, Node host, Python host.",
+        description: "Separate build scripts for AWS (astrnt.co) and Azure (beta.astrnt.co) with different REACT_APP_* env vars: API host, QnA host, EU host, Node host, Python host.",
       },
     ],
     architecture:
-      "Dua React app (component_public + component_job_landing) di-build terpisah dengan npm-run-all. Express.js server melayani static build dari FOLDER_PUBLIC dan FOLDER_JOB_LANDING env vars. Deploy ke AWS (prod) dan Azure (staging) via CI pipeline.",
+      "Two React apps (component_public + component_job_landing) built separately with npm-run-all. Express.js server serves static builds from FOLDER_PUBLIC and FOLDER_JOB_LANDING env vars. Deployed to AWS (prod) and Azure (staging) via CI pipeline.",
     metrics: [
       { label: "React Apps", value: "2" },
       { label: "Build Targets", value: "AWS + Azure" },
@@ -621,19 +621,19 @@ export const projects: Project[] = [
   {
     slug: "support-dashboard",
     title: "Support Dashboard",
-    subtitle: "Internal Tool CS Team — React SPA untuk Monitoring & Troubleshooting",
+    subtitle: "Internal CS Team Tool — React SPA for Monitoring & Troubleshooting",
     description:
-      "React SPA (130 JS files) internal yang digunakan tim Customer Support ASTRNT untuk memonitor akun klien, investigasi masalah kandidat, dan mengelola data platform. Dibangun dengan Create React App + custom Webpack config via react-app-rewired, Redux untuk state management, dan terhubung ke backend API ASTRNT dengan JWT authentication.",
+      "Internal React SPA (130 JS files) used by the ASTRNT Customer Support team to monitor client accounts, investigate candidate issues, and manage platform data. Built with Create React App + custom Webpack config via react-app-rewired, Redux for state management, and connected to the ASTRNT backend API with JWT authentication.",
     role: "Frontend Engineer",
     period: "2022 – 2023",
     status: "internal",
     category: "frontend",
     highlights: [
-      "130 JS files React SPA — tools internal lengkap untuk CS team",
-      "Redux + redux-saga untuk async state management",
-      "Storybook untuk dokumentasi komponen internal",
+      "130 JS files React SPA — comprehensive internal tools for the CS team",
+      "Redux + redux-saga for async state management",
+      "Storybook for internal component documentation",
       "Custom Webpack via react-app-rewired",
-      "Docker + Azure Pipelines untuk deployment internal",
+      "Docker + Azure Pipelines for internal deployment",
     ],
     techStack: [
       {
@@ -653,22 +653,22 @@ export const projects: Project[] = [
     features: [
       {
         title: "Account & Company Monitoring",
-        description: "CS team bisa lihat status akun klien, kredit tersisa, quota penggunaan, konfigurasi company, dan aktivitas terakhir tanpa perlu akses langsung ke database.",
+        description: "The CS team can view client account status, remaining credits, usage quotas, company configuration, and recent activity without needing direct database access.",
       },
       {
         title: "Candidate Troubleshooting",
-        description: "Investigasi masalah kandidat: lihat status sesi interview, riwayat upload media, error log, dan reset sesi yang stuck.",
+        description: "Investigate candidate issues: view interview session status, media upload history, error logs, and reset stuck sessions.",
       },
       {
         title: "Internal Admin Actions",
-        description: "CS team bisa melakukan tindakan admin seperti reset password, ubah status akun, dan verifikasi email klien langsung dari dashboard.",
+        description: "The CS team can perform admin actions such as resetting passwords, changing account status, and verifying client emails directly from the dashboard.",
       },
     ],
     architecture:
-      "React SPA dengan Create React App + react-app-rewired untuk custom Webpack config. Redux + redux-saga untuk async state. Berkomunikasi dengan backend API ASTRNT via JWT token. Deployment via Docker + Azure Pipelines ke server internal.",
+      "React SPA with Create React App + react-app-rewired for custom Webpack config. Redux + redux-saga for async state. Communicates with the ASTRNT backend API via JWT token. Deployed via Docker + Azure Pipelines to an internal server.",
     metrics: [
       { label: "JS Files", value: "130" },
-      { label: "Target Users", value: "CS Team Internal" },
+      { label: "Target Users", value: "CS Team (Internal)" },
     ],
     repoPath: "/Users/mac/Astrnt/support-dashboard",
     color: "from-rose-600 to-pink-700",
@@ -676,20 +676,20 @@ export const projects: Project[] = [
   {
     slug: "university-dashboard",
     title: "University Dashboard",
-    subtitle: "Platform Assessment Mahasiswa untuk Klien Universitas",
+    subtitle: "Student Assessment Platform for University Clients",
     description:
-      "Laravel platform yang dirancang khusus untuk institusi akademik dalam mengelola assessment mahasiswa. Dilengkapi manajemen mahasiswa (student), event/ujian, job posting kampus, social login via Laravel Socialite, import data massal via Excel, laporan PDF, dan DataTables interaktif. Memiliki branding dan flow yang terpisah dari platform rekrutmen korporat.",
+      "Laravel platform designed specifically for academic institutions to manage student assessments. Features student management, events/exams, campus job postings, social login via Laravel Socialite, bulk data import via Excel, PDF reports, and interactive DataTables. Has separate branding and flow from the corporate recruitment platform.",
     role: "Full-Stack Engineer",
     period: "2023 – 2024",
     status: "production",
     category: "platform",
     highlights: [
-      "Social login via Laravel Socialite (Google, dll)",
-      "DataTables server-side (yajra/laravel-datatables) untuk manajemen data mahasiswa skala besar",
-      "Import mahasiswa massal dari Excel (maatwebsite/excel)",
+      "Social login via Laravel Socialite (Google, etc.)",
+      "Server-side DataTables (yajra/laravel-datatables) for large-scale student data management",
+      "Bulk student import from Excel (maatwebsite/excel)",
       "PDF report generation via barryvdh/laravel-dompdf",
-      "Azure Blob Storage untuk file & media mahasiswa",
-      "Event management: buat, kelola, dan pantau ujian/assessment per batch",
+      "Azure Blob Storage for student files & media",
+      "Event management: create, manage, and monitor exams/assessments per batch",
     ],
     techStack: [
       {
@@ -714,40 +714,40 @@ export const projects: Project[] = [
       },
     ],
     integrations: [
-      { name: "Laravel Socialite", purpose: "Social login untuk mahasiswa (Google, dll)", type: "infra" },
-      { name: "Azure Blob Storage", purpose: "Penyimpanan file dan media mahasiswa", type: "storage" },
+      { name: "Laravel Socialite", purpose: "Social login for students (Google, etc.)", type: "infra" },
+      { name: "Azure Blob Storage", purpose: "File and media storage for students", type: "storage" },
     ],
     features: [
       {
         title: "Student & Event Management",
-        description: "Admin universitas bisa kelola data mahasiswa, buat event/ujian, assign mahasiswa ke event, dan pantau progress menggunakan DataTables server-side yang efisien untuk dataset besar.",
+        description: "University admins can manage student data, create events/exams, assign students to events, and monitor progress using server-side DataTables that are efficient for large datasets.",
       },
       {
         title: "Social Login via Socialite",
-        description: "Mahasiswa bisa login menggunakan akun Google (atau provider lain) tanpa perlu buat akun manual, mengurangi friction onboarding.",
+        description: "Students can log in using their Google account (or other providers) without creating a manual account, reducing onboarding friction.",
       },
       {
         title: "Bulk Import via Excel",
-        description: "Admin bisa import ribuan data mahasiswa sekaligus dari file Excel dengan validasi otomatis per baris.",
+        description: "Admins can import thousands of student records at once from an Excel file with automatic row-by-row validation.",
       },
       {
         title: "PDF Assessment Report",
-        description: "Generate laporan hasil assessment per mahasiswa atau per batch dalam format PDF siap cetak untuk keperluan administrasi dan akreditasi.",
+        description: "Generate assessment result reports per student or per batch in print-ready PDF format for administrative and accreditation purposes.",
       },
       {
-        title: "Job Posting Kampus",
-        description: "Fitur khusus untuk universitas memposting lowongan kerja kampus (job board internal) yang hanya bisa diakses mahasiswa terdaftar.",
+        title: "Campus Job Posting",
+        description: "A dedicated feature for universities to post campus job listings (internal job board) accessible only to registered students.",
       },
       {
         title: "Brand Setup & Contact Request",
-        description: "Universitas bisa setup branding (logo, warna) via BrandSetupController, dan mahasiswa bisa kirim contact request ke admin atau perusahaan mitra.",
+        description: "Universities can set up branding (logo, colors) via BrandSetupController, and students can send contact requests to admins or partner companies.",
       },
     ],
     architecture:
-      "Laravel MVC monolith dengan Blade + Bootstrap untuk server-side rendering. DataTables server-side via yajra/laravel-datatables untuk performa pada data besar. Azure Blob Storage untuk file. PDF via DOMPDF. Social auth via Socialite. Deployment via Azure Pipelines.",
+      "Laravel MVC monolith with Blade + Bootstrap for server-side rendering. Server-side DataTables via yajra/laravel-datatables for performance on large data. Azure Blob Storage for files. PDF via DOMPDF. Social auth via Socialite. Deployment via Azure Pipelines.",
     metrics: [
       { label: "Controllers", value: "12" },
-      { label: "Client Type", value: "Universitas" },
+      { label: "Client Type", value: "University" },
       { label: "Storage", value: "Azure Blob" },
     ],
     repoPath: "/Users/mac/Astrnt/university-dashboard",
@@ -756,19 +756,19 @@ export const projects: Project[] = [
   {
     slug: "custom-landing-page",
     title: "Custom Landing Page",
-    subtitle: "Branded Landing Page Multi-Klien Enterprise — Laravel Multi-Tenant",
+    subtitle: "Multi-Client Enterprise Branded Landing Page — Laravel Multi-Tenant",
     description:
-      "Laravel multi-tenant application untuk custom landing page per klien enterprise ASTRNT. Setiap klien (Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, Kai, TalentBuzz, dll) mendapatkan landing page dengan branding, konten, dan domain tersendiri. Backend terhubung ke AWS S3 untuk media dan JWT Auth untuk integrasi API.",
+      "Laravel multi-tenant application for custom landing pages per ASTRNT enterprise client. Each client (Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, Kai, TalentBuzz, etc.) gets a landing page with their own branding, content, and domain. Backend connected to AWS S3 for media and JWT Auth for API integration.",
     role: "Full-Stack Engineer",
     period: "2022 – 2023",
     status: "production",
     category: "platform",
     highlights: [
-      "12+ client-specific modules: Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, Kai, TalentBuzz, dll",
-      "Routing berbasis hostname — tiap request otomatis diarahkan ke konfigurasi klien yang sesuai",
-      "AWS S3 untuk media dan asset per klien",
-      "JWT Auth untuk integrasi dengan ASTRNT API backend",
-      "SSL custom domain support per klien",
+      "12+ client-specific modules: Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, Kai, TalentBuzz, etc.",
+      "Hostname-based routing — each request is automatically directed to the matching client configuration",
+      "AWS S3 for client-specific media and assets",
+      "JWT Auth for integration with the ASTRNT API backend",
+      "Custom SSL domain support per client",
     ],
     techStack: [
       {
@@ -789,29 +789,29 @@ export const projects: Project[] = [
       },
     ],
     integrations: [
-      { name: "AWS S3", purpose: "Media dan asset landing page per klien", type: "storage" },
-      { name: "ASTRNT API", purpose: "Integrasi JWT Auth ke backend rekrutmen", type: "infra" },
+      { name: "AWS S3", purpose: "Media and assets for landing pages per client", type: "storage" },
+      { name: "ASTRNT API", purpose: "JWT Auth integration to the recruitment backend", type: "infra" },
     ],
     features: [
       {
         title: "12+ Client-Specific Modules",
-        description: "Setiap klien enterprise memiliki modul controller tersendiri: Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, Kai, TalentBuzz, Google, GojekDemo, start4hire. Masing-masing bisa punya flow unik.",
+        description: "Each enterprise client has its own controller module: Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, Kai, TalentBuzz, Google, GojekDemo, start4hire. Each can have unique flows.",
       },
       {
         title: "Hostname-Based Multi-Tenant Routing",
-        description: "Laravel middleware mendeteksi hostname dari request (gojek.astrnt.co, bca.astrnt.co, dll) dan secara otomatis mengarahkan ke konfigurasi dan controller klien yang sesuai.",
+        description: "Laravel middleware detects the hostname from the request (gojek.astrnt.co, bca.astrnt.co, etc.) and automatically routes to the matching client configuration and controller.",
       },
       {
         title: "Per-Client Branding & Content",
-        description: "Logo, warna brand, teks, dan media di-serve dari konfigurasi per klien. Update branding satu klien tidak mempengaruhi klien lain.",
+        description: "Logo, brand colors, text, and media are served from per-client configuration. Updating one client's branding does not affect others.",
       },
       {
         title: "Apply Flow Integration",
-        description: "Kandidat yang mengklik Apply dari landing page langsung diarahkan ke sesi interview ASTRNT dengan konteks klien yang sudah terisi.",
+        description: "Candidates who click Apply from the landing page are directly routed to the ASTRNT interview session with the client context already filled in.",
       },
     ],
     architecture:
-      "Laravel monolith dengan hostname-based routing sebagai layer multi-tenancy. Middleware mendeteksi domain → load konfigurasi klien → dispatch ke controller modul klien. AWS S3 untuk asset, JWT Auth untuk API calls ke backend rekrutmen. Custom SSL per domain via Nginx.",
+      "Laravel monolith with hostname-based routing as the multi-tenancy layer. Middleware detects domain → loads client configuration → dispatches to the client module controller. AWS S3 for assets, JWT Auth for API calls to the recruitment backend. Custom SSL per domain via Nginx.",
     metrics: [
       { label: "Client Modules", value: "12+" },
       { label: "Multi-tenant Layer", value: "Hostname routing" },
@@ -823,20 +823,20 @@ export const projects: Project[] = [
   {
     slug: "popskul-frontend",
     title: "Popskul Frontend",
-    subtitle: "Platform E-Learning & Karir — Nuxt.js SSR dengan Video Assessment",
+    subtitle: "E-Learning & Career Platform — Nuxt.js SSR with Video Assessment",
     description:
-      "Nuxt.js (Vue 2) SSR frontend untuk Popskul — platform yang menggabungkan e-learning, job marketplace, dan assessment berbasis kompetensi. Lebih dari sekedar job board: kandidat bisa ambil kursus, ikuti assessment (MCQ + FTQ + video recording), bookmark perusahaan favorit, daftar beasiswa, dan apply ke jobs — semua dalam satu platform dengan real-time via Socket.io dan video recording via videojs-record.",
+      "Nuxt.js (Vue 2) SSR frontend for Popskul — a platform that combines e-learning, job marketplace, and competency-based assessment. More than just a job board: candidates can take courses, complete assessments (MCQ + FTQ + video recording), bookmark favorite companies, apply for scholarships, and apply to jobs — all in one platform with real-time via Socket.io and video recording via videojs-record.",
     role: "Frontend Engineer",
     period: "2023 – 2024",
     status: "production",
     category: "frontend",
     highlights: [
-      "45+ halaman Nuxt.js SSR — marketplace + e-learning + assessment terintegrasi",
-      "videojs-record untuk video assessment langsung di browser",
-      "nuxt-socket-io untuk real-time notifications dan progress",
-      "vee-validate untuk form validation kompleks",
-      "vue2-dropzone untuk upload file assessment",
-      "Sitemap otomatis (@nuxtjs/sitemap) untuk SEO job listing",
+      "45+ Nuxt.js SSR pages — integrated marketplace + e-learning + assessment",
+      "videojs-record for browser-based video assessment without plugins",
+      "nuxt-socket-io for real-time notifications and progress",
+      "vee-validate for complex form validation",
+      "vue2-dropzone for assessment file uploads",
+      "Automatic sitemap (@nuxtjs/sitemap) for job listing SEO",
     ],
     techStack: [
       {
@@ -858,40 +858,40 @@ export const projects: Project[] = [
     ],
     integrations: [
       { name: "Sentry", purpose: "Frontend error monitoring & tracking", type: "monitoring" },
-      { name: "Socket.io", purpose: "Real-time notifications dan progress tracking", type: "realtime" },
+      { name: "Socket.io", purpose: "Real-time notifications and progress tracking", type: "realtime" },
     ],
     features: [
       {
         title: "E-Learning Platform (Courses)",
-        description: "Kandidat bisa browse, enroll, dan ikuti kursus online. Tracking progress per course, attempt management, dan completion certificate.",
+        description: "Candidates can browse, enroll in, and take online courses. Progress tracking per course, attempt management, and completion certificate.",
       },
       {
         title: "Video Assessment via videojs-record",
-        description: "Kandidat merekam jawaban video langsung di browser menggunakan videojs-record tanpa plugin. Terintegrasi dengan flow assessment MCQ dan FTQ.",
+        description: "Candidates record video answers directly in the browser using videojs-record without plugins. Integrated with the MCQ and FTQ assessment flow.",
       },
       {
-        title: "Job Marketplace dengan Company Profile",
-        description: "Browse ribuan lowongan kerja dengan filter industri, lokasi, dan kategori. Profil perusahaan lengkap, bookmark perusahaan favorit, dan apply langsung.",
+        title: "Job Marketplace with Company Profile",
+        description: "Browse thousands of job listings with filters by industry, location, and category. Full company profiles, bookmark favorite companies, and apply directly.",
       },
       {
         title: "MCQ & FTQ Assessment",
-        description: "Assessment berbasis MCQ (pilihan ganda) dan FTQ (free text question) dengan timer, progress tracking, dan auto-submit saat waktu habis.",
+        description: "MCQ (multiple choice) and FTQ (free text question) based assessment with timer, progress tracking, and auto-submit when time runs out.",
       },
       {
-        title: "Program Beasiswa",
-        description: "Kandidat bisa browse dan mendaftar program beasiswa dari institusi mitra Popskul.",
+        title: "Scholarship Program",
+        description: "Candidates can browse and apply for scholarship programs from Popskul partner institutions.",
       },
       {
         title: "Real-time via Socket.io",
-        description: "Notifikasi real-time untuk status assessment, update lowongan baru, dan progress kursus menggunakan nuxt-socket-io.",
+        description: "Real-time notifications for assessment status, new job updates, and course progress using nuxt-socket-io.",
       },
       {
-        title: "SSR untuk SEO Optimal",
-        description: "Semua halaman job listing, company profile, dan kursus di-render server-side via Nuxt.js untuk indeksasi maksimal di search engine. Sitemap otomatis di-generate per route.",
+        title: "SSR for Optimal SEO",
+        description: "All job listing, company profile, and course pages are server-side rendered via Nuxt.js for maximum search engine indexing. Sitemap is automatically generated per route.",
       },
     ],
     architecture:
-      "Nuxt.js SSR dengan Vuex untuk state management. @nuxtjs/auth menangani JWT auth flow. nuxt-socket-io untuk koneksi real-time ke backend. videojs-record untuk browser-based video capture. @nuxtjs/sitemap auto-generate XML sitemap dari semua dynamic routes.",
+      "Nuxt.js SSR with Vuex for state management. @nuxtjs/auth handles the JWT auth flow. nuxt-socket-io for real-time connection to the backend. videojs-record for browser-based video capture. @nuxtjs/sitemap auto-generates XML sitemap from all dynamic routes.",
     metrics: [
       { label: "Nuxt Pages", value: "45+" },
       { label: "Vue Components", value: "80+" },
@@ -903,18 +903,18 @@ export const projects: Project[] = [
   {
     slug: "popskul-backend",
     title: "Popskul Backend",
-    subtitle: "API Backend E-Learning & Career Platform — Laravel Full-Featured",
+    subtitle: "E-Learning & Career Platform API Backend — Full-Featured Laravel",
     description:
-      "Laravel backend yang melayani seluruh kebutuhan platform Popskul: e-learning (courses, attempts, progress), job board, assessment (MCQ + FTQ), media management, company profiles, dan user management. Dibangun dengan arsitektur API-first menggunakan Laravel resource controllers dengan cron jobs untuk automation.",
+      "Laravel backend serving all needs of the Popskul platform: e-learning (courses, attempts, progress), job board, assessment (MCQ + FTQ), media management, company profiles, and user management. Built with an API-first architecture using Laravel resource controllers with cron jobs for automation.",
     role: "Backend Engineer",
     period: "2023 – 2024",
     status: "production",
     category: "api",
     highlights: [
       "E-learning engine: course enrollment, attempt tracking, progress management",
-      "MCQ dan FTQ (free text question) assessment system dengan scoring",
-      "Media file management untuk course content dan assessment",
-      "Job board dengan company profiles dan favorite tracking",
+      "MCQ and FTQ (free text question) assessment system with scoring",
+      "Media file management for course content and assessment",
+      "Job board with company profiles and favorite tracking",
       "PHPUnit test suite + Azure Pipelines CI/CD",
     ],
     techStack: [
@@ -936,32 +936,32 @@ export const projects: Project[] = [
       },
     ],
     integrations: [
-      { name: "Redis", purpose: "Queue processing dan caching", type: "database" },
+      { name: "Redis", purpose: "Queue processing and caching", type: "database" },
     ],
     features: [
       {
         title: "E-Learning Course Engine",
-        description: "Manajemen kursus lengkap: create course, manage modules/content, track enrollment per user, attempt history, dan completion status.",
+        description: "Complete course management: create courses, manage modules/content, track enrollment per user, attempt history, and completion status.",
       },
       {
         title: "MCQ & FTQ Assessment",
-        description: "System assessment berbasis MCQ (multiple choice) dan FTQ (free text). AttemptController mengelola sesi pengerjaan, scoring otomatis untuk MCQ, dan penyimpanan jawaban FTQ.",
+        description: "Assessment system based on MCQ (multiple choice) and FTQ (free text). AttemptController manages answer sessions, automatic scoring for MCQ, and FTQ answer storage.",
       },
       {
         title: "Job Board & Company Management",
-        description: "CRUD job posting dengan kategori, filter industri/lokasi. Company profile management dan FavoriteCompanyController untuk bookmark perusahaan.",
+        description: "CRUD job posting with categories, industry/location filters. Company profile management and FavoriteCompanyController for bookmarking companies.",
       },
       {
         title: "Media File Management",
-        description: "Upload dan management media files untuk konten kursus dan assessment via MediafileController.",
+        description: "Upload and manage media files for course content and assessment via MediafileController.",
       },
       {
         title: "Candidate & Profile System",
-        description: "AstronautController mengelola profil kandidat lengkap: kompetensi, riwayat pekerjaan, pendidikan, dan preferensi karir.",
+        description: "AstronautController manages complete candidate profiles: competencies, work history, education, and career preferences.",
       },
     ],
     architecture:
-      "Laravel monolith dengan RESTful resource controllers. MySQL primary database, Redis untuk queue dan cache. Laravel Scheduler untuk cron jobs automation. PHPUnit untuk test coverage. Deploy via Azure Pipelines.",
+      "Laravel monolith with RESTful resource controllers. MySQL primary database, Redis for queue and cache. Laravel Scheduler for cron job automation. PHPUnit for test coverage. Deployed via Azure Pipelines.",
     metrics: [
       { label: "API Endpoints", value: "60+" },
       { label: "Controllers", value: "15+" },
@@ -973,18 +973,18 @@ export const projects: Project[] = [
   {
     slug: "cv-parsing",
     title: "CV Parsing",
-    subtitle: "Resume Builder & Parser ATS-Friendly",
+    subtitle: "ATS-Friendly Resume Builder & Parser",
     description:
-      "Next.js application berbasis OpenResume untuk parsing dan generation CV secara otomatis. Pengguna bisa upload CV existing lalu sistem mengekstrak informasi key (pendidikan, pengalaman, skill) dan menyajikannya dalam format PDF yang ATS-friendly dan modern.",
+      "Next.js application based on OpenResume for automatic CV parsing and generation. Users can upload an existing CV and the system extracts key information (education, experience, skills) and presents it in a modern, ATS-friendly PDF format.",
     role: "Full-Stack Engineer",
     period: "2024",
     status: "internal",
     category: "tool",
     highlights: [
       "PDF generation via @react-pdf/renderer",
-      "Real-time preview saat edit CV",
+      "Real-time preview while editing the CV",
       "ATS-friendly output format",
-      "Privacy-first: semua proses di browser",
+      "Privacy-first: all processing happens in the browser",
     ],
     techStack: [
       {
@@ -1010,19 +1010,19 @@ export const projects: Project[] = [
     features: [
       {
         title: "Real-time PDF Preview",
-        description: "CV dirender sebagai PDF secara real-time menggunakan @react-pdf/renderer saat pengguna mengetik.",
+        description: "The CV is rendered as a PDF in real-time using @react-pdf/renderer as the user types.",
       },
       {
         title: "CV Parser",
-        description: "Upload CV existing (PDF) lalu sistem mengekstrak informasi terstruktur secara otomatis.",
+        description: "Upload an existing CV (PDF) and the system automatically extracts structured information.",
       },
       {
         title: "ATS-Friendly Format",
-        description: "Output mengikuti best practice ATS (Applicant Tracking System) untuk kompatibilitas maksimal dengan sistem rekrutmen.",
+        description: "Output follows ATS (Applicant Tracking System) best practices for maximum compatibility with recruitment systems.",
       },
     ],
     architecture:
-      "Next.js App Router dengan Redux Toolkit untuk state management CV data. PDF generation client-side via @react-pdf/renderer untuk privacy-first approach.",
+      "Next.js App Router with Redux Toolkit for CV data state management. Client-side PDF generation via @react-pdf/renderer for a privacy-first approach.",
     metrics: [
       { label: "CV Sections", value: "8+" },
       { label: "Export Format", value: "PDF" },
@@ -1033,18 +1033,18 @@ export const projects: Project[] = [
   {
     slug: "aha-competency-dashboard",
     title: "AHA! Competency Dashboard",
-    subtitle: "Dashboard Transparansi AI Scoring untuk Enterprise Clients",
+    subtitle: "AI Scoring Transparency Dashboard for Enterprise Clients",
     description:
-      "React dashboard demo yang dibuat untuk meyakinkan klien enterprise (CIMB Niaga, Lintasarta, Bank Danamon) tentang transparansi AI scoring dalam proses rekrutmen. Setiap skor kompetensi bisa diklik untuk melihat bukti transcript dan reasoning AI secara detail — memecah kesan 'black box' dari sistem AI.",
+      "React demo dashboard built to convince enterprise clients (CIMB Niaga, Lintasarta, Bank Danamon) about the transparency of AI scoring in the recruitment process. Each competency score can be clicked to view transcript evidence and AI reasoning in detail — breaking the 'black box' perception of AI systems.",
     role: "Frontend Engineer",
     period: "2025",
     status: "internal",
     category: "tool",
     highlights: [
-      "Competency scoring dengan drill-down ke bukti transcript",
-      "AI reasoning transparency untuk 3 klien enterprise besar",
-      "Bahasa Indonesia penuh",
-      "Tailwind CSS dengan design yang polished",
+      "Competency scoring with drill-down into transcript evidence",
+      "AI reasoning transparency for 3 major enterprise clients",
+      "Fully localized and polished interface",
+      "Tailwind CSS with clean, presentation-ready design",
     ],
     techStack: [
       {
@@ -1056,19 +1056,19 @@ export const projects: Project[] = [
     features: [
       {
         title: "Competency Score Drill-down",
-        description: "Klik skor kompetensi (misalnya 'Kepemimpinan — 8.5') untuk melihat reasoning AI, kutipan transcript pendukung, dan impact analysis.",
+        description: "Click a competency score (e.g. 'Leadership — 8.5') to view AI reasoning, supporting transcript quotes, and impact analysis.",
       },
       {
         title: "Enterprise Client Demo",
-        description: "Dirancang khusus sebagai demo untuk CIMB Niaga, Lintasarta, dan Bank Danamon dengan data sample yang relevan.",
+        description: "Specifically designed as a demo for CIMB Niaga, Lintasarta, and Bank Danamon with relevant sample data.",
       },
       {
         title: "AI Transparency Framework",
-        description: "Setiap keputusan AI disertai bukti konkret dari transcript interview, membangun kepercayaan stakeholder terhadap sistem AI.",
+        description: "Every AI decision is accompanied by concrete evidence from the interview transcript, building stakeholder trust in the AI system.",
       },
     ],
     architecture:
-      "React SPA dengan mock data yang di-hardcode. Dirancang untuk demo/presentasi kepada klien enterprise, bisa di-host sebagai static site.",
+      "React SPA with hardcoded mock data. Designed for demo/presentation to enterprise clients, can be hosted as a static site.",
     metrics: [
       { label: "Target Clients", value: "CIMB Niaga, Lintasarta, Bank Danamon" },
       { label: "Competency Types", value: "10+" },
@@ -1081,14 +1081,14 @@ export const projects: Project[] = [
     title: "WebSocket Server",
     subtitle: "Real-time Event Broadcast Publisher/Subscriber",
     description:
-      "Node.js WebSocket server yang bertindak sebagai pub/sub broker untuk broadcast event real-time antar aplikasi ASTRNT. Menggunakan Socket.io untuk koneksi WebSocket dan Redis (ioredis) sebagai message broker untuk skalabilitas horizontal.",
+      "Node.js WebSocket server acting as a pub/sub broker to broadcast real-time events between ASTRNT applications. Uses Socket.io for WebSocket connections and Redis (ioredis) as a message broker for horizontal scalability.",
     role: "Backend Engineer",
     period: "2022",
     status: "production",
     category: "infra",
     highlights: [
-      "Socket.io pub/sub dengan Redis adapter",
-      "Real-time event broadcast ke QnA dan Recruiter app",
+      "Socket.io pub/sub with Redis adapter",
+      "Real-time event broadcast to QnA and Recruiter apps",
       "Horizontal scaling via Redis message broker",
     ],
     techStack: [
@@ -1102,20 +1102,20 @@ export const projects: Project[] = [
       },
     ],
     integrations: [
-      { name: "Redis", purpose: "Message broker untuk horizontal scaling", type: "realtime" },
+      { name: "Redis", purpose: "Message broker for horizontal scaling", type: "realtime" },
     ],
     features: [
       {
         title: "Real-time Event Broadcast",
-        description: "Event dari backend (kandidat selesai interview, status berubah) langsung di-broadcast ke semua client yang subscribe.",
+        description: "Events from the backend (candidate finishes interview, status changes) are immediately broadcast to all subscribed clients.",
       },
       {
         title: "Redis-backed Pub/Sub",
-        description: "Redis sebagai message broker memungkinkan multiple instance WebSocket server berjalan secara horizontal.",
+        description: "Redis as a message broker enables multiple WebSocket server instances to run horizontally.",
       },
     ],
     architecture:
-      "Express.js server dengan Socket.io. Publisher (backend apps) push events ke Redis channel, subscriber (frontend clients) menerima via Socket.io connection.",
+      "Express.js server with Socket.io. Publisher (backend apps) push events to Redis channels, subscribers (frontend clients) receive them via Socket.io connection.",
     metrics: [
       { label: "Protocol", value: "WebSocket" },
       { label: "Scaling", value: "Horizontal via Redis" },
@@ -1126,18 +1126,18 @@ export const projects: Project[] = [
   {
     slug: "qna-load-test",
     title: "QnA Load Test",
-    subtitle: "Stress Testing Platform Interview dengan k6",
+    subtitle: "Interview Platform Stress Testing with k6",
     description:
-      "Load testing suite menggunakan k6 untuk mengukur performa dan batas kapasitas platform QnA interview ASTRNT. Mensimulasikan ratusan kandidat concurrent mengakses dan menjawab pertanyaan interview secara bersamaan untuk validasi skalabilitas sebelum event rekrutmen skala besar.",
+      "Load testing suite using k6 to measure the performance and capacity limits of the ASTRNT QnA interview platform. Simulates hundreds of concurrent candidates accessing and answering interview questions simultaneously to validate scalability before large-scale recruitment events.",
     role: "QA / Performance Engineer",
     period: "2024",
     status: "archived",
     category: "tool",
     highlights: [
-      "k6 load test dengan skenario realistic interview flow",
-      "Concurrent user simulation hingga ratusan kandidat",
+      "k6 load test with realistic interview flow scenarios",
+      "Concurrent user simulation up to hundreds of candidates",
       "Metrics: response time, throughput, error rate",
-      "Validasi untuk event rekrutmen skala enterprise",
+      "Validation for enterprise-scale recruitment events",
     ],
     techStack: [
       {
@@ -1149,15 +1149,15 @@ export const projects: Project[] = [
     features: [
       {
         title: "Concurrent Interview Simulation",
-        description: "Simulasi ratusan kandidat mengakses platform secara bersamaan dengan realistic think time dan flow.",
+        description: "Simulates hundreds of candidates accessing the platform simultaneously with realistic think time and flow.",
       },
       {
         title: "Performance Metrics Collection",
-        description: "Mengukur p95/p99 response time, throughput, error rate, dan bottleneck identification.",
+        description: "Measures p95/p99 response time, throughput, error rate, and bottleneck identification.",
       },
     ],
     architecture:
-      "k6 script dengan multiple virtual users yang menjalankan skenario lengkap: login, akses soal, submit jawaban. Hasil dianalisis untuk capacity planning.",
+      "k6 script with multiple virtual users running complete scenarios: login, access questions, submit answers. Results are analyzed for capacity planning.",
     metrics: [
       { label: "Tool", value: "k6 v1.7.1" },
       { label: "Type", value: "Stress + Load Test" },
@@ -1168,18 +1168,18 @@ export const projects: Project[] = [
   {
     slug: "docker-recruiter",
     title: "Docker Recruiter Setup",
-    subtitle: "Docker Compose Environment untuk Development Recruiter",
+    subtitle: "Docker Compose Environment for Recruiter Development",
     description:
-      "Docker Compose setup yang mengorkestrasikan semua service dependencies untuk development lokal platform rekrutmen ASTRNT. Includes Elasticsearch, Redis, MySQL, PHP-FPM, dan Nginx dalam satu konfigurasi yang bisa dijalankan dengan satu perintah.",
+      "Docker Compose setup that orchestrates all service dependencies for local development of the ASTRNT recruitment platform. Includes Elasticsearch, Redis, MySQL, PHP-FPM, and Nginx in a single configuration that can be launched with one command.",
     role: "DevOps / Infrastructure",
     period: "2022 – 2023",
     status: "archived",
     category: "infra",
     highlights: [
-      "One-command setup untuk seluruh dev environment",
+      "One-command setup for the entire dev environment",
       "Elasticsearch 2.4.6 + Redis + MySQL",
-      "Custom Nginx config untuk PHP-FPM",
-      "Network isolation antar service",
+      "Custom Nginx config for PHP-FPM",
+      "Network isolation between services",
     ],
     techStack: [
       {
@@ -1195,18 +1195,18 @@ export const projects: Project[] = [
     features: [
       {
         title: "One-Command Dev Setup",
-        description: "docker compose up menjalankan seluruh stack: Elasticsearch, Redis, MySQL, PHP-FPM, dan Nginx sekaligus.",
+        description: "docker compose up launches the entire stack: Elasticsearch, Redis, MySQL, PHP-FPM, and Nginx all at once.",
       },
       {
         title: "Service Networking",
-        description: "Semua service terhubung dalam isolated Docker network dengan resolusi nama service otomatis.",
+        description: "All services are connected in an isolated Docker network with automatic service name resolution.",
       },
     ],
     architecture:
-      "Docker Compose v2 dengan multiple services yang terhubung via custom bridge network. Volume mounting untuk persistent data dan live code reload.",
+      "Docker Compose v2 with multiple services connected via a custom bridge network. Volume mounting for persistent data and live code reload.",
     metrics: [
       { label: "Services", value: "5" },
-      { label: "Setup Time", value: "< 5 menit" },
+      { label: "Setup Time", value: "< 5 min" },
     ],
     repoPath: "/Users/mac/Astrnt/docker-recruiter",
     color: "from-zinc-600 to-stone-700",

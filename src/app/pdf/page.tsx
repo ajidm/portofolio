@@ -49,8 +49,8 @@ export default function PdfPage() {
             Senior Software Engineer
           </p>
           <p className="font-sans text-base max-w-lg" style={{ color: "#94a3b8", lineHeight: "1.8" }}>
-            3+ tahun membangun platform SaaS rekrutmen berbasis AI di ASTRNT.
-            Full-stack development — Next.js, Laravel, multi-LLM integration, dan production-grade architecture.
+            3+ years building an AI-powered SaaS recruitment platform at ASTRNT.
+            Full-stack development — Next.js, Laravel, multi-LLM integration, and production-grade architecture.
           </p>
         </div>
 

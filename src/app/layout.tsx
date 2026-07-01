@@ -4,12 +4,12 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Ajid Muhamad — Software Engineer Portfolio",
   description:
-    "Portfolio proyek-proyek yang dikerjakan selama bergabung di ASTRNT — platform SaaS rekrutmen berbasis AI.",
+    "Portfolio of projects built during 3+ years at ASTRNT — an AI-powered recruitment SaaS platform.",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" className="h-full">
+    <html lang="en" className="h-full">
       <body className="min-h-full antialiased">{children}</body>
     </html>
   )
