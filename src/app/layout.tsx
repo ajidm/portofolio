@@ -4,7 +4,7 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Ajid Muhamad — Software Engineer Portfolio",
   description:
-    "Portfolio of projects built during 3+ years at ASTRNT — an AI-powered recruitment SaaS platform.",
+    "Portfolio of projects built during 6+ years at ASTRNT — an AI-powered recruitment SaaS platform.",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

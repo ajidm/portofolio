@@ -49,7 +49,7 @@ export default function PdfPage() {
             Senior Software Engineer
           </p>
           <p className="font-sans text-base max-w-lg" style={{ color: "#94a3b8", lineHeight: "1.8" }}>
-            3+ years building an AI-powered SaaS recruitment platform at ASTRNT.
+            6+ years building an AI-powered SaaS recruitment platform at ASTRNT.
             Full-stack development — Next.js, Laravel, multi-LLM integration, and production-grade architecture.
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function PdfPage() {
               { label: "Projects", value: projects.length },
               { label: "Production Apps", value: projects.filter((p) => p.status === "production").length },
               { label: "Tech Used", value: `${new Set(projects.flatMap((p) => p.techStack.flatMap((t) => t.items))).size}+` },
-              { label: "Years Exp.", value: "3+" },
+              { label: "Years Exp.", value: "9+" },
             ].map((s) => (
               <div key={s.label} className="font-sans">
                 <div className="font-bold text-white mb-1" style={{ fontSize: "32px" }}>{s.value}</div>

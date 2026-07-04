@@ -8,7 +8,7 @@ export default function HomePage() {
     { label: "Total Projects", value: projects.length.toString() },
     { label: "Production Apps", value: projects.filter((p) => p.status === "production").length.toString() },
     { label: "Tech & Libraries", value: `${totalTechs}+` },
-    { label: "Years at ASTRNT", value: "3+" },
+    { label: "Years at ASTRNT", value: "6+" },
   ]
 
   return (
@@ -51,12 +51,30 @@ export default function HomePage() {
             <span className="gradient-text">Software Engineer</span>
           </h1>
 
-          <p className="text-lg max-w-2xl mb-10" style={{ color: "#94a3b8", lineHeight: "1.8" }}>
-            Senior engineer with <strong style={{ color: "#e2e8f0" }}>3+ years</strong> of experience building
+          <p className="text-lg max-w-2xl mb-6" style={{ color: "#94a3b8", lineHeight: "1.8" }}>
+            Senior engineer with <strong style={{ color: "#e2e8f0" }}>9+ years</strong> of experience building
             an AI-powered recruitment SaaS platform at{" "}
             <strong style={{ color: "#e2e8f0" }}>ASTRNT</strong>. Specialized in full-stack development —
-            Next.js, Laravel, LLM integration, and production-grade background job systems.
+            LLM integration, and production-grade background job systems.
           </p>
+
+          {/* Primary stack badges */}
+          <div className="flex flex-wrap gap-3 mb-10">
+            {[
+              { label: "Laravel", color: "#ef4444", bg: "rgba(239,68,68,0.1)", border: "rgba(239,68,68,0.25)" },
+              { label: "React", color: "#38bdf8", bg: "rgba(56,189,248,0.1)", border: "rgba(56,189,248,0.25)" },
+              { label: "Next.js", color: "#a3a3a3", bg: "rgba(163,163,163,0.1)", border: "rgba(163,163,163,0.2)" },
+            ].map((t) => (
+              <span
+                key={t.label}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold"
+                style={{ background: t.bg, color: t.color, border: `1px solid ${t.border}` }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: t.color }} />
+                {t.label}
+              </span>
+            ))}
+          </div>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -173,19 +191,42 @@ export default function HomePage() {
               </p>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-white mb-5">Core Expertise</h3>
+              <h3 className="text-sm font-semibold text-white mb-4">Core Expertise</h3>
+
+              {/* Primary stack */}
+              <div className="flex flex-wrap gap-2 mb-5">
+                {["Laravel", "React", "Next.js"].map((s) => (
+                  <span
+                    key={s}
+                    className="text-xs font-semibold px-3 py-1 rounded-lg"
+                    style={{ background: "rgba(99,102,241,0.15)", color: "#818cf8", border: "1px solid rgba(99,102,241,0.3)" }}
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+
+              {/* Supporting skills */}
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  "Next.js / React / TypeScript",
-                  "Laravel / PHP",
+                  "TypeScript",
                   "Node.js / Express",
                   "MySQL / Redis / Prisma",
+                  "Elasticsearch",
+                  "Socket.io / WebSocket",
+                  "Redux / State Management",
+                  "AWS S3 / Azure Blob Storage",
+                  "Google Cloud Speech-to-Text",
+                  "FFmpeg / Video Processing",
+                  "RecordRTC / WebRTC",
                   "AI/LLM Integration",
+                  "Stripe / Payment Gateway",
                   "Docker / Azure / CI-CD",
                   "Nuxt.js / Vue",
                   "REST API Design",
                   "Background Job Systems",
                   "Multi-tenant SaaS",
+                  "Testing (Cypress, Vitest, PHPUnit)",
                 ].map((skill) => (
                   <div key={skill} className="flex items-center gap-2 text-xs" style={{ color: "#94a3b8" }}>
                     <span className="w-1 h-1 rounded-full shrink-0" style={{ background: "#3b82f6" }} />
