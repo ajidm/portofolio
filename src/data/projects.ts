@@ -53,6 +53,10 @@ export const projects: Project[] = [
       "Per-candidate proctoring (anti-cheat), MCQ auto-disqualify, progressive profiling, personalized questions",
       "Talent Pool management: collect candidates across jobs, AI matching, assign to job/review session",
       "Competency Framework builder: create framework, add competencies + indicators, publish, link to job",
+      "Talent Management module: 360-degree assessments, peer nominations, talent mapping programs, and framework-linked instruments",
+      "AI Matching Engine with Gemini adapter, shadow mode, similarity scoring, and trigger-based candidate recommendations",
+      "Offer Management: candidate offer letter flow with phase-gated lifecycle and digital accept/decline response",
+      "WhatsApp notifications alongside email and SMS for candidate communications",
     ],
     techStack: [
       {
@@ -216,12 +220,62 @@ export const projects: Project[] = [
         description:
           "Users can set notification preferences per category (email/in-app). Notification history is stored, unsubscribe per category, and global opt-out via email link.",
       },
+      {
+        title: "Talent Management (TM) Module",
+        description:
+          "Full 360-degree assessment system: create TM programs (talent mapping, regular feedback), define frameworks, run peer nomination via token-gated portal, assign instruments per employee, manage rater invites, and track completion across the org.",
+      },
+      {
+        title: "Employee Assessment Portal",
+        description:
+          "Token-gated (no-login) portal for employees and raters to submit assessment responses. Renders RatingScaleForm and FreetextForm question types. Fully public — accessible via email link without an ASTRNT account.",
+      },
+      {
+        title: "Offer Management",
+        description:
+          "Candidate-facing offer letter flow: phase-gated lifecycle (view offer → accept/decline → signature/document upload). Accessible via token link from email — no login required. Tracks offer response status per candidate.",
+      },
+      {
+        title: "AI Matching Engine",
+        description:
+          "Dedicated matching engine with Gemini adapter, ASTRNT-specific similarity scoring, shadow mode for safe rollout, fallback engine, and trigger-based automatic candidate recommendations. Powers the 'Why Recommended' explainer page linked from digest emails.",
+      },
+      {
+        title: "Smart Notification Scheduling",
+        description:
+          "Advanced notification pipeline beyond basic email: cascade processor, smart-send timing computer, SendGrid event poller (bounce/open/click), Twilio SMS poller, WhatsApp webhook delivery, and job close handler. Processes every 30 minutes.",
+      },
+      {
+        title: "Public Job Board",
+        description:
+          "SEO-optimized public job listings page (/job-posts) for organic candidate discovery — separate from the authenticated recruiter job view. Each listing links to the Fast Apply or Interview Handoff flow.",
+      },
+      {
+        title: "Multi-Step Onboarding Flow",
+        description:
+          "Company onboarding wizard: account-type → organization → resume → verify → welcome → join-pending/approved/rejected. Includes team join request workflow with token-based accept/reject for invited members.",
+      },
+      {
+        title: "Live / Synchronous Interview Builder",
+        description:
+          "Question-set builder for structured live video interviews — separate from the async assessment flow. Allows recruiters to prepare a standardized question set before conducting synchronous interviews.",
+      },
+      {
+        title: "Interview Booking System",
+        description:
+          "Token-based interview scheduling flow for candidates to self-book interview slots. Accessible via email link — no login required.",
+      },
+      {
+        title: "Demo Environment Management",
+        description:
+          "Full demo infrastructure: time-limited demo instance activation, demo expiry page, and dev tooling. Enables sales team to spin up sandboxed ASTRNT environments for prospect demos with automatic expiry.",
+      },
     ],
     architecture:
       "Next.js Full-Stack Monolith with App Router. Server Components + Server Actions for form submissions; API Routes for REST endpoints, webhooks, and cron triggers. Business logic in src/lib/ (265+ files) and src/services/. Data access via Prisma ORM with raw SQL for critical queries. Background jobs: GitHub Actions trigger → POST /api/cron/* → enqueue to bg_transactions → worker scripts (tsx) claim & process. Redis for rate limiting and caching. Azure Blob Storage for all files/media with SAS token generation.",
     metrics: [
       { label: "API Routes", value: "383+" },
-      { label: "Pages & Flows", value: "40+" },
+      { label: "Pages & Flows", value: "60+" },
       { label: "React Components", value: "186+" },
       { label: "Lib/Service Files", value: "265+" },
       { label: "Cron Jobs", value: "24" },
@@ -1210,6 +1264,547 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/docker-recruiter",
     color: "from-zinc-600 to-stone-700",
+  },
+  {
+    slug: "e-course-web",
+    title: "E-Course Web",
+    subtitle: "Candidate Interview & E-Learning Hybrid — React SPA with Real-time",
+    description:
+      "React 16 SPA serving as ASTRNT's e-learning and video interview hybrid platform for candidates. Candidates complete video interviews, MCQs, and free-text questions within a course-like interface. Uses Redux + redux-saga for async state, JWPlayer for video playback, Socket.IO for real-time session coordination, and AWS Amplify for analytics.",
+    role: "Frontend Engineer",
+    period: "2022 – 2023",
+    status: "production",
+    category: "frontend",
+    highlights: [
+      "JWPlayer integration for video recording and playback within course flow",
+      "Socket.IO for real-time session coordination between candidate and server",
+      "Redux + redux-saga for complex async state management",
+      "Storybook component library documentation",
+      "Flow static typing across the codebase",
+      "Device and browser detection via DetectRTC + ua-parser-js",
+    ],
+    techStack: [
+      {
+        category: "Frontend Framework",
+        items: ["React 16", "Redux", "redux-saga", "React Router 4", "Flow (type checker)"],
+      },
+      {
+        category: "Media & Real-time",
+        items: ["react-jw-player (JWPlayer)", "Socket.IO client", "hark (audio activity detection)", "DetectRTC", "ua-parser-js"],
+      },
+      {
+        category: "Analytics & Monitoring",
+        items: ["AWS Amplify", "AWS Mobile Analytics", "astrnt-web-logger (custom logger)", "@sentry/react"],
+      },
+      {
+        category: "UI & UX",
+        items: ["Reactstrap", "Bootstrap", "Styled Components", "react-circular-progressbar", "react-image-lightbox", "sweetalert2"],
+      },
+      {
+        category: "Documentation",
+        items: ["Storybook"],
+      },
+    ],
+    integrations: [
+      { name: "AWS Amplify", purpose: "Analytics and session management", type: "infra" },
+      { name: "Socket.io", purpose: "Real-time session coordination and progress sync", type: "realtime" },
+      { name: "Sentry", purpose: "Production error tracking", type: "monitoring" },
+    ],
+    features: [
+      {
+        title: "Video Interview Engine",
+        description: "Candidates record and play back video answers via JWPlayer integration. Supports multiple recording attempts, playback preview, and submission.",
+      },
+      {
+        title: "MCQ & FTQ Question Engines",
+        description: "Dedicated engines for multiple choice (MCQ) and free-text (FTQ) question types within the e-course interview flow.",
+      },
+      {
+        title: "Real-time Session Coordination",
+        description: "Socket.IO keeps session state synchronized between candidate and server in real-time — covering timers, progress, and completion signals.",
+      },
+      {
+        title: "Audio Activity Detection",
+        description: "hark library detects audio activity to validate microphone input before and during recording sessions.",
+      },
+      {
+        title: "Storybook Component Library",
+        description: "All UI components documented in Storybook for design consistency and isolation testing.",
+      },
+    ],
+    architecture:
+      "React SPA with Redux + redux-saga for complex async flows. JWPlayer handles video I/O, Socket.IO client keeps the session live. AWS Amplify tracks analytics. Flow provides static typing across the codebase. Built with Webpack and CRA-based toolchain.",
+    metrics: [
+      { label: "Question Types", value: "3 (Video, MCQ, FTQ)" },
+      { label: "State Management", value: "Redux + redux-saga" },
+      { label: "Real-time", value: "Socket.IO" },
+    ],
+    repoPath: "/Users/mac/Astrnt/e-course-web",
+    color: "from-indigo-500 to-blue-600",
+  },
+  {
+    slug: "astronaut-api2",
+    title: "ASTRNT API v2",
+    subtitle: "Node.js REST API — Dual Database & Puppeteer PDF Generation",
+    description:
+      "Node.js + Express REST API (v2 of ASTRNT's backend) serving courses, enrollments, media management, candidate data, and report generation. Notable for dual-database architecture (MySQL via Sequelize + MongoDB via Mongoose), headless Chrome automation via Puppeteer for PDF and screenshot generation, and formal API design via YAML spec.",
+    role: "Backend Engineer",
+    period: "2022 – 2023",
+    status: "production",
+    category: "api",
+    highlights: [
+      "Dual database: MySQL (Sequelize) + MongoDB (Mongoose) simultaneously",
+      "Puppeteer (headless Chrome) for server-side PDF generation and page screenshot capture",
+      "pdf-lib + pdf-merger-js for programmatic PDF manipulation and merging",
+      "Azure Blob Storage for media and file management",
+      "Mocha + Chai + Supertest unit and integration test suite",
+      "Formal API design documented in YAML spec (api_design.yaml) before implementation",
+    ],
+    techStack: [
+      {
+        category: "Runtime & Framework",
+        items: ["Node.js 12", "Express.js", "JWT", "express-session + express-mysql-session"],
+      },
+      {
+        category: "Database",
+        items: ["MySQL2 + Sequelize 6 (relational)", "Mongoose 5 + MongoDB (documents)"],
+      },
+      {
+        category: "PDF & Automation",
+        items: ["Puppeteer 10 (headless Chrome)", "pdf-lib", "pdf-merger-js"],
+      },
+      {
+        category: "File & Storage",
+        items: ["Azure Storage SDK", "Multer (file upload)"],
+      },
+      {
+        category: "Logging & Monitoring",
+        items: ["Winston (structured logging)", "Sentry"],
+      },
+      {
+        category: "Testing",
+        items: ["Mocha", "Chai", "Supertest"],
+      },
+    ],
+    integrations: [
+      { name: "Azure Blob Storage", purpose: "Media and file storage", type: "storage" },
+      { name: "MongoDB", purpose: "Document storage alongside relational MySQL", type: "database" },
+      { name: "Sentry", purpose: "Error tracking and monitoring", type: "monitoring" },
+    ],
+    features: [
+      {
+        title: "Puppeteer PDF & Screenshot Generation",
+        description: "Uses headless Chrome (Puppeteer) to generate PDFs and capture page screenshots server-side — enabling complex HTML layouts to be rendered as print-ready documents.",
+      },
+      {
+        title: "Dual Database Architecture",
+        description: "Runs MySQL (Sequelize ORM) for relational data and MongoDB (Mongoose) for document storage simultaneously — choosing the right database per data type.",
+      },
+      {
+        title: "PDF Manipulation Pipeline",
+        description: "pdf-lib and pdf-merger-js allow programmatic PDF creation, modification, and merging of multiple documents into a single output file.",
+      },
+      {
+        title: "Course & Enrollment Management",
+        description: "CRUD API for courses, topics, sections, and student enrollments with progress tracking and completion status.",
+      },
+      {
+        title: "Report Generation",
+        description: "Generates structured reports combining relational and document data, exported as PDF via the Puppeteer pipeline.",
+      },
+    ],
+    architecture:
+      "Express.js REST API with dual ORM setup: Sequelize for MySQL (structured course/user data) and Mongoose for MongoDB (flexible documents). Puppeteer spawns a headless Chrome instance for PDF/screenshot rendering. Files uploaded via Multer and stored on Azure Blob. Winston for structured logging, Sentry for error tracking. API formally designed in api_design.yaml before implementation.",
+    metrics: [
+      { label: "API Version", value: "v2" },
+      { label: "Databases", value: "MySQL + MongoDB" },
+      { label: "Test Framework", value: "Mocha + Chai" },
+    ],
+    repoPath: "/Users/mac/Astrnt/astronaut-api2",
+    color: "from-green-600 to-teal-600",
+  },
+  {
+    slug: "cdc-frontend",
+    title: "CDC Marketplace Frontend",
+    subtitle: "Career Development Center — Nuxt.js Multi-Role Marketplace",
+    description:
+      "Nuxt.js 2 SSR/SSG marketplace platform for ASTRNT's Career Development Center. A multi-role platform: learners browse and enroll in courses, apply for jobs and scholarships, attend webinars; creators manage course content via a creator portal. Features real-time notifications via Socket.IO and browser-based video recording via videojs-record.",
+    role: "Frontend Engineer",
+    period: "2023 – 2024",
+    status: "production",
+    category: "frontend",
+    highlights: [
+      "Multi-role platform: learner + creator + employer surfaces in one app",
+      "videojs-record for browser-based video recording in assessments",
+      "nuxt-socket-io for real-time notifications and updates",
+      "Social auth login via @nuxtjs/auth",
+      "vue2-dropzone + vee-validate for complex file upload and form validation",
+      "Self-assessment and skills profiling module",
+    ],
+    techStack: [
+      {
+        category: "Frontend Framework",
+        items: ["Nuxt.js 2", "Vue 2", "Bootstrap-Vue", "Vuex"],
+      },
+      {
+        category: "Nuxt Modules",
+        items: ["@nuxtjs/auth", "@nuxtjs/axios", "@nuxtjs/sentry", "nuxt-socket-io"],
+      },
+      {
+        category: "Media & Forms",
+        items: ["videojs-record (video recording)", "vue2-dropzone (file upload)", "vee-validate (form validation)"],
+      },
+      {
+        category: "UI Components",
+        items: ["Bootstrap 4", "SweetAlert2", "vue-select", "vue-ellipse-progress"],
+      },
+    ],
+    integrations: [
+      { name: "Socket.io", purpose: "Real-time notifications and live updates", type: "realtime" },
+      { name: "Sentry", purpose: "Frontend error monitoring", type: "monitoring" },
+    ],
+    features: [
+      {
+        title: "Course Catalog & Enrollment",
+        description: "Learners browse course categories, search, and enroll. Progress tracked per course with completion status.",
+      },
+      {
+        title: "Creator Portal",
+        description: "Course creators manage content, upload videos, manage sections and topics, and track student engagement.",
+      },
+      {
+        title: "Job Listings & Application Flow",
+        description: "Integrated job board with category and location filters. Direct application flow linked to ASTRNT interview platform.",
+      },
+      {
+        title: "Scholarship & Beasiswa Programs",
+        description: "Dedicated module for browsing and applying to scholarship programs from partner institutions.",
+      },
+      {
+        title: "Self-Assessment & Skills Profiling",
+        description: "Candidates complete self-assessments to build a competency profile visible to employers on the platform.",
+      },
+      {
+        title: "Webinar Management",
+        description: "Event and webinar listings with registration flow and attendance tracking.",
+      },
+      {
+        title: "Real-time Notifications",
+        description: "nuxt-socket-io delivers real-time notifications for course updates, job status changes, and assessment completion.",
+      },
+    ],
+    architecture:
+      "Nuxt.js 2 SSR with Vuex for state management. @nuxtjs/auth handles JWT auth flow. nuxt-socket-io for real-time connection to backend. videojs-record for browser-based video capture. Deployed via Azure Pipelines.",
+    metrics: [
+      { label: "User Roles", value: "3 (Learner, Creator, Employer)" },
+      { label: "Platform Features", value: "Courses + Jobs + Scholarships + Webinars" },
+    ],
+    repoPath: "/Users/mac/Astrnt/cdc-fe-repo",
+    color: "from-blue-500 to-cyan-600",
+  },
+  {
+    slug: "cdc-backend",
+    title: "CDC Marketplace Backend",
+    subtitle: "Career Development Center API — Laravel 8 with Dual Cloud Storage & Payments",
+    description:
+      "Laravel 8 REST API backend powering the CDC marketplace. Handles authentication via Laravel Passport (OAuth2) + Socialite, course and content management, video metadata via JWPlayer, dual cloud storage (AWS S3 + Azure Blob), Midtrans payment gateway, scholarship management, MCQ/FTQ question banks, voucher system, and admin reporting.",
+    role: "Backend Engineer",
+    period: "2023 – 2024",
+    status: "production",
+    category: "api",
+    highlights: [
+      "Laravel Passport OAuth2 authorization server + Socialite social login",
+      "Dual cloud storage: AWS S3 + Azure Blob Storage",
+      "Midtrans payment gateway for course purchases and transactions",
+      "JWPlayer + GetID3 for video media management and metadata extraction",
+      "Voyager admin panel for content management",
+      "MCQ/FTQ question bank + voucher/discount system",
+    ],
+    techStack: [
+      {
+        category: "Backend",
+        items: ["Laravel 8", "PHP 7.3/8", "MySQL", "Redis"],
+      },
+      {
+        category: "Auth",
+        items: ["Laravel Passport (OAuth2)", "Laravel Socialite (social login)", "JWT"],
+      },
+      {
+        category: "Media",
+        items: ["JWPlayer / jwplatform", "GetID3 (audio/video metadata)", "Intervention Image"],
+      },
+      {
+        category: "Storage",
+        items: ["AWS S3 (League/Flysystem)", "Azure Blob Storage"],
+      },
+      {
+        category: "Payment",
+        items: ["Midtrans PHP"],
+      },
+      {
+        category: "Admin & Reporting",
+        items: ["Voyager admin panel", "Yajra DataTables", "Maatwebsite/Excel", "PhpSpreadsheet"],
+      },
+      {
+        category: "Infrastructure",
+        items: ["Azure Pipelines", "Docker", "Sentry"],
+      },
+    ],
+    integrations: [
+      { name: "Midtrans", purpose: "Course purchase and transaction payment processing", type: "payment" },
+      { name: "AWS S3", purpose: "Primary media and file storage", type: "storage" },
+      { name: "Azure Blob Storage", purpose: "Secondary media storage", type: "storage" },
+      { name: "JWPlayer", purpose: "Video hosting and streaming metadata", type: "storage" },
+      { name: "Laravel Socialite", purpose: "Social login for learners and creators", type: "infra" },
+      { name: "Sentry", purpose: "Error tracking and monitoring", type: "monitoring" },
+    ],
+    features: [
+      {
+        title: "OAuth2 + Social Login",
+        description: "Laravel Passport provides a full OAuth2 authorization server. Laravel Socialite handles social login (Google, etc.) for learners and creators.",
+      },
+      {
+        title: "Course & Content Management",
+        description: "Full CRUD for courses, topics, sections, and media. Teachers manage their own content; admins have global oversight via Voyager.",
+      },
+      {
+        title: "Video Pipeline (JWPlayer + GetID3)",
+        description: "Videos uploaded to S3/Azure, metadata extracted via GetID3 (duration, codec, bitrate), and managed via JWPlayer API for streaming.",
+      },
+      {
+        title: "MCQ & FTQ Question Bank",
+        description: "Assessment question management supporting multiple choice and free text — linked to courses for in-course assessments.",
+      },
+      {
+        title: "Payment via Midtrans",
+        description: "Handles course purchases, transaction records, and payment status webhooks via Midtrans — the leading Indonesian payment gateway.",
+      },
+      {
+        title: "Voucher & Discount System",
+        description: "Coupon/voucher management for promotional pricing on courses, with usage tracking and expiry.",
+      },
+      {
+        title: "Scholarship Management",
+        description: "Admin manages scholarship programs, applicants, and status tracking from application to awarding.",
+      },
+    ],
+    architecture:
+      "Laravel 8 MVC with Passport OAuth2 server and Socialite for auth. Dual cloud storage: S3 and Azure via League/Flysystem. Media pipeline: upload → S3/Azure → JWPlayer → GetID3 metadata. Voyager admin panel for content ops. PHPUnit test suite. Deployed via Azure Pipelines.",
+    metrics: [
+      { label: "API Endpoints", value: "70+" },
+      { label: "Storage Providers", value: "AWS S3 + Azure" },
+      { label: "Auth Methods", value: "OAuth2 + Social Login" },
+    ],
+    repoPath: "/Users/mac/Astrnt/cdc-be-repo",
+    color: "from-cyan-600 to-blue-700",
+  },
+  {
+    slug: "kognisi-frontend",
+    title: "Kognisi.id Frontend",
+    subtitle: "B2C Learning Platform — Nuxt.js SSG/SSR with SEO Optimization",
+    description:
+      "Nuxt.js 2 SSG/SSR frontend for Kognisi.id — a public-facing B2C learning marketplace. Learners browse and enroll in courses, track progress, and access a creator portal. Distinct from CDC in its focus on public discoverability: includes Google Analytics, GTM, automated sitemap/robots.txt, and a comprehensive SEO toolchain for organic growth.",
+    role: "Frontend Engineer",
+    period: "2023 – 2024",
+    status: "production",
+    category: "frontend",
+    highlights: [
+      "Full SEO toolchain: @nuxtjs/sitemap, @nuxtjs/robots, nuxt-seo, Google site verification",
+      "Google Analytics + GTM integration via @nuxtjs/google-analytics",
+      "Splide carousel for course discovery UI",
+      "Star rating system for course reviews (vue-star-rating)",
+      "SSG for static public pages + SSR for authenticated/dynamic views",
+      "Social login and personalized learning paths",
+    ],
+    techStack: [
+      {
+        category: "Frontend Framework",
+        items: ["Nuxt.js 2", "Vue 2", "Bootstrap-Vue", "Vuex"],
+      },
+      {
+        category: "Nuxt Modules",
+        items: ["@nuxtjs/auth", "@nuxtjs/axios", "@nuxtjs/google-analytics", "@nuxtjs/sitemap", "@nuxtjs/robots", "@nuxtjs/sentry", "nuxt-seo"],
+      },
+      {
+        category: "UI Components",
+        items: ["Bootstrap 4", "Splide (carousel)", "vue-star-rating", "SweetAlert2", "vue-select"],
+      },
+    ],
+    integrations: [
+      { name: "Google Analytics + GTM", purpose: "Traffic tracking, conversion events, and tag management", type: "monitoring" },
+      { name: "Sentry", purpose: "Frontend error monitoring", type: "monitoring" },
+    ],
+    features: [
+      {
+        title: "SEO-Optimized Course Discovery",
+        description: "All public course and category pages statically generated for search engine indexing. Sitemap, robots.txt, and structured metadata auto-generated via Nuxt modules.",
+      },
+      {
+        title: "Google Analytics + GTM Integration",
+        description: "Full analytics setup with @nuxtjs/google-analytics and GTM for event tracking, conversion funnels, and remarketing audiences.",
+      },
+      {
+        title: "Course Catalog & Enrollment",
+        description: "Learners browse courses by category, view details, and enroll. Progress tracking and completion status persisted per user.",
+      },
+      {
+        title: "Creator Portal",
+        description: "Content creators manage their courses, upload materials, and track student engagement via a dedicated creator dashboard.",
+      },
+      {
+        title: "Course Reviews & Ratings",
+        description: "Learners rate and review courses via vue-star-rating. Ratings visible on course listing and detail pages.",
+      },
+    ],
+    architecture:
+      "Nuxt.js 2 with SSG for public/discovery pages and SSR for authenticated/personalized views. @nuxtjs/auth for JWT auth. @nuxtjs/sitemap and @nuxtjs/robots for automated SEO file generation. Google Analytics and GTM injected via Nuxt modules. Deployed via Azure Pipelines.",
+    metrics: [
+      { label: "Rendering Mode", value: "SSG + SSR" },
+      { label: "SEO Modules", value: "Sitemap + Robots + nuxt-seo" },
+      { label: "Analytics", value: "Google Analytics + GTM" },
+    ],
+    repoPath: "/Users/mac/Astrnt/kognisi-frontend",
+    color: "from-yellow-500 to-orange-500",
+  },
+  {
+    slug: "kognisi-backend",
+    title: "Kognisi.id Backend",
+    subtitle: "B2C Learning Platform API — Laravel 8 with MongoDB & Certificate Generation",
+    description:
+      "Laravel 8 REST API backend for Kognisi.id. Extends the CDC backend scope with hybrid MySQL + MongoDB architecture, image processing pipeline (Intervention Image), automated completion certificate generation, and SEO-friendly slug management. Same dual-cloud storage (S3 + Azure) and JWPlayer video pipeline as the CDC backend.",
+    role: "Backend Engineer",
+    period: "2023 – 2024",
+    status: "production",
+    category: "api",
+    highlights: [
+      "Hybrid database: MySQL (Eloquent) + MongoDB (jenssegers/mongodb) for flexible data models",
+      "Certificate generation via CertificateController — PDF completion certificates per learner",
+      "Image processing and resizing via Intervention Image",
+      "Eloquent-Sluggable for SEO-friendly URL slug management",
+      "Dual cloud storage: AWS S3 + Azure Blob",
+      "Midtrans payment gateway for course purchases",
+    ],
+    techStack: [
+      {
+        category: "Backend",
+        items: ["Laravel 8", "PHP 7.3/8", "MySQL", "Redis"],
+      },
+      {
+        category: "Database",
+        items: ["MySQL (Eloquent ORM — primary relational)", "MongoDB (jenssegers/mongodb — documents)"],
+      },
+      {
+        category: "Auth",
+        items: ["Laravel Passport (OAuth2)", "Laravel Socialite"],
+      },
+      {
+        category: "Media & Images",
+        items: ["JWPlayer", "GetID3", "Intervention Image", "cviebrock/Eloquent-Sluggable"],
+      },
+      {
+        category: "Storage",
+        items: ["AWS S3", "Azure Blob Storage"],
+      },
+      {
+        category: "Payment",
+        items: ["Midtrans PHP"],
+      },
+      {
+        category: "Admin",
+        items: ["Voyager admin panel", "Yajra DataTables", "Maatwebsite/Excel"],
+      },
+    ],
+    integrations: [
+      { name: "MongoDB", purpose: "Document storage alongside relational MySQL (hybrid architecture)", type: "database" },
+      { name: "Midtrans", purpose: "Course purchase payment processing", type: "payment" },
+      { name: "AWS S3", purpose: "Primary media storage", type: "storage" },
+      { name: "Azure Blob Storage", purpose: "Secondary media storage", type: "storage" },
+      { name: "JWPlayer", purpose: "Video streaming and metadata management", type: "storage" },
+      { name: "Sentry", purpose: "Error tracking", type: "monitoring" },
+    ],
+    features: [
+      {
+        title: "Hybrid MySQL + MongoDB Architecture",
+        description: "Uses MySQL for structured relational data (courses, users, enrollments) and MongoDB for flexible document storage — chosen per data type for optimal performance.",
+      },
+      {
+        title: "Certificate Generation",
+        description: "CertificateController generates PDF completion certificates for learners who finish a course, personalized with their name and course details.",
+      },
+      {
+        title: "Image Processing Pipeline",
+        description: "Intervention Image handles upload, resize, crop, and format conversion for course thumbnails, banners, and profile images.",
+      },
+      {
+        title: "SEO-Friendly Slug Management",
+        description: "Eloquent-Sluggable auto-generates and manages URL-safe slugs for courses and categories, enabling clean SEO-optimized URLs.",
+      },
+      {
+        title: "Image Banner Management",
+        description: "Dedicated BannerController manages promotional banners displayed on the platform homepage and category pages.",
+      },
+    ],
+    architecture:
+      "Laravel 8 MVC with Passport OAuth2. Dual database: Eloquent ORM for MySQL, jenssegers/mongodb for MongoDB. Image pipeline: upload → Intervention Image processing → S3/Azure storage. Video pipeline: JWPlayer + GetID3. Certificate generation via CertificateController (PDF). Voyager admin for content ops. Deployed via Azure Pipelines.",
+    metrics: [
+      { label: "Databases", value: "MySQL + MongoDB" },
+      { label: "Storage Providers", value: "AWS S3 + Azure" },
+      { label: "Unique Features", value: "Cert Gen + Hybrid DB + Image Pipeline" },
+    ],
+    repoPath: "/Users/mac/Astrnt/kognisi-backend",
+    color: "from-orange-500 to-yellow-600",
+  },
+  {
+    slug: "web-logger",
+    title: "ASTRNT Web Logger",
+    subtitle: "Internal npm Library — Session Event Tracking for Interview Apps",
+    description:
+      "Lightweight JavaScript library built as an internal npm package (published via GitLab registry) for tracking and recording user events during ASTRNT interview and assessment sessions. Consumed by multiple ASTRNT frontend apps (qna-web, e-course-web, recruiter) via git URL dependency. Provides initialize() and recordEvent() with Promise-based async support.",
+    role: "Frontend Engineer / Library Author",
+    period: "2022",
+    status: "production",
+    category: "tool",
+    highlights: [
+      "Distributed as an internal npm package via GitLab registry",
+      "Consumed by multiple ASTRNT frontend apps as a git URL dependency",
+      "Promise-based async API: initialize() + recordEvent()",
+      "Webpack 4 + Babel 7 build pipeline producing a minified distributable bundle",
+      "Session context binding: interview_code, candidate_id, job_id, company_id",
+    ],
+    techStack: [
+      {
+        category: "Language & Build",
+        items: ["Vanilla JavaScript (ES2015+)", "Webpack 4", "Babel 7"],
+      },
+      {
+        category: "Utilities",
+        items: ["Lodash", "ESLint"],
+      },
+    ],
+    integrations: [],
+    features: [
+      {
+        title: "Session Initialization",
+        description: "initialize() sets up the session context with interview_code, candidate_id, job_id, and company_id — sent with every event for accurate attribution.",
+      },
+      {
+        title: "Promise-based Event Recording",
+        description: "recordEvent() returns a Promise, enabling caller apps to await confirmation before proceeding (e.g. before submitting an answer).",
+      },
+      {
+        title: "Multi-app Distribution",
+        description: "Published to GitLab's internal package registry and installed via git URL in qna-web, e-course-web, and recruiter — a single source of truth for event tracking logic.",
+      },
+    ],
+    architecture:
+      "Single-file JS library bundled via Webpack 4 + Babel 7 into dist/astrnt-web-logger.min.js. Published as an internal npm package via GitLab registry. Consumers install via git URL and import the initialize/recordEvent API.",
+    metrics: [
+      { label: "Consuming Apps", value: "3+" },
+      { label: "Distribution", value: "Internal npm (GitLab)" },
+      { label: "Bundle", value: "Minified via Webpack 4" },
+    ],
+    repoPath: "/Users/mac/Astrnt/web-logger",
+    color: "from-gray-500 to-slate-600",
   },
 ]
 
