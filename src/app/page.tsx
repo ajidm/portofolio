@@ -1,240 +1,386 @@
 import Link from "next/link"
 import { projects, categoryLabels, statusColors } from "@/data/projects"
+import { skills } from "@/data/profile"
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const FEATURED_SLUGS = [
+  "astrnt-dashboard-v2",
+  "recruiter",
+  "api-qna",
+  "qna-web",
+  "cdc-frontend",
+  "cdc-backend",
+]
+
+const featuredProjects = FEATURED_SLUGS
+  .map((s) => projects.find((p) => p.slug === s))
+  .filter(Boolean) as typeof projects
+
+const otherProjects = projects.filter((p) => !FEATURED_SLUGS.includes(p.slug))
+
+const stats = [
+  { value: "9+", label: "Years Experience" },
+  { value: "6+", label: "Years at ASTRNT" },
+  { value: projects.length.toString(), label: "Projects Delivered" },
+  {
+    value: `${new Set(projects.flatMap((p) => p.techStack.flatMap((t) => t.items))).size}+`,
+    label: "Technologies",
+  },
+]
+
+const achievements = [
+  "Led full platform rewrite from Laravel monolith to Next.js 15 App Router — 383+ API routes, 60+ page flows",
+  "Architected multi-LLM integration (Claude, Gemini, OpenAI) with automatic key rotation on rate limits — zero downtime",
+  "Built AI Matching Engine with Gemini adapter, shadow mode, similarity scoring, and trigger-based recommendations",
+  "Designed Talent Management module: 360-degree assessments, peer nominations, talent mapping programs",
+  "Implemented atomic background job queue with priority processing, stale job recovery, and progress tracking",
+  "Delivered 24 GitHub Actions cron jobs for smart-send, cascade retry, digest processing, and automated alerts",
+  "Shipped mandatory 80% unit test coverage (Vitest) + 128 Cypress E2E specs as a pre-merge gate",
+  "Integrated Stripe credit-based billing: Checkout Sessions, webhooks, expiry alerts, per-company tracking",
+  "Built full media pipeline: Google Cloud Speech-to-Text, FFmpeg transcoding, JWPlayer streaming, Tesseract OCR",
+  "Introduced AI-assisted engineering workflow across the team — accelerating delivery and code quality",
+  "Led multi-product delivery across 22 repositories: dashboard, recruiter, candidate apps, marketplaces, APIs",
+  "Managed multi-cloud infrastructure: Azure Blob, AWS S3, Docker, Azure Pipelines, GitHub Actions CI/CD",
+]
+
+const primaryStack = [
+  { label: "Laravel", color: "#FB7185" },
+  { label: "React", color: "#38BDF8" },
+  { label: "Next.js", color: "#A3A3A3" },
+  { label: "TypeScript", color: "#60A5FA" },
+  { label: "Node.js", color: "#4ADE80" },
+  { label: "Claude AI", color: "#C084FC" },
+]
+
+const principles = [
+  {
+    title: "End-to-End Ownership",
+    description:
+      "From database schema and API design to frontend UX and production deployment — I own features completely, not just a layer.",
+  },
+  {
+    title: "Architecture Before Code",
+    description:
+      "I think through data models, API contracts, and system boundaries before writing a single line of code. Decisions made early are the hardest to reverse.",
+  },
+  {
+    title: "Quality as a Standard",
+    description:
+      "Mandatory test coverage, code review, CI/CD gates, and E2E specs are not optional extras — they are part of how I ship software.",
+  },
+  {
+    title: "Performance is a Feature",
+    description:
+      "Response times, bundle sizes, query plans, and Core Web Vitals are engineering metrics, not afterthoughts. I build for production from day one.",
+  },
+  {
+    title: "Product-First Thinking",
+    description:
+      "I understand the business problem before designing a solution. The best technical solution is the one that ships value to users reliably and maintainably.",
+  },
+  {
+    title: "Continuous Improvement",
+    description:
+      "Every system I build is designed to be improved. Clean abstractions, documented decisions, and readable code make future work faster and safer.",
+  },
+]
+
+const aiUseCases = [
+  {
+    title: "Code Review & Refactoring",
+    description:
+      "Using LLMs to review PRs for correctness, edge cases, and maintainability before human review. Refactoring legacy code with AI-assisted suggestions.",
+  },
+  {
+    title: "Architecture Brainstorming",
+    description:
+      "Drafting system design proposals, exploring trade-offs between architectural patterns, and stress-testing assumptions with AI as a sparring partner.",
+  },
+  {
+    title: "Test Generation",
+    description:
+      "Generating unit test scaffolding, edge case coverage, and E2E test scenarios from implementation code — dramatically reducing time-to-coverage.",
+  },
+  {
+    title: "Documentation",
+    description:
+      "Producing accurate API documentation, inline comments, and technical READMEs from existing code — keeping docs in sync with implementation.",
+  },
+  {
+    title: "Debugging & Root Cause Analysis",
+    description:
+      "Using AI to trace complex bugs across distributed systems, analyze stack traces, and surface likely causes faster than traditional debugging.",
+  },
+  {
+    title: "Building AI-Powered Features",
+    description:
+      "Integrating multi-LLM pipelines (Claude, Gemini, OpenAI) into real product features: candidate matching, job generation, scoring, and automated assessment.",
+  },
+]
+
+// ─── Component ───────────────────────────────────────────────────────────────
 
 export default function HomePage() {
-  const totalTechs = new Set(projects.flatMap((p) => p.techStack.flatMap((t) => t.items))).size
-
-  const stats = [
-    { label: "Total Projects", value: projects.length.toString() },
-    { label: "Production Apps", value: projects.filter((p) => p.status === "production").length.toString() },
-    { label: "Tech & Libraries", value: `${totalTechs}+` },
-    { label: "Years at ASTRNT", value: "6+" },
-  ]
-
   return (
-    <main className="min-h-screen" style={{ background: "#0a0f1e" }}>
-      {/* Nav */}
-      <nav
+    <main style={{ background: "#060912" }}>
+
+      {/* ══════════════════════════════════════════════ NAV */}
+      <header
         className="sticky top-0 z-50 border-b"
-        style={{ background: "rgba(10,15,30,0.9)", backdropFilter: "blur(12px)", borderColor: "rgba(255,255,255,0.06)" }}
+        style={{
+          background: "rgba(6,9,18,0.85)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          borderColor: "rgba(255,255,255,0.06)",
+        }}
       >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="font-bold text-white text-sm tracking-widest">AJID MUHAMAD</span>
-          <div className="flex items-center gap-6 text-sm" style={{ color: "#94a3b8" }}>
-            <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-            <a href="#about" className="hover:text-white transition-colors">About</a>
-            <Link
-              href="/pdf"
-              className="px-4 py-1.5 rounded-full text-xs font-medium transition-colors hover:opacity-80"
-              style={{ background: "rgba(99,102,241,0.15)", color: "#818cf8", border: "1px solid rgba(99,102,241,0.3)" }}
-            >
-              Export PDF
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-8">
+          <Link
+            href="/"
+            className="font-bold text-sm tracking-widest"
+            style={{ color: "#F1F5F9", letterSpacing: "0.14em" }}
+          >
+            AJID MUHAMAD
+          </Link>
+
+          <nav className="nav-links flex items-center gap-8" aria-label="Main navigation">
+            {[
+              { label: "About", href: "#about" },
+              { label: "Experience", href: "#experience" },
+              { label: "Projects", href: "#projects" },
+              { label: "Skills", href: "#skills" },
+              { label: "Contact", href: "#contact" },
+            ].map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm transition-colors hover:text-white"
+                style={{ color: "#94A3B8" }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <Link href="/pdf" className="btn-primary" style={{ padding: "8px 18px", fontSize: "13px" }}>
+            Download Resume
+          </Link>
+        </div>
+      </header>
+
+      {/* ══════════════════════════════════════════════ HERO */}
+      <section
+        className="max-w-6xl mx-auto px-6 pt-28 pb-24"
+        aria-label="Introduction"
+      >
+        {/* Status badge */}
+        <div className="animate-fade-up mb-8">
+          <span
+            className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full"
+            style={{
+              background: "rgba(34,197,94,0.08)",
+              color: "#4ADE80",
+              border: "1px solid rgba(34,197,94,0.18)",
+            }}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full inline-block animate-pulse"
+              style={{ background: "#4ADE80" }}
+              aria-hidden="true"
+            />
+            Open to new opportunities
+          </span>
+        </div>
+
+        {/* Name + title */}
+        <div className="animate-fade-up delay-100 mb-6">
+          <h1
+            className="font-extrabold leading-none mb-3"
+            style={{ fontSize: "clamp(44px, 8vw, 72px)", letterSpacing: "-0.03em", color: "#F1F5F9" }}
+          >
+            Ajid Muhamad
+          </h1>
+          <p
+            className="gradient-text font-bold"
+            style={{ fontSize: "clamp(22px, 4vw, 36px)", letterSpacing: "-0.015em" }}
+          >
+            Senior AI-Augmented Fullstack Engineer
+          </p>
+        </div>
+
+        {/* Summary */}
+        <p
+          className="animate-fade-up delay-200 max-w-2xl mb-10"
+          style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "17px" }}
+        >
+          <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>9+ years</strong> designing, building, and
+          scaling SaaS platforms, web applications, and backend systems. I own features{" "}
+          <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>end-to-end</strong> — from architecture and
+          database design to production deployment. Passionate about leveraging{" "}
+          <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>AI-assisted engineering</strong> to
+          accelerate delivery and build reliable, scalable systems.
+        </p>
+
+        {/* CTAs */}
+        <div className="animate-fade-up delay-300 mb-12">
+          {/* Primary buttons */}
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <Link href="/pdf" className="btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download Resume
             </Link>
+            <a href="#contact" className="btn-secondary">
+              Get in Touch
+            </a>
+          </div>
+
+          {/* Secondary links */}
+          <div className="flex items-center gap-2 text-sm" style={{ color: "#475569" }}>
+            <a
+              href="mailto:ajid@astrnt.co"
+              className="transition-colors hover:text-white"
+              style={{ color: "#64748B" }}
+            >
+              ajid@astrnt.co
+            </a>
+            <span aria-hidden="true">·</span>
+            <a
+              href="https://github.com/ajidm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-white"
+              style={{ color: "#64748B" }}
+              aria-label="GitHub profile"
+            >
+              GitHub
+            </a>
+            <span aria-hidden="true">·</span>
+            <a
+              href="https://linkedin.com/in/ajidm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-white"
+              style={{ color: "#64748B" }}
+              aria-label="LinkedIn profile"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
-      </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-24 pb-20">
-        <div className="animate-fade-in">
-          <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6"
-            style={{ background: "rgba(34,197,94,0.1)", color: "#4ade80", border: "1px solid rgba(34,197,94,0.2)" }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block animate-pulse" />
-            Open to opportunities
-          </div>
-
-          <h1 className="text-5xl font-bold text-white mb-4 leading-tight">
-            Ajid Muhamad
-            <br />
-            <span className="gradient-text">Fullstack Engineer</span>
-          </h1>
-
-          <p className="text-lg max-w-2xl mb-6" style={{ color: "#94a3b8", lineHeight: "1.9" }}>
-            <strong style={{ color: "#e2e8f0" }}>Senior AI-Augmented Fullstack Engineer</strong> with{" "}
-            <strong style={{ color: "#e2e8f0" }}>9+ years</strong> of experience designing, building, and scaling
-            SaaS platforms, modern web applications, and high-performance backend systems.
-            Experienced in owning <strong style={{ color: "#e2e8f0" }}>end-to-end feature delivery</strong> — from
-            system architecture and database design to production deployment — while collaborating closely with
-            product, design, and engineering teams. Passionate about leveraging{" "}
-            <strong style={{ color: "#e2e8f0" }}>AI-assisted engineering workflows</strong> to accelerate software
-            delivery, improve code quality, and build reliable, maintainable, and scalable systems.
+        {/* Tech stack */}
+        <div className="animate-fade-up delay-400 mb-16">
+          <p className="text-xs mb-3" style={{ color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+            Primary Stack
           </p>
-
-          {/* Primary stack badges */}
-          <div className="flex flex-wrap gap-3 mb-10">
-            {[
-              { label: "Laravel", color: "#ef4444", bg: "rgba(239,68,68,0.1)", border: "rgba(239,68,68,0.25)" },
-              { label: "React", color: "#38bdf8", bg: "rgba(56,189,248,0.1)", border: "rgba(56,189,248,0.25)" },
-              { label: "Next.js", color: "#a3a3a3", bg: "rgba(163,163,163,0.1)", border: "rgba(163,163,163,0.2)" },
-            ].map((t) => (
+          <div className="flex flex-wrap gap-2">
+            {primaryStack.map((t) => (
               <span
                 key={t.label}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold"
-                style={{ background: t.bg, color: t.color, border: `1px solid ${t.border}` }}
+                className="badge"
+                style={{
+                  background: `${t.color}12`,
+                  color: t.color,
+                  borderColor: `${t.color}28`,
+                  fontWeight: 600,
+                }}
               >
-                <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: t.color }} />
                 {t.label}
               </span>
             ))}
           </div>
+        </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {stats.map((s) => (
+        {/* Stats */}
+        <div
+          className="animate-fade-up delay-500 grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 border-t"
+          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        >
+          {stats.map((s) => (
+            <div key={s.label} className="text-center md:text-left">
               <div
-                key={s.label}
-                className="rounded-xl p-5 text-center"
-                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
+                className="font-extrabold mb-1"
+                style={{ fontSize: "36px", color: "#F1F5F9", letterSpacing: "-0.025em" }}
               >
-                <div className="text-3xl font-bold text-white mb-1">{s.value}</div>
-                <div className="text-xs" style={{ color: "#64748b" }}>{s.label}</div>
+                {s.value}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Grid */}
-      <section id="projects" className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="mb-10">
-          <h2 className="text-2xl font-bold text-white mb-2">All Projects</h2>
-          <p className="text-sm" style={{ color: "#64748b" }}>
-            {projects.length} repositories built at ASTRNT — click any card to see the full detail
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.map((project, i) => (
-            <Link
-              key={project.slug}
-              href={`/projects/${project.slug}`}
-              className="block rounded-2xl p-5 card-hover group cursor-pointer animate-fade-in"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.06)",
-                animationDelay: `${i * 40}ms`,
-              }}
-            >
-              {/* Color accent */}
-              <div className={`h-0.5 w-10 rounded-full bg-gradient-to-r ${project.color} mb-4`} />
-
-              {/* Header */}
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="font-semibold text-white text-sm group-hover:text-blue-300 transition-colors leading-snug">
-                  {project.title}
-                </h3>
-                <span className={`shrink-0 text-[10px] font-medium px-2 py-0.5 rounded-full ${statusColors[project.status]}`}>
-                  {project.status}
-                </span>
+              <div className="text-xs" style={{ color: "#64748B" }}>
+                {s.label}
               </div>
-
-              <p className="text-[11px] mb-1" style={{ color: "#64748b" }}>{project.period} · {project.role}</p>
-
-              <p className="text-xs mb-4 line-clamp-3" style={{ color: "#94a3b8", lineHeight: "1.6" }}>
-                {project.description}
-              </p>
-
-              {/* Tech tags — first 5 */}
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {project.techStack
-                  .flatMap((t) => t.items)
-                  .slice(0, 5)
-                  .map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[10px] px-2 py-0.5 rounded-md"
-                      style={{ background: "rgba(255,255,255,0.05)", color: "#94a3b8" }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                {project.techStack.flatMap((t) => t.items).length > 5 && (
-                  <span
-                    className="text-[10px] px-2 py-0.5 rounded-md"
-                    style={{ background: "rgba(255,255,255,0.03)", color: "#475569" }}
-                  >
-                    +{project.techStack.flatMap((t) => t.items).length - 5} more
-                  </span>
-                )}
-              </div>
-
-              {/* Footer */}
-              <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                <span className="text-[10px]" style={{ color: "#475569" }}>
-                  {categoryLabels[project.category]}
-                </span>
-                <span className="text-xs text-blue-500 group-hover:text-blue-400 transition-colors font-medium">
-                  Detail →
-                </span>
-              </div>
-            </Link>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* About */}
+      {/* ══════════════════════════════════════════════ ABOUT */}
       <section
         id="about"
         className="border-t"
         style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        aria-labelledby="about-heading"
       >
-        <div className="max-w-6xl mx-auto px-6 py-20">
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <span className="section-label">About</span>
+          <h2
+            id="about-heading"
+            className="font-bold mb-16"
+            style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em", maxWidth: "600px" }}
+          >
+            Engineering from architecture to production
+          </h2>
+
           <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-6">About Me</h2>
-              <p className="text-sm mb-4" style={{ color: "#94a3b8", lineHeight: "1.9" }}>
-                Software engineer who has shipped products from zero to production at{" "}
-                <strong style={{ color: "#e2e8f0" }}>ASTRNT</strong>, an AI-driven recruitment tech startup.
-                Comfortable working across the full stack — database schema design, REST APIs, background workers, and UI/UX implementation.
+            <div className="space-y-5">
+              <p style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "15px" }}>
+                I&apos;m a fullstack engineer with{" "}
+                <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>6+ years</strong> building and scaling
+                an AI-powered SaaS recruitment platform at{" "}
+                <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>ASTRNT</strong> — from early product
+                to enterprise scale. I take ownership of the entire delivery chain: database schema, API
+                design, background systems, frontend UX, and production infrastructure.
               </p>
-              <p className="text-sm" style={{ color: "#94a3b8", lineHeight: "1.9" }}>
-                Experienced in integrating multi-LLM providers (Claude, Gemini, OpenAI) into real product features,
-                building event-driven notification systems, and designing scalable multi-tenant SaaS architectures.
+              <p style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "15px" }}>
+                I work across the full stack without boundaries — Laravel backends, Next.js full-stack apps,
+                Nuxt.js SSR marketplaces, Node.js microservices, and distributed job systems. My core
+                strength is translating complex product requirements into clean, maintainable, and scalable
+                systems.
+              </p>
+              <p style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "15px" }}>
+                I actively integrate AI-assisted workflows into my engineering practice — using LLMs to
+                accelerate code reviews, generate test coverage, draft architecture proposals, and reduce
+                time-to-production. I also ship AI-powered product features: multi-LLM pipelines, candidate
+                matching engines, scoring systems, and intelligent job generation.
               </p>
             </div>
+
             <div>
-              <h3 className="text-sm font-semibold text-white mb-4">Core Expertise</h3>
-
-              {/* Primary stack */}
-              <div className="flex flex-wrap gap-2 mb-5">
-                {["Laravel", "React", "Next.js"].map((s) => (
-                  <span
-                    key={s}
-                    className="text-xs font-semibold px-3 py-1 rounded-lg"
-                    style={{ background: "rgba(99,102,241,0.15)", color: "#818cf8", border: "1px solid rgba(99,102,241,0.3)" }}
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-
-              {/* Supporting skills */}
-              <div className="grid grid-cols-2 gap-2">
+              <p className="text-xs font-semibold mb-4" style={{ color: "#475569", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+                What I bring
+              </p>
+              <div className="space-y-4">
                 {[
-                  "TypeScript",
-                  "Node.js / Express",
-                  "MySQL / Redis / Prisma",
-                  "Elasticsearch",
-                  "Socket.io / WebSocket",
-                  "Redux / State Management",
-                  "AWS S3 / Azure Blob Storage",
-                  "Google Cloud Speech-to-Text",
-                  "FFmpeg / Video Processing",
-                  "RecordRTC / WebRTC",
-                  "AI/LLM Integration",
-                  "Stripe / Payment Gateway",
-                  "Docker / Azure / CI-CD",
-                  "Nuxt.js / Vue",
-                  "REST API Design",
-                  "Background Job Systems",
-                  "Multi-tenant SaaS",
-                  "Testing (Cypress, Vitest, PHPUnit)",
-                ].map((skill) => (
-                  <div key={skill} className="flex items-center gap-2 text-xs" style={{ color: "#94a3b8" }}>
-                    <span className="w-1 h-1 rounded-full shrink-0" style={{ background: "#3b82f6" }} />
-                    {skill}
+                  ["End-to-end feature ownership", "From schema design to production deployment — no handoffs required"],
+                  ["Production architecture", "Multi-tenant SaaS design, scalable APIs, distributed background systems"],
+                  ["AI/LLM product integration", "Real feature delivery: matching engines, scoring, pipelines, generation"],
+                  ["Engineering quality standards", "Test mandates, CI/CD gates, code review culture, monitoring"],
+                  ["Cross-functional collaboration", "Working closely with product, design, QA, and business stakeholders"],
+                  ["Multi-platform delivery", "Web apps, REST APIs, background workers, infrastructure, CLI tooling"],
+                ].map(([title, desc]) => (
+                  <div key={title} className="flex items-start gap-3">
+                    <span
+                      className="mt-1.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold"
+                      style={{ background: "rgba(99,102,241,0.15)", color: "#818CF8" }}
+                      aria-hidden="true"
+                    >
+                      ✓
+                    </span>
+                    <div>
+                      <p className="text-sm font-medium mb-0.5" style={{ color: "#F1F5F9" }}>{title}</p>
+                      <p className="text-xs" style={{ color: "#64748B", lineHeight: "1.6" }}>{desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -243,12 +389,456 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* ══════════════════════════════════════════════ EXPERIENCE */}
+      <section
+        id="experience"
+        className="border-t"
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        aria-labelledby="exp-heading"
+      >
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <span className="section-label">Experience</span>
+          <h2
+            id="exp-heading"
+            className="font-bold mb-12"
+            style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em" }}
+          >
+            Work History
+          </h2>
+
+          <div
+            className="card p-8 md:p-10"
+            style={{ borderRadius: "20px" }}
+          >
+            {/* Header */}
+            <div
+              className="flex flex-wrap items-start justify-between gap-6 pb-8 mb-8"
+              style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+            >
+              <div>
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <span
+                    className="text-xs font-semibold px-3 py-1 rounded-full"
+                    style={{
+                      background: "rgba(99,102,241,0.12)",
+                      color: "#818CF8",
+                      border: "1px solid rgba(99,102,241,0.22)",
+                    }}
+                  >
+                    6+ years
+                  </span>
+                  <span className="text-xs" style={{ color: "#475569" }}>
+                    Full-time · Remote — Bandung, Indonesia
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold mb-1" style={{ color: "#F1F5F9" }}>
+                  Senior AI-Augmented Fullstack Engineer
+                </h3>
+                <p className="text-sm font-semibold" style={{ color: "#6366F1" }}>
+                  ASTRNT
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-sm font-medium" style={{ color: "#F1F5F9" }}>Jun 2019 – Present</p>
+                <p className="text-xs mt-1" style={{ color: "#64748B" }}>AI-powered SaaS recruitment</p>
+              </div>
+            </div>
+
+            {/* Description */}
+            <p className="text-sm mb-8 max-w-3xl" style={{ color: "#64748B", lineHeight: "1.8" }}>
+              Building and scaling an AI-powered SaaS recruitment platform serving enterprise clients across
+              Southeast Asia. Led delivery of 22+ applications across web, API, infrastructure, and
+              tooling — spanning candidate platforms, recruiter tools, AI pipelines, marketplaces, and
+              real-time systems.
+            </p>
+
+            {/* Achievements */}
+            <div className="grid md:grid-cols-2 gap-x-10 gap-y-1">
+              {achievements.map((a) => (
+                <div key={a} className="achievement">
+                  <span className="achievement-dot" aria-hidden="true" />
+                  {a}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════ PROJECTS */}
+      <section
+        id="projects"
+        className="border-t"
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        aria-labelledby="projects-heading"
+      >
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <span className="section-label">Featured Projects</span>
+          <h2
+            id="projects-heading"
+            className="font-bold mb-4"
+            style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em" }}
+          >
+            Engineering Case Studies
+          </h2>
+          <p className="text-sm mb-12 max-w-xl" style={{ color: "#64748B", lineHeight: "1.8" }}>
+            Selected projects with technical depth, architectural decisions, and measurable impact.
+            Click any card to read the full case study.
+          </p>
+
+          {/* Featured 6 — 3-col grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            {featuredProjects.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
+                className="card card-glow block p-6 group"
+                style={{ borderRadius: "16px" }}
+                aria-label={`${project.title} — case study`}
+              >
+                {/* Top accent bar */}
+                <div className={`h-0.5 w-12 rounded-full bg-gradient-to-r ${project.color} mb-5`} aria-hidden="true" />
+
+                {/* Status + category */}
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-[10px] uppercase tracking-widest" style={{ color: "#475569" }}>
+                    {categoryLabels[project.category]}
+                  </span>
+                  <span
+                    className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${statusColors[project.status]}`}
+                  >
+                    {project.status}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3
+                  className="text-sm font-semibold mb-1 leading-snug transition-colors group-hover:text-blue-300"
+                  style={{ color: "#F1F5F9" }}
+                >
+                  {project.title}
+                </h3>
+                <p className="text-[11px] mb-3" style={{ color: "#475569" }}>
+                  {project.period} · {project.role}
+                </p>
+
+                {/* Description */}
+                <p className="text-xs mb-5 line-clamp-3" style={{ color: "#94A3B8", lineHeight: "1.7" }}>
+                  {project.description}
+                </p>
+
+                {/* Metrics */}
+                {project.metrics.length > 0 && (
+                  <div
+                    className="flex flex-wrap gap-4 mb-5 pb-5"
+                    style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+                  >
+                    {project.metrics.slice(0, 2).map((m) => (
+                      <div key={m.label}>
+                        <div className="text-sm font-bold" style={{ color: "#F1F5F9" }}>{m.value}</div>
+                        <div className="text-[10px]" style={{ color: "#475569" }}>{m.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Tech */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.techStack.flatMap((t) => t.items).slice(0, 5).map((tech) => (
+                    <span key={tech} className="badge" style={{ fontSize: "10px", padding: "2px 8px" }}>
+                      {tech}
+                    </span>
+                  ))}
+                  {project.techStack.flatMap((t) => t.items).length > 5 && (
+                    <span className="badge" style={{ fontSize: "10px", padding: "2px 8px", color: "#475569" }}>
+                      +{project.techStack.flatMap((t) => t.items).length - 5}
+                    </span>
+                  )}
+                </div>
+
+                {/* Footer */}
+                <div className="flex items-center justify-end">
+                  <span className="text-xs font-medium transition-colors text-blue-500 group-hover:text-blue-400">
+                    View Case Study →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Compact list of other projects */}
+          <details className="group">
+            <summary
+              className="cursor-pointer text-sm font-medium py-4 px-6 rounded-xl flex items-center justify-between"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                color: "#94A3B8",
+                listStyle: "none",
+              }}
+            >
+              <span>View all {projects.length} projects</span>
+              <span className="transition-transform group-open:rotate-180" aria-hidden="true">▾</span>
+            </summary>
+            <div
+              className="mt-2 rounded-xl overflow-hidden"
+              style={{ border: "1px solid rgba(255,255,255,0.07)" }}
+            >
+              {otherProjects.map((project, i) => (
+                <Link
+                  key={project.slug}
+                  href={`/projects/${project.slug}`}
+                  className="flex items-center gap-4 px-5 py-3.5 transition-colors hover:bg-white/[0.02]"
+                  style={{
+                    borderTop: i > 0 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                  }}
+                >
+                  <div
+                    className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${project.color} flex-shrink-0`}
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm flex-1" style={{ color: "#94A3B8" }}>{project.title}</span>
+                  <span className="text-xs hidden sm:block" style={{ color: "#475569" }}>{project.role}</span>
+                  <span className="text-xs" style={{ color: "#475569" }}>{project.period}</span>
+                  <span className="text-xs" style={{ color: "#6366F1" }}>→</span>
+                </Link>
+              ))}
+            </div>
+          </details>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════ SKILLS */}
+      <section
+        id="skills"
+        className="border-t"
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        aria-labelledby="skills-heading"
+      >
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <span className="section-label">Technical Skills</span>
+          <h2
+            id="skills-heading"
+            className="font-bold mb-12"
+            style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em" }}
+          >
+            Technology Stack
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {skills.map((group) => (
+              <div key={group.category} className="skill-group">
+                <div className="flex items-center gap-2 mb-4">
+                  <span
+                    className="w-2 h-2 rounded-full flex-shrink-0"
+                    style={{ background: group.color }}
+                    aria-hidden="true"
+                  />
+                  <span
+                    className="text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: group.color }}
+                  >
+                    {group.category}
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {group.items.map((item) => (
+                    <span key={item} className="badge" style={{ fontSize: "11px" }}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════ PHILOSOPHY */}
+      <section
+        className="border-t"
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        aria-labelledby="philosophy-heading"
+      >
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <span className="section-label">Engineering Philosophy</span>
+          <h2
+            id="philosophy-heading"
+            className="font-bold mb-4"
+            style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em", maxWidth: "540px" }}
+          >
+            How I think about building software
+          </h2>
+          <p className="text-sm mb-12 max-w-xl" style={{ color: "#64748B", lineHeight: "1.8" }}>
+            The principles that guide my engineering decisions — from architecture to code review to
+            production deployment.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {principles.map((p, i) => (
+              <div key={p.title} className="card p-6" style={{ borderRadius: "14px" }}>
+                <div
+                  className="text-xs font-bold mb-4 w-7 h-7 rounded-lg flex items-center justify-center"
+                  style={{ background: "rgba(99,102,241,0.12)", color: "#818CF8" }}
+                  aria-hidden="true"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <h3 className="text-sm font-semibold mb-2" style={{ color: "#F1F5F9" }}>
+                  {p.title}
+                </h3>
+                <p className="text-xs" style={{ color: "#64748B", lineHeight: "1.8" }}>
+                  {p.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════ AI-AUGMENTED */}
+      <section
+        className="border-t"
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        aria-labelledby="ai-heading"
+      >
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <span className="section-label">AI-Augmented Engineering</span>
+          <h2
+            id="ai-heading"
+            className="font-bold mb-4"
+            style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em", maxWidth: "600px" }}
+          >
+            Leveraging AI to build better software, faster
+          </h2>
+          <p className="text-sm mb-12 max-w-2xl" style={{ color: "#64748B", lineHeight: "1.8" }}>
+            I use AI tools as a force multiplier — not to replace engineering judgment, but to amplify
+            it. The result is faster delivery, broader test coverage, and higher-quality code.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {aiUseCases.map((u) => (
+              <div
+                key={u.title}
+                className="p-5 rounded-xl"
+                style={{ background: "rgba(99,102,241,0.04)", border: "1px solid rgba(99,102,241,0.12)" }}
+              >
+                <h3 className="text-sm font-semibold mb-2" style={{ color: "#818CF8" }}>
+                  {u.title}
+                </h3>
+                <p className="text-xs" style={{ color: "#64748B", lineHeight: "1.8" }}>
+                  {u.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════ CONTACT */}
+      <section
+        id="contact"
+        className="border-t"
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        aria-labelledby="contact-heading"
+      >
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <div>
+              <span className="section-label">Contact</span>
+              <h2
+                id="contact-heading"
+                className="font-bold mb-4"
+                style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em" }}
+              >
+                Let&apos;s work together
+              </h2>
+              <p className="text-sm mb-8" style={{ color: "#64748B", lineHeight: "1.9" }}>
+                I&apos;m actively exploring Senior Fullstack Engineer, Senior Software Engineer, and
+                AI-Augmented Engineer roles — remote or hybrid. If you&apos;re looking for an engineer
+                who can own complex features end-to-end, I&apos;d love to connect.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="mailto:ajid@astrnt.co"
+                  className="btn-primary"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  Send Email
+                </a>
+                <Link href="/pdf" className="btn-secondary">
+                  Download Resume
+                </Link>
+              </div>
+            </div>
+
+            <div
+              className="card p-7"
+              style={{ borderRadius: "16px" }}
+            >
+              {[
+                { label: "Email", value: "ajid@astrnt.co", href: "mailto:ajid@astrnt.co" },
+                { label: "GitHub", value: "github.com/ajidm", href: "https://github.com/ajidm" },
+                { label: "Location", value: "Bandung, Indonesia", href: null },
+                { label: "Availability", value: "Open to Senior Fullstack / AI-Augmented roles", href: null },
+              ].map(({ label, value, href }) => (
+                <div
+                  key={label}
+                  className="flex items-baseline gap-4 py-4"
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+                >
+                  <span className="text-xs w-24 flex-shrink-0" style={{ color: "#475569", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                    {label}
+                  </span>
+                  {href ? (
+                    <a
+                      href={href}
+                      className="text-sm transition-colors hover:text-white"
+                      style={{ color: "#94A3B8" }}
+                      {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    >
+                      {value}
+                    </a>
+                  ) : (
+                    <span className="text-sm" style={{ color: "#94A3B8" }}>{value}</span>
+                  )}
+                </div>
+              ))}
+              <div className="flex items-baseline gap-4 py-4">
+                <span className="text-xs w-24 flex-shrink-0" style={{ color: "#475569", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                  Status
+                </span>
+                <span
+                  className="inline-flex items-center gap-2 text-xs font-medium px-2.5 py-1 rounded-full"
+                  style={{
+                    background: "rgba(34,197,94,0.08)",
+                    color: "#4ADE80",
+                    border: "1px solid rgba(34,197,94,0.18)",
+                  }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
+                  Open to opportunities
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════ FOOTER */}
       <footer
         className="border-t py-8 text-center text-xs"
         style={{ borderColor: "rgba(255,255,255,0.06)", color: "#334155" }}
       >
-        ajid@astrnt.co · Built with Next.js + Tailwind CSS · {new Date().getFullYear()}
+        <p>
+          Ajid Muhamad · Senior AI-Augmented Fullstack Engineer · Bandung, Indonesia ·{" "}
+          <a href="mailto:ajid@astrnt.co" className="hover:text-white transition-colors">
+            ajid@astrnt.co
+          </a>{" "}
+          · Built with Next.js + Tailwind CSS · 2026
+        </p>
       </footer>
     </main>
   )
