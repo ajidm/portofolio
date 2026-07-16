@@ -48,14 +48,18 @@ export default function HomePage() {
           <h1 className="text-5xl font-bold text-white mb-4 leading-tight">
             Ajid Muhamad
             <br />
-            <span className="gradient-text">Software Engineer</span>
+            <span className="gradient-text">Fullstack Engineer</span>
           </h1>
 
-          <p className="text-lg max-w-2xl mb-6" style={{ color: "#94a3b8", lineHeight: "1.8" }}>
-            Senior engineer with <strong style={{ color: "#e2e8f0" }}>9+ years</strong> of experience building
-            an AI-powered recruitment SaaS platform at{" "}
-            <strong style={{ color: "#e2e8f0" }}>ASTRNT</strong>. Specialized in full-stack development —
-            LLM integration, and production-grade background job systems.
+          <p className="text-lg max-w-2xl mb-6" style={{ color: "#94a3b8", lineHeight: "1.9" }}>
+            <strong style={{ color: "#e2e8f0" }}>Senior AI-Augmented Fullstack Engineer</strong> with{" "}
+            <strong style={{ color: "#e2e8f0" }}>9+ years</strong> of experience designing, building, and scaling
+            SaaS platforms, modern web applications, and high-performance backend systems.
+            Experienced in owning <strong style={{ color: "#e2e8f0" }}>end-to-end feature delivery</strong> — from
+            system architecture and database design to production deployment — while collaborating closely with
+            product, design, and engineering teams. Passionate about leveraging{" "}
+            <strong style={{ color: "#e2e8f0" }}>AI-assisted engineering workflows</strong> to accelerate software
+            delivery, improve code quality, and build reliable, maintainable, and scalable systems.
           </p>
 
           {/* Primary stack badges */}

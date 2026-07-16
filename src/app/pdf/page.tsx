@@ -46,11 +46,12 @@ export default function PdfPage() {
             Ajid Muhamad
           </h1>
           <p className="font-sans text-2xl mb-6" style={{ color: "#818cf8" }}>
-            Senior Software Engineer
+            Senior AI-Augmented Fullstack Engineer
           </p>
           <p className="font-sans text-base max-w-lg" style={{ color: "#94a3b8", lineHeight: "1.8" }}>
-            6+ years building an AI-powered SaaS recruitment platform at ASTRNT.
-            Full-stack development — Next.js, Laravel, multi-LLM integration, and production-grade architecture.
+            9+ years of experience designing, building, and scaling SaaS platforms, modern web applications,
+            and high-performance backend systems. Passionate about leveraging AI-assisted engineering workflows
+            to accelerate delivery and build reliable, scalable systems.
           </p>
         </div>
 

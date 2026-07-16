@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Ajid Muhamad — Software Engineer Portfolio",
+  title: "Ajid Muhamad — Senior AI-Augmented Fullstack Engineer",
   description:
-    "Portfolio of projects built during 6+ years at ASTRNT — an AI-powered recruitment SaaS platform.",
+    "9+ years designing, building, and scaling SaaS platforms, modern web applications, and high-performance backend systems. Laravel · React · Next.js.",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
