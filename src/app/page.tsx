@@ -444,7 +444,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-sm font-medium" style={{ color: "#F1F5F9" }}>Jun 2019 – Present</p>
+                <p className="text-sm font-medium" style={{ color: "#F1F5F9" }}>Feb 2020 – Present</p>
                 <p className="text-xs mt-1" style={{ color: "#64748B" }}>AI-powered SaaS recruitment</p>
               </div>
             </div>

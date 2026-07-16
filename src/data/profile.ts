@@ -16,7 +16,7 @@ export const experience = [
   {
     company: "ASTRNT",
     role: "Senior AI-Augmented Fullstack Engineer",
-    period: "Jun 2019 – Present",
+    period: "Feb 2020 – Present",
     years: "6+ years",
     type: "Full-time",
     location: "Remote — Bandung, Indonesia",
