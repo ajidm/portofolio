@@ -39,7 +39,7 @@ const achievements = [
   "Shipped mandatory 80% unit test coverage (Vitest) + 128 Cypress E2E specs as a pre-merge gate",
   "Integrated Stripe credit-based billing: Checkout Sessions, webhooks, expiry alerts, per-company tracking",
   "Built full media pipeline: Google Cloud Speech-to-Text, FFmpeg transcoding, JWPlayer streaming, Tesseract OCR",
-  "Introduced AI-assisted engineering workflow across the team — accelerating delivery and code quality",
+  "Introduced team-wide AI-assisted engineering workflow — reducing PR review cycle time and improving test coverage throughput across all repositories",
   "Led multi-product delivery across 22 repositories: dashboard, recruiter, candidate apps, marketplaces, APIs",
   "Managed multi-cloud infrastructure: Azure Blob, AWS S3, Docker, Azure Pipelines, GitHub Actions CI/CD",
 ]
@@ -57,32 +57,32 @@ const principles = [
   {
     title: "End-to-End Ownership",
     description:
-      "From database schema and API design to frontend UX and production deployment — I own features completely, not just a layer.",
+      "From database schema and API design to frontend UX, production deployment, and documentation — I drive features to completion without hand-offs.",
   },
   {
     title: "Architecture Before Code",
     description:
-      "I think through data models, API contracts, and system boundaries before writing a single line of code. Decisions made early are the hardest to reverse.",
+      "I work through data models, API contracts, and system boundaries before writing code. Structural decisions made early are the hardest to undo — they deserve the most upfront thought.",
   },
   {
     title: "Quality as a Standard",
     description:
-      "Mandatory test coverage, code review, CI/CD gates, and E2E specs are not optional extras — they are part of how I ship software.",
+      "Mandatory test coverage, CI/CD gates, code review, and E2E specs are how I ship software — not extras added when there's time.",
   },
   {
     title: "Performance is a Feature",
     description:
-      "Response times, bundle sizes, query plans, and Core Web Vitals are engineering metrics, not afterthoughts. I build for production from day one.",
+      "Response times, bundle sizes, query plans, and Core Web Vitals are engineering concerns, not afterthoughts. I design for production load from the first commit.",
   },
   {
     title: "Product-First Thinking",
     description:
-      "I understand the business problem before designing a solution. The best technical solution is the one that ships value to users reliably and maintainably.",
+      "I understand the business problem before designing the solution. The best technical decision is the one that ships real value to users — reliably, maintainably, and on time.",
   },
   {
-    title: "Continuous Improvement",
+    title: "Systems Built to Evolve",
     description:
-      "Every system I build is designed to be improved. Clean abstractions, documented decisions, and readable code make future work faster and safer.",
+      "Every system I build is designed to be extended. Clean abstractions, documented decisions, and readable code reduce the cost of every future change.",
   },
 ]
 
@@ -90,32 +90,32 @@ const aiUseCases = [
   {
     title: "Code Review & Refactoring",
     description:
-      "Using LLMs to review PRs for correctness, edge cases, and maintainability before human review. Refactoring legacy code with AI-assisted suggestions.",
+      "Running LLM-assisted pre-reviews before human review — surfacing edge cases, logic gaps, and maintainability issues early in the cycle. Also using AI to safely refactor legacy code with tests as a safety net.",
   },
   {
-    title: "Architecture Brainstorming",
+    title: "Architecture Exploration",
     description:
-      "Drafting system design proposals, exploring trade-offs between architectural patterns, and stress-testing assumptions with AI as a sparring partner.",
+      "Drafting system design proposals, exploring trade-offs between architectural patterns, and stress-testing assumptions with AI as a technical sparring partner before committing to an approach.",
   },
   {
     title: "Test Generation",
     description:
-      "Generating unit test scaffolding, edge case coverage, and E2E test scenarios from implementation code — dramatically reducing time-to-coverage.",
+      "Generating unit test scaffolding and edge case scenarios from implementation code — making 80%+ coverage practical without the manual overhead that typically makes it skip.",
   },
   {
     title: "Documentation",
     description:
-      "Producing accurate API documentation, inline comments, and technical READMEs from existing code — keeping docs in sync with implementation.",
+      "Generating API docs, inline comments, and technical READMEs from code — so documentation reflects what's actually shipped, not what was originally planned.",
   },
   {
     title: "Debugging & Root Cause Analysis",
     description:
-      "Using AI to trace complex bugs across distributed systems, analyze stack traces, and surface likely causes faster than traditional debugging.",
+      "Tracing complex bugs across distributed systems by feeding stack traces, logs, and reproduction steps to LLMs — surfacing likely root causes faster than stepping through manually.",
   },
   {
-    title: "Building AI-Powered Features",
+    title: "Shipping AI-Powered Features",
     description:
-      "Integrating multi-LLM pipelines (Claude, Gemini, OpenAI) into real product features: candidate matching, job generation, scoring, and automated assessment.",
+      "Integrating multi-LLM pipelines (Claude, Gemini, OpenAI) into production features: candidate matching, automated job generation, CV scoring, and intelligent assessment workflows.",
   },
 ]
 
@@ -214,12 +214,14 @@ export default function HomePage() {
           className="animate-fade-up delay-200 max-w-2xl mb-10"
           style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "17px" }}
         >
-          <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>9+ years</strong> designing, building, and
-          scaling SaaS platforms, web applications, and backend systems. I own features{" "}
-          <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>end-to-end</strong> — from architecture and
-          database design to production deployment. Passionate about leveraging{" "}
-          <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>AI-assisted engineering</strong> to
-          accelerate delivery and build reliable, scalable systems.
+          <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>9+ years</strong> building and shipping
+          production SaaS. For the past 6+ years at ASTRNT, I&apos;ve led engineering across an
+          AI-powered recruitment platform — 22+ applications spanning web, API, AI pipelines, and
+          infrastructure. I take{" "}
+          <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>end-to-end ownership</strong>: architecture,
+          implementation, testing, documentation, and deployment. I build{" "}
+          <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>AI-powered product features</strong> using
+          Claude, Gemini, and OpenAI — and use AI tooling daily to ship faster without cutting corners.
         </p>
 
         {/* CTAs */}
@@ -335,24 +337,25 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-16">
             <div className="space-y-5">
               <p style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "15px" }}>
-                I&apos;m a fullstack engineer with{" "}
-                <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>6+ years</strong> building and scaling
-                an AI-powered SaaS recruitment platform at{" "}
-                <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>ASTRNT</strong> — from early product
-                to enterprise scale. I take ownership of the entire delivery chain: database schema, API
-                design, background systems, frontend UX, production infrastructure, end-to-end testing, and technical documentation.
+                At{" "}
+                <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>ASTRNT</strong>, I&apos;ve spent{" "}
+                <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>6+ years</strong> building an
+                AI-powered SaaS recruitment platform — from its initial foundation through a full platform
+                rewrite and into enterprise scale. I take ownership of the entire delivery chain: database
+                schema, API design, background job systems, frontend UX, CI/CD infrastructure, E2E test
+                suites, and technical documentation.
               </p>
               <p style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "15px" }}>
-                I work across the full stack without boundaries — Laravel backends, Next.js full-stack apps,
-                Nuxt.js SSR marketplaces, Node.js microservices, and distributed job systems. My core
-                strength is translating complex product requirements into clean, maintainable, and scalable
-                systems.
+                My work spans Laravel backends, Next.js full-stack apps, Nuxt.js SSR marketplaces,
+                Node.js microservices, and distributed background job systems. What stays consistent
+                across all of it: clear data models, well-defined API contracts, and systems that are
+                straightforward to maintain and extend.
               </p>
               <p style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "15px" }}>
-                I actively integrate AI-assisted workflows into my engineering practice — using LLMs to
-                accelerate code reviews, generate test coverage, draft architecture proposals, and reduce
-                time-to-production. I also ship AI-powered product features: multi-LLM pipelines, candidate
-                matching engines, scoring systems, and intelligent job generation.
+                I use LLMs in both directions: as a daily engineering tool — for code review, test
+                generation, and architecture exploration — and as a product ingredient. At ASTRNT, I&apos;ve
+                shipped multi-LLM pipelines (Claude, Gemini, OpenAI), a candidate matching engine,
+                automated scoring systems, and intelligent job generation features.
               </p>
             </div>
 
@@ -362,14 +365,14 @@ export default function HomePage() {
               </p>
               <div className="space-y-4">
                 {[
-                  ["End-to-end feature ownership", "From schema design to production deployment — no handoffs required"],
-                  ["PRD & requirements authoring", "Writing product requirement documents that align engineering scope with business goals before a single line of code is written"],
-                  ["Technical documentation", "Producing DUC, API docs, inline comments, and READMEs that stay in sync with implementation — readable by engineers and stakeholders alike"],
-                  ["Production architecture", "Multi-tenant SaaS design, scalable APIs, distributed background systems"],
-                  ["AI/LLM product integration", "Real feature delivery: matching engines, scoring, pipelines, generation"],
-                  ["Engineering quality standards", "Test mandates, CI/CD gates, code review culture, monitoring"],
-                  ["Cross-functional collaboration", "Working closely with product, design, QA, and business stakeholders"],
-                  ["Multi-platform delivery", "Web apps, REST APIs, background workers, infrastructure, CLI tooling"],
+                  ["End-to-end feature ownership", "From schema design to production deployment, test coverage, and documentation — no handoffs required"],
+                  ["PRD & requirements authoring", "Translating product goals into engineering scope — PRDs written before code is written, keeping delivery aligned with business intent"],
+                  ["Technical documentation", "API docs, technical READMEs, and inline comments that stay synchronized with implementation — readable by engineers and non-engineers alike"],
+                  ["Production architecture", "Multi-tenant SaaS design, scalable REST APIs, atomic background job queues, and distributed systems"],
+                  ["AI/LLM product integration", "Shipping production AI features: matching engines, multi-LLM pipelines, scoring systems, and automated job generation"],
+                  ["Engineering quality standards", "80%+ unit test mandates, 128 E2E specs, CI/CD gates, and code review — baked into the delivery process, not bolted on"],
+                  ["Cross-functional collaboration", "Working across product, design, QA, and business stakeholders — translating requirements into engineering decisions"],
+                  ["Multi-platform delivery", "Web apps, REST APIs, background workers, cloud infrastructure, and internal tooling"],
                 ].map(([title, desc]) => (
                   <div key={title} className="flex items-start gap-3">
                     <span
@@ -405,7 +408,7 @@ export default function HomePage() {
             className="font-bold mb-12"
             style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em" }}
           >
-            Work History
+            Where I&apos;ve Worked
           </h2>
 
           <div
@@ -448,10 +451,10 @@ export default function HomePage() {
 
             {/* Description */}
             <p className="text-sm mb-8 max-w-3xl" style={{ color: "#64748B", lineHeight: "1.8" }}>
-              Building and scaling an AI-powered SaaS recruitment platform serving enterprise clients across
-              Southeast Asia. Led delivery of 22+ applications across web, API, infrastructure, and
-              tooling — spanning candidate platforms, recruiter tools, AI pipelines, marketplaces, and
-              real-time systems.
+              Led engineering across 22+ applications on an AI-powered SaaS recruitment platform — serving
+              enterprise clients across Southeast Asia. Scope spans candidate and recruiter interfaces, AI
+              matching pipelines, background job infrastructure, real-time systems, and multi-cloud
+              deployment. From early product through full platform rewrite to enterprise scale.
             </p>
 
             {/* Achievements */}
@@ -711,11 +714,12 @@ export default function HomePage() {
             className="font-bold mb-4"
             style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em", maxWidth: "600px" }}
           >
-            Leveraging AI to build better software, faster
+            AI as an engineering multiplier
           </h2>
           <p className="text-sm mb-12 max-w-2xl" style={{ color: "#64748B", lineHeight: "1.8" }}>
-            I use AI tools as a force multiplier — not to replace engineering judgment, but to amplify
-            it. The result is faster delivery, broader test coverage, and higher-quality code.
+            AI is part of how I work, not a separate workflow. I use it across code review, test
+            generation, documentation, debugging, and architecture — and I ship AI-powered features
+            into the products I build.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -756,9 +760,9 @@ export default function HomePage() {
                 Let&apos;s work together
               </h2>
               <p className="text-sm mb-8" style={{ color: "#64748B", lineHeight: "1.9" }}>
-                I&apos;m actively exploring Senior Fullstack Engineer, Senior Software Engineer, and
-                AI-Augmented Engineer roles — remote or hybrid. If you&apos;re looking for an engineer
-                who can own complex features end-to-end, I&apos;d love to connect.
+                Open to Senior Fullstack, Staff Engineer, and AI-Augmented Engineering roles —
+                remote or hybrid. If you&apos;re building a product where end-to-end ownership
+                matters, let&apos;s talk.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a

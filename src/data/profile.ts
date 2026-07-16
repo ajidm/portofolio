@@ -9,7 +9,7 @@ export const profile = {
   yearsTotal: "9+",
   yearsAtAstrnt: "6+",
   summary:
-    "Senior AI-Augmented Fullstack Engineer with 9+ years of experience designing, building, and scaling SaaS platforms, modern web applications, and high-performance backend systems. Experienced in owning end-to-end feature delivery — from system architecture and database design to production deployment — while collaborating closely with product, design, and engineering teams. Passionate about leveraging AI-assisted engineering workflows to accelerate software delivery, improve code quality, and build reliable, maintainable, and scalable systems.",
+    "Senior AI-Augmented Fullstack Engineer with 9+ years delivering production software at scale. For the past 6+ years at ASTRNT, I've led engineering across an AI-powered SaaS recruitment platform — 22+ applications spanning web, API, AI pipelines, and infrastructure. I take end-to-end ownership: architecture, implementation, testing, documentation, and deployment. I ship AI-powered product features using Claude, Gemini, and OpenAI, and integrate AI tooling into my daily engineering practice.",
 }
 
 export const experience = [
@@ -19,9 +19,9 @@ export const experience = [
     period: "Jun 2019 – Present",
     years: "6+ years",
     type: "Full-time",
-    location: "Remote — Jakarta, Indonesia",
+    location: "Remote — Bandung, Indonesia",
     description:
-      "Building and scaling an AI-powered SaaS recruitment platform serving enterprise clients across Southeast Asia. Delivered 22+ applications across web, API, infrastructure, and tooling layers.",
+      "Led engineering across 22+ applications on an AI-powered SaaS recruitment platform — serving enterprise clients across Southeast Asia. Scope spans candidate and recruiter interfaces, AI matching pipelines, background job infrastructure, real-time systems, and multi-cloud deployment.",
     achievements: [
       "Led full platform rewrite from Laravel monolith to Next.js 15 App Router — 383+ API routes, 60+ page flows",
       "Architected multi-LLM integration (Claude, Gemini, OpenAI) with automatic key rotation on rate limits — zero downtime",
@@ -32,7 +32,7 @@ export const experience = [
       "Shipped mandatory 80% unit test coverage (Vitest) + 128 Cypress E2E specs as a pre-merge gate",
       "Integrated Stripe credit-based billing: Checkout Sessions, webhooks, expiry alerts, and per-company tracking",
       "Built full media pipeline: Google Cloud Speech-to-Text, FFmpeg transcoding, JWPlayer streaming, Tesseract OCR",
-      "Introduced AI-assisted engineering workflow across the team — accelerating delivery and code quality",
+      "Introduced team-wide AI-assisted engineering workflow — reducing PR review cycle time and improving test coverage throughput across all repositories",
       "Led multi-product delivery across 22 repositories: dashboard, recruiter, candidate apps, marketplaces, APIs, and infra",
       "Managed multi-cloud infrastructure: Azure Blob, AWS S3, Docker, Azure Pipelines, GitHub Actions CI/CD",
     ],
@@ -50,7 +50,7 @@ export const skills = [
     category: "Backend",
     color: "#A78BFA",
     bg: "rgba(167,139,250,0.08)",
-    items: ["Laravel", "PHP", "Node.js", "Express.js", "Prisma ORM", "Dingo API", "JWT Auth", "REST API"],
+    items: ["Laravel", "PHP", "Node.js", "Express.js", "Prisma ORM", "Dingo API", "JWT Auth", "OpenAPI / Swagger"],
   },
   {
     category: "Database",
@@ -62,7 +62,7 @@ export const skills = [
     category: "AI & LLM",
     color: "#F472B6",
     bg: "rgba(244,114,182,0.08)",
-    items: ["Anthropic Claude", "Google Gemini", "OpenAI GPT", "LLM Integration", "Prompt Engineering"],
+    items: ["Anthropic Claude", "Google Gemini", "OpenAI GPT", "Multi-LLM Orchestration", "Prompt Engineering"],
   },
   {
     category: "Infrastructure",
@@ -74,7 +74,7 @@ export const skills = [
     category: "Testing",
     color: "#FBBF24",
     bg: "rgba(251,191,36,0.08)",
-    items: ["Cypress 15", "Vitest", "PHPUnit", "Playwright", "Mocha", "Supertest", "k6 (Load Testing)"],
+    items: ["Cypress", "Vitest", "PHPUnit", "Playwright", "Mocha", "Supertest", "k6 (Load Testing)"],
   },
   {
     category: "Media & Real-time",
