@@ -102,6 +102,12 @@ body {
 }
 
 /* Buttons */
+.btn-primary svg,
+.btn-secondary svg {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;

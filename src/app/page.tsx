@@ -226,13 +226,13 @@ export default function HomePage() {
         <div className="animate-fade-up delay-300 mb-12">
           {/* Primary buttons */}
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <Link href="/pdf" className="btn-primary">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <Link href="/pdf" className="btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flexShrink: 0 }}>
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
               Download Resume
             </Link>
-            <a href="#contact" className="btn-secondary">
+            <a href="#contact" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center" }}>
               Get in Touch
             </a>
           </div>
@@ -240,11 +240,11 @@ export default function HomePage() {
           {/* Secondary links */}
           <div className="flex items-center gap-2 text-sm" style={{ color: "#475569" }}>
             <a
-              href="mailto:ajid@astrnt.co"
+              href="mailto:ajidisme@gmail.com"
               className="transition-colors hover:text-white"
               style={{ color: "#64748B" }}
             >
-              ajid@astrnt.co
+              ajidisme@gmail.com
             </a>
             <span aria-hidden="true">·</span>
             <a
@@ -259,7 +259,7 @@ export default function HomePage() {
             </a>
             <span aria-hidden="true">·</span>
             <a
-              href="https://linkedin.com/in/ajidm"
+              href="https://www.linkedin.com/in/ajid-muhamad/"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-white"
@@ -340,7 +340,7 @@ export default function HomePage() {
                 an AI-powered SaaS recruitment platform at{" "}
                 <strong style={{ color: "#F1F5F9", fontWeight: 600 }}>ASTRNT</strong> — from early product
                 to enterprise scale. I take ownership of the entire delivery chain: database schema, API
-                design, background systems, frontend UX, and production infrastructure.
+                design, background systems, frontend UX, production infrastructure, end-to-end testing, and technical documentation.
               </p>
               <p style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "15px" }}>
                 I work across the full stack without boundaries — Laravel backends, Next.js full-stack apps,
@@ -363,6 +363,8 @@ export default function HomePage() {
               <div className="space-y-4">
                 {[
                   ["End-to-end feature ownership", "From schema design to production deployment — no handoffs required"],
+                  ["PRD & requirements authoring", "Writing product requirement documents that align engineering scope with business goals before a single line of code is written"],
+                  ["Technical documentation", "Producing DUC, API docs, inline comments, and READMEs that stay in sync with implementation — readable by engineers and stakeholders alike"],
                   ["Production architecture", "Multi-tenant SaaS design, scalable APIs, distributed background systems"],
                   ["AI/LLM product integration", "Real feature delivery: matching engines, scoring, pipelines, generation"],
                   ["Engineering quality standards", "Test mandates, CI/CD gates, code review culture, monitoring"],
@@ -760,15 +762,16 @@ export default function HomePage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="mailto:ajid@astrnt.co"
+                  href="mailto:ajidisme@gmail.com"
                   className="btn-primary"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
                 >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flexShrink: 0 }}>
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
                   </svg>
                   Send Email
                 </a>
-                <Link href="/pdf" className="btn-secondary">
+                <Link href="/pdf" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center" }}>
                   Download Resume
                 </Link>
               </div>
@@ -779,7 +782,7 @@ export default function HomePage() {
               style={{ borderRadius: "16px" }}
             >
               {[
-                { label: "Email", value: "ajid@astrnt.co", href: "mailto:ajid@astrnt.co" },
+                { label: "Email", value: "ajidisme@gmail.com", href: "mailto:ajidisme@gmail.com" },
                 { label: "GitHub", value: "github.com/ajidm", href: "https://github.com/ajidm" },
                 { label: "Location", value: "Bandung, Indonesia", href: null },
                 { label: "Availability", value: "Open to Senior Fullstack / AI-Augmented roles", href: null },
@@ -834,8 +837,8 @@ export default function HomePage() {
       >
         <p>
           Ajid Muhamad · Senior AI-Augmented Fullstack Engineer · Bandung, Indonesia ·{" "}
-          <a href="mailto:ajid@astrnt.co" className="hover:text-white transition-colors">
-            ajid@astrnt.co
+          <a href="mailto:ajidisme@gmail.com" className="hover:text-white transition-colors">
+            ajidisme@gmail.com
           </a>{" "}
           · Built with Next.js + Tailwind CSS · 2026
         </p>

@@ -1,10 +1,10 @@
 export const profile = {
   name: "Ajid Muhamad",
   title: "Senior AI-Augmented Fullstack Engineer",
-  email: "ajid@astrnt.co",
+  email: "ajidisme@gmail.com",
   github: "github.com/ajidm",
-  linkedin: "linkedin.com/in/ajidm",
-  location: "Jakarta, Indonesia",
+  linkedin: "linkedin.com/in/ajid-muhamad",
+  location: "Bandung, Indonesia",
   availability: "Open to Senior Fullstack / AI-Augmented roles",
   yearsTotal: "9+",
   yearsAtAstrnt: "6+",
