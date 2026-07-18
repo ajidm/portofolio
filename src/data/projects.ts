@@ -1806,6 +1806,721 @@ export const projects: Project[] = [
     repoPath: "/Users/mac/Astrnt/web-logger",
     color: "from-gray-500 to-slate-600",
   },
+
+  // ─── Smooets ───────────────────────────────────────────────────────────────
+
+  {
+    slug: "bca-assessment",
+    title: "BCA Assessment Platform",
+    subtitle: "Vue.js Technical Assessment App for Bank Central Asia",
+    description:
+      "Frontend technical assessment application built for Bank Central Asia (BCA) by Smooets agency. A Vue.js 2 SPA with Vuetify Material Design for managing two inventory catalog entities — JenisBarang (Item Category: code, name, price, currency, unit, size) and TipeBarang (Item Type: composite key, description, status AKTIF/NON-AKTIF). Includes PWA service worker, Excel export, Google reCAPTCHA, and JWT authentication.",
+    role: "Frontend Engineer",
+    period: "2017 – 2018",
+    status: "archived",
+    category: "frontend",
+    highlights: [
+      "Built for Bank Central Asia (BCA) — Indonesia's largest private bank",
+      "Two-entity CRUD SPA: JenisBarang (Item Category) and TipeBarang (Item Type)",
+      "PWA service worker for offline-capable sessions",
+      "Vuelidate form validation on all create/update flows",
+      "Excel export via vue-xlsx-table",
+      "Google reCAPTCHA v2 on form submission",
+      "JWT session management via js-cookie",
+    ],
+    techStack: [
+      { category: "Framework", items: ["Vue.js 2.5", "Vue Router 3", "Vuex"] },
+      { category: "UI", items: ["Vuetify 1.4 (Material Design)"] },
+      { category: "Features", items: ["Vuelidate (form validation)", "vue-xlsx-table (Excel export)", "js-cookie (JWT session)", "Google reCAPTCHA v2"] },
+      { category: "Build", items: ["Webpack", "Babel", "Service Worker (PWA)"] },
+    ],
+    integrations: [
+      { name: "Google reCAPTCHA", purpose: "Bot prevention on assessment submission", type: "infra" },
+    ],
+    features: [
+      { title: "Inventory CRUD (JenisBarang)", description: "Full CRUD for Item Categories: kodeJenis, namaJenis, harga (price), mataUang (IDR/USD), satuan (unit), ukuran (size)." },
+      { title: "Inventory CRUD (TipeBarang)", description: "Item Types with composite PK (kodeJenis + kodeTipe), keterangan (description), status (AKTIF/NON-AKTIF)." },
+      { title: "PWA / Offline Support", description: "Service worker caches app shell for offline access." },
+    ],
+    architecture:
+      "Vue.js 2 SPA with Vuex for state. Vuelidate handles form validation. Service worker registered via Webpack. API base: bca-modern-web-api.stagingapps.net/api/v1. JWT stored in js-cookie.",
+    metrics: [
+      { label: "Client", value: "Bank Central Asia (BCA)" },
+      { label: "Entities", value: "JenisBarang + TipeBarang" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Smooets/bca-fe",
+    color: "from-blue-500 to-blue-700",
+  },
+
+  {
+    slug: "roomme",
+    title: "RoomMe",
+    subtitle: "Indonesian Room Rental Marketplace — Daily & Monthly Booking",
+    description:
+      "Frontend for RoomMe — an Indonesian property rental platform for daily and monthly room/apartment stays. Angular 7 SPA with bilingual EN/ID UI, Firebase real-time data, NICEPAY payment gateway (BCA Virtual Account, ATM transfer, credit card), social login (Google + Facebook), property gallery, date range booking, and infinite scroll listings. Payment recipient: PT DUIT ORANG TUA (DOT).",
+    role: "Frontend Engineer",
+    period: "2018 – 2019",
+    status: "archived",
+    category: "frontend",
+    highlights: [
+      "NICEPAY payment gateway: BCA Virtual Account, ATM transfer, and credit card",
+      "Social login via Google OAuth and Facebook (Firebase Auth)",
+      "Bilingual EN/ID UI using @ngx-translate (full locale JSON files)",
+      "Daily and monthly booking modes with date range picker",
+      "Property search with location, price, and type filters",
+      "Infinite scroll listings with ngx-gallery carousel",
+      "Firebase project: roomme-84cd2 (real-time data + auth)",
+    ],
+    techStack: [
+      { category: "Framework", items: ["Angular 7", "TypeScript"] },
+      { category: "UI", items: ["Angular Material", "Bootstrap 4", "ngx-gallery"] },
+      { category: "Features", items: ["ngx-daterangepicker-material", "ngx-infinite-scroll", "@ngx-translate (EN/ID)", "ngx-toastr"] },
+      { category: "Backend & Auth", items: ["Firebase (real-time + auth)", "Google OAuth", "Facebook Login"] },
+      { category: "Payment", items: ["NICEPAY (BCA VA, ATM, credit card)"] },
+    ],
+    integrations: [
+      { name: "Firebase", purpose: "Real-time data sync and social authentication", type: "database" },
+      { name: "NICEPAY", purpose: "BCA Virtual Account, ATM, and credit card payment gateway", type: "payment" },
+    ],
+    features: [
+      { title: "Daily & Monthly Rental Booking", description: "Users book rooms for daily stays (hotel-style) or monthly contracts — separate pricing and booking flows for each mode." },
+      { title: "NICEPAY Payment Gateway", description: "Integrated Indonesian payment gateway supporting BCA Virtual Account, ATM bank transfer, and credit card checkout." },
+      { title: "Bilingual EN/ID", description: "Full English and Bahasa Indonesia UI via @ngx-translate — users can switch language at any time." },
+      { title: "Social Login", description: "Google and Facebook social login via Firebase Auth — pre-fills profile from social account data." },
+    ],
+    architecture:
+      "Angular 7 SPA with lazy-loaded feature modules. Firebase SDK handles auth (Google/Facebook) and real-time data. @ngx-translate loads EN/ID locale JSON at runtime. NICEPAY SDK for payment initiation. Staging: roomme.stagingapps.net.",
+    metrics: [
+      { label: "Market", value: "Indonesia (PropTech)" },
+      { label: "Payment", value: "NICEPAY / BCA VA" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Smooets/roomme-frontend",
+    color: "from-emerald-500 to-teal-600",
+  },
+
+  {
+    slug: "tbig-mobile",
+    title: "TBIG Mobile",
+    subtitle: "Enterprise Field Operations Platform for Tower Bersama Infrastructure",
+    description:
+      "Enterprise mobile web admin for PT Tower Bersama Infrastructure Group (TBIG) — Indonesia's largest independent cell tower company. Laravel 5.6 modular backend with Vue.js frontend covering 100+ models: assignments, events, meetings, complaints, news, attendance tracking, traveling approvals, push notifications (FCM), SMS (Infobip), Google Maps geocoding, Zimbra corporate mail, and a points/gamification system.",
+    role: "Full-Stack Engineer",
+    period: "2017 – 2018",
+    status: "archived",
+    category: "platform",
+    highlights: [
+      "Client: PT Tower Bersama Infrastructure Group (TBIG) — Indonesia's largest independent tower company",
+      "100+ Eloquent models across assignments, events, meetings, complaints, attendance, travel, notifications",
+      "Caffeinated Modules — Backend admin + API modules fully separated",
+      "FCM push notifications (per-role and per-user targeting)",
+      "Infobip SMS with TBIG SMS masking",
+      "Google Maps Geocoding API for location services",
+      "Zimbra corporate mail integration",
+      "Points & redemption gamification system",
+      "Mobile app distribution via iOS plist + Android APK web routes",
+    ],
+    techStack: [
+      { category: "Backend", items: ["Laravel 5.6", "PHP 7.1+", "MySQL", "Laravel Passport (JWT)"] },
+      { category: "Frontend", items: ["Vue.js 2.5", "Bootstrap 4", "Laravel Mix"] },
+      { category: "Architecture", items: ["Caffeinated Modules (Backend + Api modules)"] },
+      { category: "Notifications", items: ["Firebase Cloud Messaging (FCM)", "Infobip SMS (masking: TBiG)"] },
+      { category: "Integrations", items: ["Google Maps Geocoding API", "Zimbra Mail (corporate email)"] },
+    ],
+    integrations: [
+      { name: "Firebase Cloud Messaging", purpose: "Per-role and per-user push notifications to mobile staff", type: "realtime" },
+      { name: "Infobip", purpose: "SMS notifications with TBiG sender masking", type: "email" },
+      { name: "Google Maps", purpose: "Geocoding for office and assignment location services", type: "infra" },
+      { name: "Zimbra", purpose: "Corporate email integration for notifications", type: "email" },
+    ],
+    features: [
+      { title: "Assignment Management", description: "Create, assign, and track field assignments with approval flow, participant management, and auto-assignment rules." },
+      { title: "Event & Meeting Management", description: "Corporate event and meeting management with speakers, participants, rules, and status tracking." },
+      { title: "Attendance Tracking", description: "Staff check-in/check-out tracking with attendance type configuration." },
+      { title: "Traveling Approvals", description: "Travel request workflow with participant management and approval status tracking." },
+      { title: "Multi-Channel Notifications", description: "FCM push (per-role/per-user), Infobip SMS, and Zimbra email — triple-channel delivery." },
+    ],
+    architecture:
+      "Laravel 5.6 with Caffeinated Modules splitting the codebase into Backend (admin panel) and Api (mobile REST) modules. Passport JWT for mobile API auth. FCM + Infobip for notifications. Google Maps SDK for geocoding. Zimbra SOAP API for corporate mail.",
+    metrics: [
+      { label: "Client", value: "PT Tower Bersama Infrastructure (TBIG)" },
+      { label: "Models", value: "100+ Eloquent models" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Smooets/TBIGMobile",
+    color: "from-violet-500 to-purple-700",
+  },
+
+  {
+    slug: "telko-wallet",
+    title: "Pulsaku (Telko Wallet)",
+    subtitle: "Mobile Pulsa Top-Up & Digital Wallet for Indonesian Telco Market",
+    description:
+      "Digital wallet and mobile credit (pulsa) top-up platform branded as Pulsaku, built for the Indonesian telco consumer market. Laravel 5.2 backend with PostgreSQL. Users register via phone number, deposit balance via DOKU payment gateway, and purchase pulsa for any Indonesian carrier via Datacell wholesale API. Includes lucky draw gamification, referral program, bulk push notifications, and 37+ domain models.",
+    role: "Full-Stack Engineer",
+    period: "2016 – 2017",
+    status: "archived",
+    category: "platform",
+    highlights: [
+      "Pulsa (mobile credit) top-up via Datacell wholesale API (DATACELL_USER_ID=62ITI803)",
+      "DOKU payment gateway for wallet deposits",
+      "Zenziva SMS OTP for phone number verification",
+      "Phone prefix → carrier mapping (Telkomsel, XL, Indosat, etc.)",
+      "Lucky draw gamification system with transaction-linked entries",
+      "Referral program with reward tracking",
+      "Mass push notification / blast system (BroadcastDirectory)",
+      "37+ domain models across wallet, pulsa, notifications, and admin",
+    ],
+    techStack: [
+      { category: "Backend", items: ["Laravel 5.2", "PHP 5.5.9+", "Sentinel (auth)"] },
+      { category: "Database", items: ["PostgreSQL"] },
+      { category: "Payment & Pulsa", items: ["DOKU payment gateway", "Datacell pulsa wholesale API"] },
+      { category: "Notifications", items: ["Zenziva SMS OTP", "dompdf (PDF statements)"] },
+    ],
+    integrations: [
+      { name: "Datacell", purpose: "Pulsa wholesale API for all Indonesian carrier top-up", type: "infra" },
+      { name: "DOKU", purpose: "Indonesian payment gateway for wallet deposits", type: "payment" },
+      { name: "Zenziva SMS", purpose: "SMS OTP for phone number verification", type: "email" },
+    ],
+    features: [
+      { title: "Pulsa Top-Up (All Carriers)", description: "Purchase mobile credit for Telkomsel, XL, Indosat and others. Phone prefix auto-maps to carrier via PrefixCode model." },
+      { title: "Digital Wallet + DOKU Deposits", description: "User wallet balance with DOKU payment gateway integration for deposits. Full transaction history." },
+      { title: "Lucky Draw Gamification", description: "Transaction-linked lucky draw entries — users earn draw tickets from pulsa purchases." },
+      { title: "Referral Program", description: "Referral codes generate UserReward records and track referral chains for commission calculation." },
+    ],
+    architecture:
+      "Laravel 5.2 with API/Backend/Frontend controller namespacing. PostgreSQL for ACID-compliant wallet transactions. Datacell TCP/IP API for pulsa delivery. DOKU redirect payment flow. Zenziva SMS for OTP.",
+    metrics: [
+      { label: "Brand", value: "Pulsaku / Telko Apps" },
+      { label: "Database", value: "PostgreSQL" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Smooets/telko-wallet",
+    color: "from-orange-500 to-amber-600",
+  },
+
+  {
+    slug: "yamaha-revamp",
+    title: "Yamaha Indonesia Website Revamp",
+    subtitle: "Corporate Platform for PT Yamaha Indonesia Motor Manufacturing (YIMM)",
+    description:
+      "Full-stack corporate website CMS and public portal for PT Yamaha Indonesia Motor Manufacturing (YIMM) — the official Yamaha Indonesia subsidiary. Laravel 5.2 application with 70+ Eloquent models covering motorcycle products, power products (generators), spare parts, dealer finder with geo search, credit simulation, social media aggregation (Facebook/Instagram/Twitter feeds), brochure downloads, career portal, and RSS feed generation.",
+    role: "Full-Stack Engineer",
+    period: "2016 – 2017",
+    status: "archived",
+    category: "platform",
+    highlights: [
+      "Client: PT Yamaha Indonesia Motor Manufacturing (YIMM) — Jl. Raya Bekasi Km 23, Jakarta",
+      "70+ models: motorcycles, power products, spare parts, dealers, social feeds, brochures, careers",
+      "Dealer Finder: geo-based dealer search by city/province with DealerOperation and DealerPhone",
+      "Social Aggregation: auto-pull and store Facebook, Instagram, and Twitter feeds into DB",
+      "Credit Simulation: motorcycle purchase installment calculator",
+      "Multi-product catalog: Motorcycles + Power Products (generators/pumps) + Spare Parts",
+      "Activity logging via spatie/activitylog on all admin actions",
+      "REST API with JWT for mobile app consumption",
+    ],
+    techStack: [
+      { category: "Backend", items: ["Laravel 5.2", "PHP 5.5.9+", "Sentinel (auth)", "MySQL"] },
+      { category: "CMS & Admin", items: ["spatie/activitylog", "DataTables", "intervention/image", "Doctrine DBAL"] },
+      { category: "Social & Content", items: ["Twitter API (thujohn/twitter)", "RSS Feed generation"] },
+    ],
+    integrations: [
+      { name: "Twitter API", purpose: "Auto-pull and display official Yamaha Indonesia Twitter feed", type: "infra" },
+    ],
+    features: [
+      { title: "Multi-Product Catalog", description: "Full catalog covering motorcycles, power products (generators, pumps, tillers), and spare parts — each with full specs, images, brochures, and featured items." },
+      { title: "Dealer Finder", description: "Location-based dealer search by city/province with operating hours, phone numbers, and tags." },
+      { title: "Social Media Aggregation", description: "Cron-driven auto-pull of Facebook, Instagram, and Twitter feeds stored in DB for display on the public site." },
+      { title: "Credit Simulation", description: "Motorcycle purchase credit/installment calculator for consumers." },
+      { title: "Corporate CMS", description: "Full CMS for news, videos (YamahaFilm), static pages, banners, careers, and investor relations." },
+    ],
+    architecture:
+      "Laravel 5.2 with Api/Backend/Auth/Frontend controller namespacing. 70+ Eloquent models. Sentinel for RBAC. spatie/activitylog on model events. thujohn/twitter for Twitter API. Feed package for RSS. Doctrine DBAL for schema introspection.",
+    metrics: [
+      { label: "Client", value: "PT Yamaha Indonesia Motor Manufacturing (YIMM)" },
+      { label: "Models", value: "70+ Eloquent models" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Smooets/yamaha-revamp",
+    color: "from-red-500 to-rose-600",
+  },
+
+  {
+    slug: "cleango",
+    title: "CleanGo",
+    subtitle: "On-Demand Cleaning Marketplace — Serverless GraphQL on AWS Lambda",
+    description:
+      "Serverless backend for CleanGo — an on-demand home cleaning services marketplace connecting clients with domestic workers. Three separate Apollo GraphQL APIs: worker mobile app, client app, and admin panel. Deployed on AWS Lambda (ap-southeast-1) with AWS RDS PostgreSQL, AWS Cognito auth, Firebase Admin, FCM push notifications, and PayPal payment. 40+ tables covering reservations, worker profiles, time slots, space types, and insurance.",
+    role: "Backend Engineer",
+    period: "2018 – 2019",
+    status: "archived",
+    category: "api",
+    highlights: [
+      "Three separate GraphQL APIs: /graphql (worker), /client/graphql (client), /admin/graphql (admin)",
+      "AWS Lambda (ap-southeast-1) + AWS RDS PostgreSQL — fully serverless production stack",
+      "AWS Cognito for user identity management across worker and client apps",
+      "Full reservation lifecycle: booking, time slots, space type selection, cleaning hours, insurance",
+      "Before/after photo capture stored on AWS S3",
+      "Firebase Admin SDK + FCM for push notifications",
+      "PayPal for payment processing",
+      "40+ tables: workers (with HK status, languages, nationality, skills), clients, reservations, time_slots, insurance_reservations",
+    ],
+    techStack: [
+      { category: "Runtime", items: ["Node.js", "Serverless Framework"] },
+      { category: "API", items: ["Apollo Server Lambda (GraphQL)", "apollo-upload-server"] },
+      { category: "Infrastructure", items: ["AWS Lambda (ap-southeast-1)", "AWS API Gateway", "AWS RDS PostgreSQL", "AWS S3"] },
+      { category: "Auth", items: ["AWS Cognito", "Firebase Admin SDK"] },
+      { category: "Notifications", items: ["Firebase Cloud Messaging (FCM)"] },
+      { category: "Payment", items: ["PayPal SDK"] },
+    ],
+    integrations: [
+      { name: "AWS Lambda", purpose: "Serverless function hosting for all three GraphQL APIs", type: "infra" },
+      { name: "AWS Cognito", purpose: "User identity and token management for worker and client apps", type: "infra" },
+      { name: "AWS S3", purpose: "Before/after job photo storage", type: "storage" },
+      { name: "Firebase", purpose: "Real-time data sync and push notification targeting", type: "database" },
+      { name: "Firebase Cloud Messaging", purpose: "Push notifications to worker and client mobile apps", type: "realtime" },
+      { name: "PayPal", purpose: "Cleaning service booking payment processing", type: "payment" },
+    ],
+    features: [
+      { title: "Three Isolated GraphQL APIs", description: "Worker app, client app, and admin panel each have their own Apollo GraphQL endpoint and resolver set — clean domain separation." },
+      { title: "Full Reservation Lifecycle", description: "Clients select space type, room count, cleaning hours, extra services, insurance, then book a time slot. Workers execute and upload before/after photos." },
+      { title: "Worker Profile Marketplace", description: "Workers have rich profiles: hourly rate, languages, nationality, religion, special skills, work area, experience, and availability time slots." },
+      { title: "Insurance for Reservations", description: "Optional insurance can be added to reservations — covered via insurance_reservations table." },
+    ],
+    architecture:
+      "Serverless Framework deploys three Apollo Server handlers as separate Lambda functions behind API Gateway. AWS Cognito handles identity; Firebase Admin syncs user state. FCM push via service account. PayPal for payments. AWS RDS PostgreSQL in ap-southeast-1.",
+    metrics: [
+      { label: "Architecture", value: "Serverless (AWS Lambda ap-southeast-1)" },
+      { label: "APIs", value: "3 GraphQL surfaces (worker / client / admin)" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Smooets/CleanGo",
+    color: "from-sky-500 to-cyan-600",
+  },
+
+  {
+    slug: "smooets-scraper",
+    title: "Car Dealership Data Scraper",
+    subtitle: "PHP Scraper for Australian Car Dealerships → MongoDB",
+    description:
+      "Config-driven PHP CLI web scraper built by Smooets (package: smt/scrapper) for Australian car dealerships. Targets Castle Hill FCA Dealer (Chrysler/Fiat/Alfa/Jeep NSW) and Heartland Australia. Crawls listing and detail pages using Goutte + Symfony DomCrawler (CSS selector + XPath), extracts 15+ fields per vehicle, and stores structured documents in MongoDB.",
+    role: "Backend Engineer",
+    period: "2017",
+    status: "archived",
+    category: "tool",
+    highlights: [
+      "Targets: stock.castlehillfcadealer.com.au (Castle Hill FCA, NSW) + heartland.com.au (Heartland Australia)",
+      "Extracts: title, VIN, price, type, color, transmission, fuel, body type, odometer, stock no, year, engine, registration, dealer info, features[], images[]",
+      "CSS selector + XPath dual-strategy extraction via Symfony DomCrawler",
+      "Stores car documents in MongoDB car_items collection",
+      "List-page + detail-page crawl in a single configured run",
+      "Config DSL: pipe-delimited field selectors per site in config.php",
+    ],
+    techStack: [
+      { category: "Runtime", items: ["PHP 7+"] },
+      { category: "Scraping", items: ["Goutte 3.2", "Symfony DomCrawler (CSS + XPath)"] },
+      { category: "Storage", items: ["MongoDB (car_items collection)"] },
+      { category: "Package", items: ["smt/scrapper (Smooets internal)"] },
+    ],
+    integrations: [
+      { name: "MongoDB", purpose: "Document storage for scraped vehicle listings", type: "database" },
+    ],
+    features: [
+      { title: "Dual-Strategy Extraction", description: "Supports both CSS selector and XPath extraction modes — configurable per field per site in config.php." },
+      { title: "List + Detail Crawl", description: "Crawls paginated vehicle listing pages, follows each URL to detail page, extracts full vehicle spec and dealer info." },
+      { title: "Config DSL", description: "Pipe-delimited config format: type|selector_type|attribute|fallback|query — swap scraping targets without touching core logic." },
+    ],
+    architecture:
+      "run.php loads config, iterates target site URLs, fetches via Goutte HTTP client, traverses DOM via DomCrawler, writes each vehicle as a MongoDB document to car_items collection.",
+    metrics: [
+      { label: "Targets", value: "Castle Hill FCA Dealer (AU)" },
+      { label: "Fields/Vehicle", value: "15+ structured fields" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Smooets/scrapper",
+    color: "from-slate-500 to-zinc-600",
+  },
+
+  // ─── Freelance ─────────────────────────────────────────────────────────────
+
+  {
+    slug: "ram-asset-management",
+    title: "RAM — Rental Asset Management",
+    subtitle: "BCA Banking Equipment Maintenance Platform (Vue.js + OpenShift)",
+    description:
+      "Enterprise Vue.js SPA for Bank Central Asia (BCA)'s internal Rental Asset Management system. Manages the full lifecycle of rented banking equipment (ATM-adjacent devices, passbooks): PM scheduling by period/year, vendor and technician assignment, execution logging (issues, solutions, photos), branch portal for PIC confirmation, technician rating, and bitmasked RBAC (read/write/update/delete per menu). Deployed on OpenShift.",
+    role: "Frontend Engineer (Freelance)",
+    period: "2018 – 2019",
+    status: "archived",
+    category: "frontend",
+    highlights: [
+      "Client: PT Bank Central Asia (BCA) — API: bca-modern-web-api.stagingapps.net",
+      "OpenShift deployment (namespace: ram, app: ram-fe, GitLab: git@10.20.213.82:ERP/RAM-FRONTEND.git)",
+      "Bitmasked RBAC: per-menu permissions (read=1, insert=2, update=4, delete=8)",
+      "PM lifecycle: schedule → vendor assignment → execution → sign-off → rating",
+      "Branch portal: BCA branch PIC confirms PM visits and signs off work orders",
+      "Technician and vendor rating system (rating, ulasan, ulasanTeknisi, ulasanBarang, ulasanHelpdesk)",
+      "18 dummy JSON files with real BCA branch data (KCU Wisma Asia, Jakarta Barat)",
+      "CI/CD via Jenkins (Jenkinsfile in repo)",
+    ],
+    techStack: [
+      { category: "Framework", items: ["Vue.js 2.5", "Vue Router 3", "Vuex"] },
+      { category: "UI", items: ["Vuetify 1.3 (Material Design)"] },
+      { category: "Features", items: ["Excel import/export (xlsx)", "Bitmasked RBAC", "Audit trail"] },
+      { category: "CI/CD & Deploy", items: ["Jenkins", "OpenShift"] },
+    ],
+    integrations: [],
+    features: [
+      { title: "Bitmasked RBAC", description: "Per-menu access control stored as bitmask (1=read, 2=insert, 4=update, 8=delete) — same model as enterprise ERP systems." },
+      { title: "PM Work Order Lifecycle", description: "PM Header created by admin → vendor/technician assigned → execution recorded (keteranganMasalah, keteranganSolusi) → completed with photos → rated." },
+      { title: "Branch PIC Portal", description: "BCA branch PICs have their own login to view scheduled PM visits, confirm attendance, and sign off completion." },
+      { title: "Asset Taxonomy", description: "Four-level item hierarchy: JenisBarang → TipeBarang → MerkBarang → ModelBarang for granular asset tracking." },
+    ],
+    architecture:
+      "Vue.js SPA with Vuex managing auth state and RBAC permission map. Vuetify for Material Design. Vue Router guards enforce bitmasked per-menu access. Jenkins pipeline builds and deploys to OpenShift. API: bca-modern-web-api.stagingapps.net.",
+    metrics: [
+      { label: "Client", value: "PT Bank Central Asia (BCA)" },
+      { label: "Deploy", value: "OpenShift (enterprise)" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Freelance/ram-frontend",
+    color: "from-indigo-500 to-blue-600",
+  },
+
+  {
+    slug: "sipkd-revamp",
+    title: "SIPKD Revamp",
+    subtitle: "Regional Govt Financial System — Laravel Migration from ASP.NET (V@LID)",
+    description:
+      "Laravel 5.8 modernization of SIPKD (Sistem Informasi Pengelolaan Keuangan Daerah) — the Indonesian regional government financial management system originally in ASP.NET (V@LID SIPKD R6). Migrates budget planning (DPA, SPD), cash management (SPP, SP2D, BKU), and accounting (journals, BPK) modules to Laravel + Vue.js while retaining the SQL Server database.",
+    role: "Full-Stack Engineer (Freelance)",
+    period: "2019",
+    status: "archived",
+    category: "platform",
+    highlights: [
+      "Modernizes V@LID SIPKD R6 (ASP.NET) → Laravel 5.8 while keeping SQL Server DB",
+      "Budget (Anggaran): DPA, SPD, SKPD budget documents",
+      "Cash (Kas): SPP, SP2D, BKU workflows",
+      "Accounting (Pembukuan): journals, BPK, DASKR/DASKD realization data",
+      "Standard government roles: SKPD, PPKD, MDSKPKD, MASKPD, MPSKPD",
+      "Full audit trail via owen-it/laravel-auditing with diff tracking",
+      "QR code generation for document physical verification",
+      "Google OAuth via Socialite for government staff login",
+    ],
+    techStack: [
+      { category: "Backend", items: ["Laravel 5.8", "PHP 7.1.3+", "SQL Server (sqlsrv driver)"] },
+      { category: "Frontend", items: ["Vue.js 2.6", "Bootstrap 4", "CoreUI Dashboard", "Laravel Mix"] },
+      { category: "Auth & Permissions", items: ["Laravel Socialite (Google OAuth)", "spatie/laravel-permission"] },
+      { category: "Features", items: ["owen-it/laravel-auditing", "QR Code generation", "GeoIP tracking"] },
+    ],
+    integrations: [
+      { name: "Google OAuth", purpose: "Social login for government staff accounts", type: "infra" },
+    ],
+    features: [
+      { title: "Budget Module (Anggaran)", description: "DPA, SPD, and SKPD budget document management for regional government financial planning." },
+      { title: "Cash Module (Kas)", description: "SPP, SP2D, BKU workflows covering the full government cash disbursement lifecycle." },
+      { title: "Full Audit Trail", description: "Every model change captured by laravel-auditing with full diff for government accountability." },
+    ],
+    architecture:
+      "Laravel 5.8 (Rappasoft Boilerplate) with SQL Server driver preserving V@LID SIPKD schema. Vue.js + CoreUI for dashboard. Spatie permission for RBAC. laravel-auditing on Eloquent events. Socialite for Google OAuth.",
+    metrics: [
+      { label: "Database", value: "SQL Server (V@LID SIPKD schema)" },
+      { label: "Migration", value: "ASP.NET (V@LID R6) → Laravel 5.8" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Freelance/sipkd-revamp",
+    color: "from-green-500 to-emerald-600",
+  },
+
+  {
+    slug: "papermark",
+    title: "Papermark",
+    subtitle: "Custom Invitation & Stationery Print Platform with Mobile API",
+    description:
+      "Laravel 5.2 backend for Papermark — an Indonesian custom stationery and invitation printing platform built by Smooets. Provides AdminLTE admin panel and a REST API (api/v1) for a companion mobile app. Customers configure custom print products (invitations, cards, envelopes) by selecting paper type, layout, color, font, and lining. Nexmo SMS for phone verification (app: AHLOO), Mailgun for email, AWS S3 for file storage.",
+    role: "Backend Engineer (Freelance)",
+    period: "2016 – 2017",
+    status: "archived",
+    category: "api",
+    highlights: [
+      "Dual interface: AdminLTE admin panel + api/v1 REST endpoints for mobile app",
+      "Multi-layer product customization: Product → Layout → BackLayout → Color → Font → Lining",
+      "Nexmo SMS phone verification (app name: AHLOO)",
+      "Mailgun transactional email",
+      "AWS S3 file storage (Flysystem)",
+      "Hashtag system for product tagging and discovery",
+      "Built by Smooets (yoga@smooets.com, adi.r.k@smooets.com, roni.y@smooets.com)",
+    ],
+    techStack: [
+      { category: "Backend", items: ["Laravel 5.2", "PHP 5.5.9+", "Sentinel (auth)"] },
+      { category: "Admin", items: ["AdminLTE (admin dashboard)"] },
+      { category: "Mobile API", items: ["REST api/v1"] },
+      { category: "Notifications", items: ["Nexmo SMS (AHLOO)", "Mailgun (email)"] },
+      { category: "Storage", items: ["AWS S3 (Flysystem)", "dompdf (PDF)", "intervention/image"] },
+    ],
+    integrations: [
+      { name: "Nexmo SMS", purpose: "Phone number verification with AHLOO app branding", type: "email" },
+      { name: "Mailgun", purpose: "Transactional email delivery", type: "email" },
+      { name: "AWS S3", purpose: "Product image and file storage", type: "storage" },
+    ],
+    features: [
+      { title: "Mobile API (api/v1)", description: "REST API for companion mobile app covering product browsing, customization configuration, and order placement." },
+      { title: "Product Customization Chain", description: "Category → Product → Layout → BackLayout → Color → Font → Lining — each layer is a separate model with relational options." },
+      { title: "Order Management", description: "Full order lifecycle from product configuration to processing, with customer directory and city/location delivery management." },
+    ],
+    architecture:
+      "Laravel 5.2 with Sentinel auth. AdminLTE for admin panel UI. api/v1 namespace for mobile REST endpoints. Eloquent relational chain for product customization options. Nexmo for SMS OTP. Mailgun + AWS S3 for communications and storage.",
+    metrics: [
+      { label: "Developer", value: "Smooets (agency)" },
+      { label: "API", value: "AdminLTE + REST api/v1" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Freelance/papermark-backend",
+    color: "from-pink-500 to-rose-500",
+  },
+
+  {
+    slug: "paskomnas",
+    title: "Paskomnas",
+    subtitle: "Indonesian Multi-Vendor Marketplace with DOKU Payment",
+    description:
+      "Laravel 5.1 multi-vendor e-commerce marketplace for the Indonesian market. Full-stack with admin panel, REST API, and client storefront. Features shopping cart (gloudemans), DOKU payment gateway, Excel bulk operations, PDF invoicing, multi-language EN/ID, product regions, retail pricing variants, and a Smooets-built CRUD generator package bundled in /packages/smooets/crud-generator.",
+    role: "Full-Stack Engineer (Freelance)",
+    period: "2015 – 2016",
+    status: "archived",
+    category: "platform",
+    highlights: [
+      "DOKU payment gateway integration (Indonesian payment processor)",
+      "Multi-vendor marketplace: products with regions and retail pricing variants",
+      "Shopping cart via gloudemans/shoppingcart with session persistence",
+      "Smooets internal CRUD generator package (packages/smooets/crud-generator)",
+      "Excel bulk import/export via maatwebsite/excel",
+      "Multi-language EN/ID support with LanguageController",
+      "Partner network (TemanPaskomnas), news/FAQ/feedback CMS",
+    ],
+    techStack: [
+      { category: "Backend", items: ["Laravel 5.1", "PHP 5.5.9+", "Sentinel (auth)"] },
+      { category: "Payment", items: ["DOKU (Indonesian payment gateway)"] },
+      { category: "Features", items: ["gloudemans/shoppingcart", "maatwebsite/excel", "dompdf", "JWT auth"] },
+      { category: "Internal", items: ["Smooets CRUD Generator (packages/smooets/crud-generator)"] },
+    ],
+    integrations: [
+      { name: "DOKU", purpose: "Indonesian payment gateway for marketplace transactions", type: "payment" },
+    ],
+    features: [
+      { title: "Multi-Vendor Product Catalog", description: "Products with regional availability (ProductRegion), retail pricing variants (ProductRetail, ProductRetailDetail), images and categories." },
+      { title: "Shopping Cart & Checkout", description: "Session-based cart with gloudemans/shoppingcart. DOKU payment integration for checkout completion." },
+      { title: "Smooets CRUD Generator", description: "Internal development package (packages/smooets/crud-generator) used to scaffold admin CRUD interfaces." },
+    ],
+    architecture:
+      "Laravel 5.1 with Admin/API/Client/Auth controller namespacing. gloudemans/shoppingcart for cart. DOKU payment redirect flow. maatwebsite/excel for bulk ops. Smooets CRUD generator as a local composer package.",
+    metrics: [
+      { label: "Market", value: "Indonesia (e-commerce)" },
+      { label: "Payment", value: "DOKU (Indonesia)" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Freelance/paskomnas",
+    color: "from-yellow-500 to-orange-500",
+  },
+
+  {
+    slug: "pus-cms",
+    title: "Puskodal Portal — TNI AD",
+    subtitle: "Military Command-and-Control CMS for the Indonesian Army (170+ Tables)",
+    description:
+      "CodeIgniter 3 web portal for Puskodal (Pusat Pengendalian / Operations Control Center) at Mabes TNI AD (Indonesian Army HQ). Aggregates daily situation reports (lapsit harian) from all 15 regional commands (Kodam). 170+ MySQL tables covering intel/ops/logistics/personnel activities, incident tracking (armed combat, criminal, accidents), border monitoring (Pamtas), territorial agriculture data, BMKG weather, BNPB disaster, UN peacekeeping, and military health facility data.",
+    role: "Backend Engineer (Freelance)",
+    period: "2018",
+    status: "archived",
+    category: "platform",
+    highlights: [
+      "Client: TNI AD (Indonesian Army) — Puskodal, Mabes TNI AD",
+      "Covers all 15 Indonesian Army regional commands (Kodam I–XVIII)",
+      "170+ tables: incidents, intel, ops, logistics, personnel, territorial, border, weather, disaster",
+      "Incident tracking: armed combat (baku tembak), criminal, accidents, brawls, weapons contact",
+      "Border monitoring (Pamtas): WNI/WNA/WNTL citizenship data per territory",
+      "SPAMAD terrorism/radical monitoring (napiter, raka, raki, rala tables)",
+      "BMKG weather integration (forecast + daily + hourly tables)",
+      "A-Auth RBAC: Admin, Puskodal, Puskodaldam, Danpuskodal, Kasad & Wakasad, Public roles",
+    ],
+    techStack: [
+      { category: "Backend", items: ["CodeIgniter 3", "PHP 5.2.4+", "MySQL (MariaDB)"] },
+      { category: "Auth", items: ["A-Auth (CodeIgniter RBAC)"] },
+      { category: "Features", items: ["DOMPDF (PDF generation)", "Debug Bar", "Faker (seeding)"] },
+    ],
+    integrations: [],
+    features: [
+      { title: "Daily Situation Reports (Lapsit Harian)", description: "Aggregates situation reports from all 15 Kodam units into HQ dashboard — ops, intel, logistics, personnel." },
+      { title: "Incident Tracking (KJL)", description: "Kejadian Luar Biasa: armed combat, criminal incidents, accidents, brawls, and weapons contact — per Puskodal and Puskodaldam." },
+      { title: "Border Monitoring (Pamtas)", description: "Tracks border territory data and citizenship types (WNI/WNA/WNTL) per boundary zone." },
+      { title: "SPAMAD Tracking", description: "Monitors terrorism/radicalism data: napiter (suspected terrorists), raka, raki, rala categories." },
+    ],
+    architecture:
+      "CodeIgniter 3 MVC with A-Auth for role management. ~170 MySQL tables structured around puskodal_ and puskodaldam_ prefixes per domain. REST API endpoints (/api/*) for data aggregation. Internal IP: 192.168.200.210 (Mabes) and 10.32.2.200 (Puskodal).",
+    metrics: [
+      { label: "Client", value: "TNI AD (Indonesian Army)" },
+      { label: "Tables", value: "170+ MySQL tables" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Freelance/pus_cms",
+    color: "from-teal-500 to-cyan-600",
+  },
+
+  {
+    slug: "rip-platform",
+    title: "Rest In Peace — Digital Memorial",
+    subtitle: "Indonesian Online Memorial & Obituary Platform (restinpeace.id)",
+    description:
+      "Full-stack Laravel 5.2 platform for restinpeace.id — an Indonesian digital memorial and obituary service. Families create online memorials with photo/video/audio galleries, tribute messages, obituaries, and family trees. Subscription-based with Midtrans payment gateway, PostgreSQL database, AWS S3 media storage, AWS SES email, and Facebook OAuth.",
+    role: "Full-Stack Engineer (Freelance)",
+    period: "2016 – 2017",
+    status: "archived",
+    category: "platform",
+    highlights: [
+      "Domain: restinpeace.id — Indonesian digital memorial SaaS",
+      "Memorial galleries: photos, videos, audio recordings, and written stories",
+      "Subscription plans with Midtrans payment gateway (Indonesian processor)",
+      "PostgreSQL database (unusual choice for Laravel 5.2 era)",
+      "AWS S3 (restinpeace bucket, ap-southeast-1) for all media storage",
+      "AWS SES for transactional email (support@restinpeace.id)",
+      "Facebook OAuth for social login",
+      "Dual PDF drivers: DOMPDF + Laravel Snappy (wkhtmltopdf)",
+    ],
+    techStack: [
+      { category: "Backend", items: ["Laravel 5.2", "PHP 5.5.9+", "PostgreSQL", "Sentinel (auth)"] },
+      { category: "Storage & Email", items: ["AWS S3 (ap-southeast-1)", "AWS SES", "league/flysystem-aws-s3-v3"] },
+      { category: "Payment", items: ["Midtrans (Indonesian payment gateway)"] },
+      { category: "Documents", items: ["DOMPDF", "Laravel Snappy (wkhtmltopdf)", "maatwebsite/excel"] },
+      { category: "Auth", items: ["Facebook OAuth", "cviebrock/eloquent-sluggable"] },
+    ],
+    integrations: [
+      { name: "AWS S3", purpose: "Memorial photo, video, and audio media storage", type: "storage" },
+      { name: "AWS SES", purpose: "Transactional email from support@restinpeace.id", type: "email" },
+      { name: "Midtrans", purpose: "Subscription and memorial plan payment processing", type: "payment" },
+    ],
+    features: [
+      { title: "Digital Memorial Creation", description: "Families create memorial pages with biography, profile photo, dates, and customizable background." },
+      { title: "Multi-media Gallery", description: "Memorial galleries support photos, videos, audio recordings, and written stories — each with separate storage models." },
+      { title: "Tribute Messages", description: "Visitors can leave tribute messages on memorial pages — public or private." },
+      { title: "Obituary Management", description: "Formal obituary with family members (ObituaryFamily), gallery, and pricing/package options." },
+    ],
+    architecture:
+      "Laravel 5.2 with Api/Auth/Backend/Frontend controller namespacing. PostgreSQL for ACID-compliant subscriptions. Flysystem S3 driver for media. Midtrans redirect payment flow. DOMPDF + Snappy for PDF. Eloquent Sluggable for SEO-friendly memorial URLs.",
+    metrics: [
+      { label: "Domain", value: "restinpeace.id" },
+      { label: "Payment", value: "Midtrans (Indonesia)" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Freelance/rip",
+    color: "from-gray-600 to-slate-700",
+  },
+
+  {
+    slug: "freecarsales",
+    title: "Free Car Sales",
+    subtitle: "Australian Used Car Marketplace — WordPress + PHP Scraper Pipeline",
+    description:
+      "WordPress-based used car listing marketplace targeting the Australian market. Custom Motors 2.4 child theme, with a PHP scraper pipeline that crawls Australian dealership sites (Castle Hill FCA Dealer — Chrysler/Fiat/Alfa/Jeep, NSW) and syncs vehicle data from MongoDB into WordPress via the listing-sync module.",
+    role: "WordPress Developer (Freelance)",
+    period: "2017 – 2018",
+    status: "archived",
+    category: "frontend",
+    highlights: [
+      "Australian market: targets Castle Hill FCA Dealer (stock.castlehillfcadealer.com.au) and Heartland Australia",
+      "PHP scraper extracts 15+ vehicle fields: VIN, price, type, color, transmission, fuel, body type, odometer, dealer info, images[]",
+      "MongoDB staging layer → listing-sync module → WordPress MySQL",
+      "Config-driven scraper with CSS/XPath selectors per dealer site",
+      "Rate limiting with random sleep (0-20s) between requests",
+      "Custom fcs theme (child of Motors 2.4 automotive theme)",
+    ],
+    techStack: [
+      { category: "CMS", items: ["WordPress", "PHP", "MySQL"] },
+      { category: "Theme", items: ["fcs (custom child of Motors 2.4)"] },
+      { category: "Scraper", items: ["Goutte + Symfony DomCrawler", "MongoDB (staging)", "listing-sync API"] },
+    ],
+    integrations: [],
+    features: [
+      { title: "Vehicle Listing Marketplace", description: "WordPress site with Motors theme: vehicle listing pages, search/filter, dealer profiles, and VIN-based detail pages." },
+      { title: "Automated Scraper Pipeline", description: "PHP scraper crawls Australian dealership sites (Castle Hill FCA), stores to MongoDB, then listing-sync pushes into WordPress DB." },
+      { title: "Config-Driven Multi-Dealer", description: "config.php defines XPath/CSS selectors per dealer — add a new source without changing core scraper logic." },
+    ],
+    architecture:
+      "WordPress CMS with Motors child theme. PHP scraper (Goutte + DomCrawler) crawls dealership sites → stores car_items in MongoDB → listing-sync/api.php reads MongoDB and inserts/updates WordPress posts via direct DB.",
+    metrics: [
+      { label: "Market", value: "Australia" },
+      { label: "Source", value: "Castle Hill FCA Dealer (NSW)" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Freelance/freecarsales",
+    color: "from-blue-600 to-indigo-600",
+  },
+
+  {
+    slug: "tfi-binus",
+    title: "TFI Binus Web App",
+    subtitle: "Angular 9 Student & Admin Portal for Binus University",
+    description:
+      "Angular 9 SPA for TFI Binus (Universitas Bina Nusantara / Binus University — one of Indonesia's top private universities). Role-based portal with separate admin and student modules: analytics dashboards via Chart.js, ng-zorro Ant Design components, PWA offline capability, and complex lazy-loaded multi-module routing.",
+    role: "Frontend Engineer (Freelance)",
+    period: "2019 – 2020",
+    status: "archived",
+    category: "frontend",
+    highlights: [
+      "Client: Universitas Bina Nusantara (Binus University), Indonesia",
+      "Two lazy-loaded modules: admin (requires isAdmin flag) and student",
+      "AuthGuardService protects all routes with role-based access",
+      "ng-zorro Ant Design as primary component library",
+      "Chart.js + ng2-charts for analytics dashboards",
+      "Angular service worker (PWA) + IndexedDB for offline/caching",
+      "date-fns + moment.js for date handling",
+    ],
+    techStack: [
+      { category: "Framework", items: ["Angular 9", "TypeScript"] },
+      { category: "UI", items: ["ng-zorro Ant Design", "Angular Material 8", "Bootstrap 4"] },
+      { category: "Charts", items: ["Chart.js", "ng2-charts"] },
+      { category: "Features", items: ["Service Worker (PWA)", "IndexedDB", "date-fns", "moment.js", "SweetAlert2"] },
+    ],
+    integrations: [],
+    features: [
+      { title: "Student Module", description: "Student-facing portal at / — assignments, schedules, progress tracking. Protected by AuthGuard." },
+      { title: "Admin Module", description: "Admin interface at /admin — analytics dashboards, data management, reporting. Requires isAdmin flag." },
+      { title: "Analytics Dashboards", description: "Chart.js-powered dashboards with multiple chart types for admin reporting and data visualization." },
+    ],
+    architecture:
+      "Angular 9 with lazy-loaded feature modules. ng-zorro provides the primary component library; Chart.js handles analytics charts. Service worker registered via @angular/pwa for offline capability. Complex route guards for module-level access control.",
+    metrics: [
+      { label: "Client", value: "TFI Binus" },
+      { label: "Framework", value: "Angular 9" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Freelance/TFIBinus",
+    color: "from-purple-500 to-violet-600",
+  },
+
+  {
+    slug: "sipkd-jabar",
+    title: "SIPKD Jabar — Design & Consultancy",
+    subtitle: "Architecture Analysis for West Java Regional Govt Financial System",
+    description:
+      "Architecture analysis and consultancy engagement for SIPKD (Sistem Informasi Pengelolaan Keuangan Daerah) for the West Java (Jabar) provincial government. Delivered full Phase 2a design documentation — fit/gap analysis, solution architecture, class design, deployment design, networking (Arsitektur Jaringan), data dictionary, and DB design — plus working eBudgeting module data for Hibah (grants), Bansos (social aid), and Bandes (village aid) programs.",
+    role: "Full-Stack Engineer / Consultant (Freelance)",
+    period: "2018 – 2019",
+    status: "archived",
+    category: "platform",
+    highlights: [
+      "Client: Pemprov Jabar (West Java Provincial Government)",
+      "Original system: V@LID SIPKD R6 (ASP.NET + SQL Server)",
+      "Phase 2a deliverables: Fit/Gap, Solution Architecture, Class Design, Deployment, Networking, Data Dictionary, DB Design",
+      "eBudgeting module: Hibah (grants), Bansos (social aid), Bandes (village aid)",
+      "94MB MySQL dump of eBudgeting production database",
+      "Excel data deliverables: attributes, activity mappings, program data, user imports, activity price catalog",
+    ],
+    techStack: [
+      { category: "Original System", items: ["SQL Server", "ASP.NET (V@LID SIPKD R6)"] },
+      { category: "eBudgeting Module", items: ["MySQL (94MB production dump)"] },
+      { category: "Deliverables", items: ["Architecture documentation", "Excel data files", "Database design (.rar archives)"] },
+    ],
+    integrations: [],
+    features: [
+      { title: "Phase 2a Architecture Documentation", description: "Full design phase: fit/gap analysis, solution architecture, class design, component design, deployment design, networking (Arsitektur Jaringan), UI design, data dictionary, and logical/physical DB design." },
+      { title: "eBudgeting Module Data", description: "Production-ready data for Hibah, Bansos, and Bandes programs: attributes, activity mappings, program data, user imports, and activity price catalog (Kamus Kegiatan)." },
+      { title: "Database Assets", description: "94MB MySQL backup of the eBudgeting module database plus SQL Server .bak restore file of the original V@LID SIPKD system." },
+    ],
+    architecture:
+      "Consultancy engagement — no new code written. Delivered design documentation for modernizing V@LID SIPKD R6 (SQL Server/ASP.NET). eBudgeting module data prepared for migration into the redesigned system.",
+    metrics: [
+      { label: "Client", value: "Pemprov Jabar (West Java)" },
+      { label: "DB Backup", value: "94MB eBudgeting MySQL dump" },
+    ],
+    repoPath: "/Volumes/Work/MyJobs/Freelance/SIPKD",
+    color: "from-cyan-600 to-teal-700",
+  },
 ]
 
 export function getProjectBySlug(slug: string): Project | undefined {
