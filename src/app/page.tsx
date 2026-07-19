@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { projects, categoryLabels, statusColors } from "@/data/projects"
-import { skills } from "@/data/profile"
+import { skills, awards } from "@/data/profile"
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -42,6 +42,37 @@ const achievements = [
   "Introduced team-wide AI-assisted engineering workflow — reducing PR review cycle time and improving test coverage throughput across all repositories",
   "Led multi-product delivery across 22 repositories: dashboard, recruiter, candidate apps, marketplaces, APIs",
   "Managed multi-cloud infrastructure: Azure Blob, AWS S3, Docker, Azure Pipelines, GitHub Actions CI/CD",
+]
+
+const otherExperience = [
+  {
+    company: "PT. SMOOETS TEKNOLOGI OUTSOURCING",
+    role: "Full Stack Web Developer",
+    period: "Apr 2016 – Jun 2019",
+    years: "3 years",
+    type: "Full-time",
+    location: "Bandung, Indonesia",
+    achievements: [
+      "Led development teams on a project basis and provided technical direction throughout the software development lifecycle",
+      "Designed system architectures and delivered end-to-end web applications",
+      "Built backend services, databases, and API integrations with a focus on performance and maintainability",
+      "Developed responsive and user-centric interfaces using modern web technologies",
+      "Translated business requirements into structured technical solutions and execution plans",
+      "Optimized system performance and improved code quality to support long-term maintainability",
+    ],
+  },
+  {
+    company: "Freelance",
+    role: "Fullstack Developer",
+    period: "Jun 2019 – Feb 2020",
+    years: "9 months",
+    type: "Freelance",
+    location: "Bandung & Jakarta, Indonesia",
+    achievements: [
+      "Designed and developed custom end-to-end web applications",
+      "Built secure RESTful APIs, optimized complex SQL queries, and integrated third-party services",
+    ],
+  },
 ]
 
 const primaryStack = [
@@ -150,6 +181,7 @@ export default function HomePage() {
               { label: "Experience", href: "#experience" },
               { label: "Projects", href: "#projects" },
               { label: "Skills", href: "#skills" },
+              { label: "Awards", href: "#awards" },
               { label: "Contact", href: "#contact" },
             ].map((link) => (
               <a
@@ -467,6 +499,53 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+
+          {/* Previous Experience */}
+          <div className="mt-4 grid md:grid-cols-2 gap-4">
+            {otherExperience.map((exp) => (
+              <div key={exp.company} className="card p-7" style={{ borderRadius: "16px" }}>
+                <div
+                  className="flex flex-wrap items-start justify-between gap-3 pb-5 mb-5"
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span
+                        className="text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                        style={{
+                          background: "rgba(99,102,241,0.10)",
+                          color: "#818CF8",
+                          border: "1px solid rgba(99,102,241,0.20)",
+                        }}
+                      >
+                        {exp.years}
+                      </span>
+                      <span className="text-xs" style={{ color: "#475569" }}>
+                        {exp.type} · {exp.location}
+                      </span>
+                    </div>
+                    <h3 className="text-base font-bold mb-1" style={{ color: "#F1F5F9" }}>
+                      {exp.role}
+                    </h3>
+                    <p className="text-sm font-semibold" style={{ color: "#6366F1" }}>
+                      {exp.company}
+                    </p>
+                  </div>
+                  <p className="text-xs font-medium" style={{ color: "#64748B" }}>
+                    {exp.period}
+                  </p>
+                </div>
+                <ul className="space-y-2">
+                  {exp.achievements.map((a) => (
+                    <li key={a} className="achievement">
+                      <span className="achievement-dot" aria-hidden="true" />
+                      <span className="text-xs" style={{ color: "#64748B", lineHeight: "1.7" }}>{a}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -734,6 +813,58 @@ export default function HomePage() {
                 </h3>
                 <p className="text-xs" style={{ color: "#64748B", lineHeight: "1.8" }}>
                   {u.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════ AWARDS */}
+      <section
+        id="awards"
+        className="border-t"
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        aria-labelledby="awards-heading"
+      >
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <span className="section-label">Recognition</span>
+          <h2
+            id="awards-heading"
+            className="font-bold mb-12"
+            style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "#F1F5F9", letterSpacing: "-0.02em" }}
+          >
+            Awards
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {awards.map((award) => (
+              <div
+                key={award.title}
+                className="card p-7"
+                style={{ borderRadius: "16px" }}
+              >
+                <div
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full mb-5"
+                  style={{
+                    background: "rgba(251,191,36,0.08)",
+                    color: "#FBBF24",
+                    border: "1px solid rgba(251,191,36,0.18)",
+                  }}
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  {award.date}
+                </div>
+                <h3 className="text-sm font-bold mb-1" style={{ color: "#F1F5F9", lineHeight: "1.4" }}>
+                  {award.title}
+                </h3>
+                <p className="text-xs font-medium mb-4" style={{ color: "#6366F1" }}>
+                  {award.org}
+                </p>
+                <p className="text-xs" style={{ color: "#64748B", lineHeight: "1.8" }}>
+                  {award.description}
                 </p>
               </div>
             ))}

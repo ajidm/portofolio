@@ -39,6 +39,30 @@ export const experience = [
   },
 ]
 
+export const awards = [
+  {
+    title: "Everyone Makes, Tests & Promotes",
+    org: "PT Astronaut Teknologi Indonesia",
+    date: "Jun 2026",
+    description:
+      "Everyone contributes to building, testing, and promoting the product with craftsmanship and attention to detail. Excellence is a habit, not an act.",
+  },
+  {
+    title: "Get What You Need, Fast",
+    org: "PT Astronaut Teknologi Indonesia",
+    date: "Jan 2026",
+    description:
+      "Recognized for exceptional technical initiative, cross-team blocker removal, and driving project velocity.",
+  },
+  {
+    title: "Set Objective, Move Fast",
+    org: "PT Astronaut Teknologi Indonesia",
+    date: "Jul 2023",
+    description:
+      "Awarded for outstanding execution speed and establishing clear technical objectives across engineering teams.",
+  },
+]
+
 export const skills = [
   {
     category: "Frontend",

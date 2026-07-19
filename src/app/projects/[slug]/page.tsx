@@ -45,16 +45,17 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 font-mono text-sm transition-colors hover:text-white"
-            style={{ color: "#475569" }}
+            className="flex items-center gap-2 text-sm transition-colors hover:text-white"
+            style={{ color: "#64748B" }}
           >
-            <span style={{ color: "#22C55E" }}>$</span>
-            <span>cd ..</span>
-            <span style={{ color: "#334155" }}>← back to projects</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M9 11L5 7L9 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Back to projects
           </Link>
           <div className="flex items-center gap-3">
             <span
-              className="text-[10px] font-mono px-2 py-0.5 rounded-full"
+              className="text-[10px] font-medium px-2 py-0.5 rounded-full"
               style={{
                 background:
                   project.status === "production"
@@ -72,7 +73,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             >
               {project.status}
             </span>
-            <span className="text-xs font-mono" style={{ color: "#475569" }}>
+            <span className="text-xs" style={{ color: "#475569" }}>
               {categoryLabels[project.category]}
             </span>
           </div>
@@ -80,37 +81,23 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       </nav>
 
       <div className="max-w-5xl mx-auto px-6 py-12">
-        {/* Header as terminal window */}
-        <div className="terminal-window mb-12">
-          <div className="terminal-chrome">
-            <div className="terminal-dots">
-              <span className="dot dot-red" />
-              <span className="dot dot-yellow" />
-              <span className="dot dot-green" />
-            </div>
-            <span className="terminal-title">{project.slug}/README.md</span>
-          </div>
-          <div className="p-8">
-            <div className="flex items-center gap-2 mb-5 font-mono text-sm">
-              <span className="cmd-prompt">$</span>
-              <span className="cmd-text">cat project.json | jq &apos;.meta&apos;</span>
-            </div>
-            <div className={`h-1 w-16 rounded-full bg-gradient-to-r ${project.color} mb-6`} />
-            <h1 className="text-3xl font-bold mb-3" style={{ color: "#F1F5F9" }}>
-              {project.title}
-            </h1>
-            <p className="text-base mb-3" style={{ color: "#94A3B8" }}>
-              {project.subtitle}
-            </p>
-            <p className="text-sm font-mono" style={{ color: "#475569" }}>
-              {project.period} · {project.role}
-            </p>
-          </div>
+        {/* Header */}
+        <div className="mb-12">
+          <div className={`h-1 w-16 rounded-full bg-gradient-to-r ${project.color} mb-8`} />
+          <h1 className="text-4xl font-bold mb-3" style={{ color: "#F1F5F9" }}>
+            {project.title}
+          </h1>
+          <p className="text-lg mb-4" style={{ color: "#94A3B8" }}>
+            {project.subtitle}
+          </p>
+          <p className="text-sm" style={{ color: "#475569" }}>
+            {project.period} · {project.role}
+          </p>
         </div>
 
         {/* Description */}
         <section className="mb-12">
-          <TerminalSectionTitle cmd="cat project.json | jq '.description'">Description</TerminalSectionTitle>
+          <SectionTitle>Description</SectionTitle>
           <p className="text-base" style={{ color: "#94A3B8", lineHeight: "1.9" }}>
             {project.description}
           </p>
@@ -119,7 +106,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         {/* Highlights */}
         {project.highlights.length > 0 && (
           <section className="mb-12">
-            <TerminalSectionTitle cmd="cat project.json | jq '.highlights'">Key Highlights</TerminalSectionTitle>
+            <SectionTitle>Key Highlights</SectionTitle>
             <div className="space-y-3">
               {project.highlights.map((h, i) => (
                 <div
@@ -128,7 +115,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}
                 >
                   <span
-                    className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 font-mono"
+                    className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0"
                     style={{ background: "rgba(99,102,241,0.2)", color: "#818CF8" }}
                   >
                     {i + 1}
@@ -145,7 +132,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         {/* Metrics */}
         {project.metrics.length > 0 && (
           <section className="mb-12">
-            <TerminalSectionTitle cmd="cat project.json | jq '.metrics'">Metrics &amp; Scale</TerminalSectionTitle>
+            <SectionTitle>Metrics &amp; Scale</SectionTitle>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               {project.metrics.map((m) => (
                 <div
@@ -153,7 +140,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   className="rounded-xl p-4 text-center"
                   style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
                 >
-                  <div className="text-2xl font-bold font-mono mb-1" style={{ color: "#F1F5F9" }}>
+                  <div className="text-xl font-bold mb-1" style={{ color: "#F1F5F9" }}>
                     {m.value}
                   </div>
                   <div className="text-[11px]" style={{ color: "#64748B" }}>
@@ -167,7 +154,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
         {/* Tech Stack */}
         <section className="mb-12">
-          <TerminalSectionTitle cmd="cat project.json | jq '.techStack'">Tech Stack &amp; Libraries</TerminalSectionTitle>
+          <SectionTitle>Tech Stack &amp; Libraries</SectionTitle>
           <div className="space-y-4">
             {project.techStack.map((cat) => (
               <div
@@ -176,7 +163,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}
               >
                 <h4
-                  className="text-xs font-semibold uppercase tracking-wider mb-3 font-mono"
+                  className="text-xs font-semibold uppercase tracking-wider mb-3"
                   style={{ color: "#475569" }}
                 >
                   {cat.category}
@@ -196,7 +183,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         {/* Third-party Integrations */}
         {project.integrations.length > 0 && (
           <section className="mb-12">
-            <TerminalSectionTitle cmd="cat project.json | jq '.integrations'">Third-Party &amp; Provider Integrations</TerminalSectionTitle>
+            <SectionTitle>Third-Party &amp; Provider Integrations</SectionTitle>
             <div className="grid sm:grid-cols-2 gap-3">
               {project.integrations.map((intg) => (
                 <div
@@ -206,7 +193,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 >
                   <div className="shrink-0 mt-0.5">
                     <span
-                      className={`text-[10px] font-medium px-2 py-0.5 rounded-full font-mono ${integrationTypeColors[intg.type]}`}
+                      className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${integrationTypeColors[intg.type]}`}
                     >
                       {intg.type}
                     </span>
@@ -228,7 +215,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         {/* Features */}
         {project.features.length > 0 && (
           <section className="mb-12">
-            <TerminalSectionTitle cmd="cat project.json | jq '.features'">Features</TerminalSectionTitle>
+            <SectionTitle>Features</SectionTitle>
             <div className="grid sm:grid-cols-2 gap-4">
               {project.features.map((f) => (
                 <div
@@ -250,7 +237,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
         {/* Architecture */}
         <section className="mb-16">
-          <TerminalSectionTitle cmd="cat project.json | jq '.architecture'">Architecture</TerminalSectionTitle>
+          <SectionTitle>Architecture</SectionTitle>
           <div
             className="p-6 rounded-xl"
             style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}
@@ -271,10 +258,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               href={`/projects/${prev.slug}`}
               className="group flex flex-col text-sm hover:opacity-80 transition-opacity"
             >
-              <span className="text-xs mb-1 font-mono" style={{ color: "#475569" }}>
-                ← cd ../prev
+              <span className="text-xs mb-1 flex items-center gap-1" style={{ color: "#475569" }}>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M7.5 9.5L4.5 6L7.5 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Previous
               </span>
-              <span className="font-medium transition-colors" style={{ color: "#F1F5F9" }}>
+              <span className="font-medium" style={{ color: "#F1F5F9" }}>
                 {prev.title}
               </span>
             </Link>
@@ -286,10 +276,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               href={`/projects/${next.slug}`}
               className="group flex flex-col text-sm text-right hover:opacity-80 transition-opacity"
             >
-              <span className="text-xs mb-1 font-mono" style={{ color: "#475569" }}>
-                cd ../next →
+              <span className="text-xs mb-1 flex items-center justify-end gap-1" style={{ color: "#475569" }}>
+                Next
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M4.5 2.5L7.5 6L4.5 9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </span>
-              <span className="font-medium transition-colors" style={{ color: "#F1F5F9" }}>
+              <span className="font-medium" style={{ color: "#F1F5F9" }}>
                 {next.title}
               </span>
             </Link>
@@ -302,29 +295,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   )
 }
 
-function TerminalSectionTitle({
-  children,
-  cmd,
-}: {
-  children: React.ReactNode
-  cmd: string
-}) {
+function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mb-5">
-      <div
-        className="flex items-center gap-2 font-mono text-xs mb-3 pb-3"
-        style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", color: "#475569" }}
-      >
-        <span style={{ color: "#22C55E" }}>$</span>
-        <span style={{ color: "#7DD3FC" }}>{cmd}</span>
-      </div>
-      <h2 className="text-base font-semibold flex items-center gap-3" style={{ color: "#F1F5F9" }}>
-        <span
-          className="block w-6 h-px rounded-full"
-          style={{ background: "rgba(99,102,241,0.6)" }}
-        />
-        {children}
-      </h2>
-    </div>
+    <h2 className="text-base font-semibold flex items-center gap-3 mb-5" style={{ color: "#F1F5F9" }}>
+      <span
+        className="block w-6 h-px rounded-full"
+        style={{ background: "rgba(99,102,241,0.6)" }}
+      />
+      {children}
+    </h2>
   )
 }
