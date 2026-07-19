@@ -493,7 +493,7 @@ export default function HomePage() {
             </p>
 
             {/* Achievements */}
-            <div className="grid md:grid-cols-2 gap-x-10 gap-y-1">
+            <div className="grid md:grid-cols-2 gap-x-10 gap-y-1 mb-8">
               {achievements.map((a) => (
                 <div key={a} className="achievement">
                   <span className="achievement-dot" aria-hidden="true" />
@@ -501,6 +501,16 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+            <Link
+              href="/experience/astrnt"
+              className="inline-flex items-center gap-2 text-xs font-medium transition-colors hover:text-white"
+              style={{ color: "#6366F1" }}
+            >
+              View full profile — 22 projects, 3 phases
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </div>
 
           {/* Previous Experience */}
@@ -536,7 +546,7 @@ export default function HomePage() {
                     <span>{exp.type} · {exp.location}</span>
                   </div>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mb-6">
                   {exp.achievements.map((a) => (
                     <li key={a} className="achievement">
                       <span className="achievement-dot" aria-hidden="true" />
@@ -544,6 +554,16 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href={`/experience/${exp.company.toLowerCase()}`}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-white"
+                  style={{ color: "#6366F1" }}
+                >
+                  View details
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                    <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
               </div>
             ))}
           </div>
