@@ -9,15 +9,21 @@ const FEATURED_SLUGS = [
   "recruiter",
   "api-qna",
   "qna-web",
-  "cdc-frontend",
-  "cdc-backend",
+  "public-web",
+  "support-dashboard",
 ]
 
 const featuredProjects = FEATURED_SLUGS
   .map((s) => projects.find((p) => p.slug === s))
   .filter(Boolean) as typeof projects
 
-const otherProjects = projects.filter((p) => !FEATURED_SLUGS.includes(p.slug))
+const otherProjects = projects
+  .filter((p) => !FEATURED_SLUGS.includes(p.slug))
+  .sort((a, b) => {
+    const yearA = parseInt(a.period.split(/[\s–-]/)[0])
+    const yearB = parseInt(b.period.split(/[\s–-]/)[0])
+    return yearB - yearA
+  })
 
 const stats = [
   { value: "9+", label: "Years Experience" },
@@ -378,7 +384,7 @@ export default function HomePage() {
                 suites, and technical documentation.
               </p>
               <p style={{ color: "#94A3B8", lineHeight: "1.9", fontSize: "15px" }}>
-                My work spans Laravel backends, Next.js full-stack apps, Nuxt.js SSR marketplaces,
+                My work spans Laravel backends, React frontends, Next.js full-stack apps,
                 Node.js microservices, and distributed background job systems. What stays consistent
                 across all of it: clear data models, well-defined API contracts, and systems that are
                 straightforward to maintain and extend.
@@ -449,35 +455,32 @@ export default function HomePage() {
           >
             {/* Header */}
             <div
-              className="flex flex-wrap items-start justify-between gap-6 pb-8 mb-8"
+              className="pb-8 mb-8"
               style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
             >
-              <div>
-                <div className="flex flex-wrap items-center gap-3 mb-3">
-                  <span
-                    className="text-xs font-semibold px-3 py-1 rounded-full"
-                    style={{
-                      background: "rgba(99,102,241,0.12)",
-                      color: "#818CF8",
-                      border: "1px solid rgba(99,102,241,0.22)",
-                    }}
-                  >
-                    6+ years
-                  </span>
-                  <span className="text-xs" style={{ color: "#475569" }}>
-                    Full-time · Remote — Bandung, Indonesia
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold mb-1" style={{ color: "#F1F5F9" }}>
-                  Senior AI-Augmented Fullstack Engineer
-                </h3>
+              <div className="flex flex-wrap items-baseline justify-between gap-4 mb-2">
                 <p className="text-sm font-semibold" style={{ color: "#6366F1" }}>
                   ASTRNT
                 </p>
+                <p className="text-sm font-medium" style={{ color: "#94A3B8" }}>Feb 2020 – Present</p>
               </div>
-              <div className="text-right">
-                <p className="text-sm font-medium" style={{ color: "#F1F5F9" }}>Feb 2020 – Present</p>
-                <p className="text-xs mt-1" style={{ color: "#64748B" }}>AI-powered SaaS recruitment</p>
+              <h3 className="text-xl font-bold mb-3" style={{ color: "#F1F5F9" }}>
+                Senior Software Engineer
+              </h3>
+              <div className="flex flex-wrap items-center gap-2 text-xs" style={{ color: "#475569" }}>
+                <span
+                  className="font-semibold px-2.5 py-0.5 rounded-full"
+                  style={{
+                    background: "rgba(99,102,241,0.10)",
+                    color: "#818CF8",
+                    border: "1px solid rgba(99,102,241,0.20)",
+                  }}
+                >
+                  6+ years
+                </span>
+                <span>Full-time · Remote — Bandung, Indonesia</span>
+                <span style={{ color: "#334155" }}>·</span>
+                <span>AI-powered SaaS recruitment</span>
               </div>
             </div>
 
@@ -505,35 +508,33 @@ export default function HomePage() {
             {otherExperience.map((exp) => (
               <div key={exp.company} className="card p-7" style={{ borderRadius: "16px" }}>
                 <div
-                  className="flex flex-wrap items-start justify-between gap-3 pb-5 mb-5"
+                  className="pb-5 mb-5"
                   style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
                 >
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <span
-                        className="text-xs font-semibold px-2.5 py-0.5 rounded-full"
-                        style={{
-                          background: "rgba(99,102,241,0.10)",
-                          color: "#818CF8",
-                          border: "1px solid rgba(99,102,241,0.20)",
-                        }}
-                      >
-                        {exp.years}
-                      </span>
-                      <span className="text-xs" style={{ color: "#475569" }}>
-                        {exp.type} · {exp.location}
-                      </span>
-                    </div>
-                    <h3 className="text-base font-bold mb-1" style={{ color: "#F1F5F9" }}>
-                      {exp.role}
-                    </h3>
+                  <div className="flex flex-wrap items-baseline justify-between gap-4 mb-2">
                     <p className="text-sm font-semibold" style={{ color: "#6366F1" }}>
                       {exp.company}
                     </p>
+                    <p className="text-xs font-medium" style={{ color: "#94A3B8" }}>
+                      {exp.period}
+                    </p>
                   </div>
-                  <p className="text-xs font-medium" style={{ color: "#64748B" }}>
-                    {exp.period}
-                  </p>
+                  <h3 className="text-base font-bold mb-3" style={{ color: "#F1F5F9" }}>
+                    {exp.role}
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-2 text-xs" style={{ color: "#475569" }}>
+                    <span
+                      className="font-semibold px-2.5 py-0.5 rounded-full"
+                      style={{
+                        background: "rgba(99,102,241,0.10)",
+                        color: "#818CF8",
+                        border: "1px solid rgba(99,102,241,0.20)",
+                      }}
+                    >
+                      {exp.years}
+                    </span>
+                    <span>{exp.type} · {exp.location}</span>
+                  </div>
                 </div>
                 <ul className="space-y-2">
                   {exp.achievements.map((a) => (

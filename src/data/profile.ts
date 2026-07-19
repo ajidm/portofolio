@@ -15,7 +15,7 @@ export const profile = {
 export const experience = [
   {
     company: "ASTRNT",
-    role: "Senior AI-Augmented Fullstack Engineer",
+    role: "Senior Software Engineer",
     period: "Feb 2020 – Present",
     years: "6+ years",
     type: "Full-time",

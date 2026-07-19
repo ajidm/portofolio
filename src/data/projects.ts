@@ -2181,8 +2181,8 @@ export const projects: Project[] = [
   },
 
   {
-    slug: "sipkd-revamp",
-    title: "SIPKD Revamp",
+    slug: "sipkd-jabar",
+    title: "SIPKD Jabar",
     subtitle: "Regional Govt Financial System — Laravel Migration from ASP.NET (V@LID)",
     description:
       "Laravel 5.8 modernization of SIPKD (Sistem Informasi Pengelolaan Keuangan Daerah) — the Indonesian regional government financial management system originally in ASP.NET (V@LID SIPKD R6). Migrates budget planning (DPA, SPD), cash management (SPP, SP2D, BKU), and accounting (journals, BPK) modules to Laravel + Vue.js while retaining the SQL Server database.",
@@ -2483,44 +2483,6 @@ export const projects: Project[] = [
     color: "from-purple-500 to-violet-600",
   },
 
-  {
-    slug: "sipkd-jabar",
-    title: "SIPKD Jabar — Design & Consultancy",
-    subtitle: "Architecture Analysis for West Java Regional Govt Financial System",
-    description:
-      "Architecture analysis and consultancy engagement for SIPKD (Sistem Informasi Pengelolaan Keuangan Daerah) for the West Java (Jabar) provincial government. Delivered full Phase 2a design documentation — fit/gap analysis, solution architecture, class design, deployment design, networking (Arsitektur Jaringan), data dictionary, and DB design — plus working eBudgeting module data for Hibah (grants), Bansos (social aid), and Bandes (village aid) programs.",
-    role: "Full-Stack Engineer / Consultant (Freelance)",
-    period: "2018 – 2019",
-    status: "archived",
-    category: "platform",
-    highlights: [
-      "Client: Pemprov Jabar (West Java Provincial Government)",
-      "Original system: V@LID SIPKD R6 (ASP.NET + SQL Server)",
-      "Phase 2a deliverables: Fit/Gap, Solution Architecture, Class Design, Deployment, Networking, Data Dictionary, DB Design",
-      "eBudgeting module: Hibah (grants), Bansos (social aid), Bandes (village aid)",
-      "94MB MySQL dump of eBudgeting production database",
-      "Excel data deliverables: attributes, activity mappings, program data, user imports, activity price catalog",
-    ],
-    techStack: [
-      { category: "Original System", items: ["SQL Server", "ASP.NET (V@LID SIPKD R6)"] },
-      { category: "eBudgeting Module", items: ["MySQL (94MB production dump)"] },
-      { category: "Deliverables", items: ["Architecture documentation", "Excel data files", "Database design (.rar archives)"] },
-    ],
-    integrations: [],
-    features: [
-      { title: "Phase 2a Architecture Documentation", description: "Full design phase: fit/gap analysis, solution architecture, class design, component design, deployment design, networking (Arsitektur Jaringan), UI design, data dictionary, and logical/physical DB design." },
-      { title: "eBudgeting Module Data", description: "Production-ready data for Hibah, Bansos, and Bandes programs: attributes, activity mappings, program data, user imports, and activity price catalog (Kamus Kegiatan)." },
-      { title: "Database Assets", description: "94MB MySQL backup of the eBudgeting module database plus SQL Server .bak restore file of the original V@LID SIPKD system." },
-    ],
-    architecture:
-      "Consultancy engagement — no new code written. Delivered design documentation for modernizing V@LID SIPKD R6 (SQL Server/ASP.NET). eBudgeting module data prepared for migration into the redesigned system.",
-    metrics: [
-      { label: "Client", value: "Pemprov Jabar (West Java)" },
-      { label: "DB Backup", value: "94MB eBudgeting MySQL dump" },
-    ],
-    repoPath: "/Volumes/Work/MyJobs/Freelance/SIPKD",
-    color: "from-cyan-600 to-teal-700",
-  },
 ]
 
 export function getProjectBySlug(slug: string): Project | undefined {
