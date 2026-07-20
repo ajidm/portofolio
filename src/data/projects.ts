@@ -293,7 +293,7 @@ export const projects: Project[] = [
     title: "ASTRNT Recruiter (Main App)",
     subtitle: "Enterprise Recruitment Platform — Large-Scale Laravel + React SPA",
     description:
-      "The backbone of ASTRNT's first-generation recruitment platform. Laravel monolith with Dingo API as the REST backend, serving a React SPA (416 JSX files, Redux + redux-saga) as the frontend. Handles video interviews, diverse psychometric assessment types, automatic speech-to-text, video transcoding via FFmpeg, multiple payment gateways, multi-tenant client modules, and enterprise SSO integration — in a single platform used by major companies like Gojek, BCA, Sephora, and Deloitte.",
+      "The backbone of ASTRNT's first-generation recruitment platform. Laravel monolith with Dingo API as the REST backend, serving a React SPA (416 JSX files, Redux + redux-saga) as the frontend. Handles video interviews, diverse psychometric assessment types, automatic speech-to-text, video transcoding via FFmpeg, multiple payment gateways, multi-tenant client modules, and enterprise SSO integration — in a single platform used by enterprise clients including KAI, NTU, and NUS.",
     role: "Full-Stack Engineer",
     period: "2022 – 2024",
     status: "production",
@@ -304,9 +304,9 @@ export const projects: Project[] = [
       "FFmpeg video transcoding + JWPlayer streaming for interview video playback",
       "Tesseract OCR for text extraction from image-based documents",
       "Multi-payment gateway: Stripe (global) + Veritrans/Midtrans (Indonesia)",
-      "SAML2 SSO for enterprise clients (Gojek, BCA, etc.) with custom auth flow",
+      "SAML2 SSO for enterprise clients (KAI, NTU, NUS) with custom auth flow",
       "8+ psychometric assessment types: ART, RIASEC, Creative Thinking, Writing Test, Reading Test, Values Reflection, etc.",
-      "Client-specific modules per company: BCA, Gojek, Deloitte, Sephora, Homecredit, Ristekdikti, etc.",
+      "Client-specific modules per company: KAI, NTU, NUS, and other enterprise clients",
     ],
     techStack: [
       {
@@ -354,7 +354,7 @@ export const projects: Project[] = [
       { name: "Google Cloud Speech", purpose: "Auto-transcription of candidate video answers to text", type: "ai" },
       { name: "Stripe", purpose: "Global payment & enterprise subscription", type: "payment" },
       { name: "Veritrans/Midtrans", purpose: "Indonesian payment gateway", type: "payment" },
-      { name: "SAML2 SSO", purpose: "Enterprise SSO for Gojek, BCA, and other major clients", type: "infra" },
+      { name: "SAML2 SSO", purpose: "Enterprise SSO for KAI, NTU, NUS, and other enterprise clients", type: "infra" },
       { name: "JWPlayer", purpose: "Video streaming and interview playback", type: "storage" },
       { name: "AWS S3", purpose: "Video, audio, document storage", type: "storage" },
       { name: "Azure Blob Storage", purpose: "Secondary storage for media", type: "storage" },
@@ -377,7 +377,7 @@ export const projects: Project[] = [
       {
         title: "Multi-Tenant Client Modules",
         description:
-          "Each enterprise client (Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, etc.) has its own Laravel module with custom flow, branding, and assessments tailored to their needs.",
+          "Each enterprise client (KAI, NTU, NUS, etc.) has its own Laravel module with custom flow, branding, and assessments tailored to their needs.",
       },
       {
         title: "Video Transcoding via FFmpeg",
@@ -412,7 +412,7 @@ export const projects: Project[] = [
       {
         title: "SAML2 Enterprise SSO",
         description:
-          "Enterprise clients can log in via their company's own SSO using SAML2. Custom IdP configuration per client (Gojek, BCA, etc.).",
+          "Enterprise clients can log in via their company's own SSO using SAML2. Custom IdP configuration per client (KAI, NTU, NUS, etc.).",
       },
       {
         title: "Excel & CSV Import/Export",
@@ -818,13 +818,13 @@ export const projects: Project[] = [
     title: "Custom Landing Page",
     subtitle: "Multi-Client Enterprise Branded Landing Page — Laravel Multi-Tenant",
     description:
-      "Laravel multi-tenant application for custom landing pages per ASTRNT enterprise client. Each client (Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, Kai, TalentBuzz, etc.) gets a landing page with their own branding, content, and domain. Backend connected to AWS S3 for media and JWT Auth for API integration.",
+      "Laravel multi-tenant application for custom landing pages per ASTRNT enterprise client. Each client (KAI, NTU, NUS, TalentBuzz, etc.) gets a landing page with their own branding, content, and domain. Backend connected to AWS S3 for media and JWT Auth for API integration.",
     role: "Full-Stack Engineer",
     period: "2022 – 2023",
     status: "production",
     category: "platform",
     highlights: [
-      "12+ client-specific modules: Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, Kai, TalentBuzz, etc.",
+      "12+ client-specific modules: KAI, NTU, NUS, TalentBuzz, and other enterprise clients",
       "Hostname-based routing — each request is automatically directed to the matching client configuration",
       "AWS S3 for client-specific media and assets",
       "JWT Auth for integration with the ASTRNT API backend",
@@ -855,7 +855,7 @@ export const projects: Project[] = [
     features: [
       {
         title: "12+ Client-Specific Modules",
-        description: "Each enterprise client has its own controller module: Gojek, BCA, Sephora, Deloitte, Homecredit, Ristekdikti, Samudera, Kai, TalentBuzz, Google, GojekDemo, start4hire. Each can have unique flows.",
+        description: "Each enterprise client has its own controller module: KAI, NTU, NUS, TalentBuzz, and others. Each can have unique flows.",
       },
       {
         title: "Hostname-Based Multi-Tenant Routing",
@@ -1097,7 +1097,7 @@ export const projects: Project[] = [
     title: "AHA! Competency Dashboard",
     subtitle: "AI Scoring Transparency Dashboard for Enterprise Clients",
     description:
-      "React demo dashboard built to convince enterprise clients (CIMB Niaga, Lintasarta, Bank Danamon) about the transparency of AI scoring in the recruitment process. Each competency score can be clicked to view transcript evidence and AI reasoning in detail — breaking the 'black box' perception of AI systems.",
+      "React demo dashboard built to convince enterprise clients (KAI, NTU, NUS) about the transparency of AI scoring in the recruitment process. Each competency score can be clicked to view transcript evidence and AI reasoning in detail — breaking the 'black box' perception of AI systems.",
     role: "Frontend Engineer",
     period: "2025",
     status: "internal",
@@ -1122,7 +1122,7 @@ export const projects: Project[] = [
       },
       {
         title: "Enterprise Client Demo",
-        description: "Specifically designed as a demo for CIMB Niaga, Lintasarta, and Bank Danamon with relevant sample data.",
+        description: "Specifically designed as a demo for KAI, NTU, and NUS with relevant sample data.",
       },
       {
         title: "AI Transparency Framework",
@@ -1132,7 +1132,7 @@ export const projects: Project[] = [
     architecture:
       "React SPA with hardcoded mock data. Designed for demo/presentation to enterprise clients, can be hosted as a static site.",
     metrics: [
-      { label: "Target Clients", value: "CIMB Niaga, Lintasarta, Bank Danamon" },
+      { label: "Target Clients", value: "KAI, NTU, NUS" },
       { label: "Competency Types", value: "10+" },
     ],
     repoPath: "/Users/mac/Astrnt/aha",
