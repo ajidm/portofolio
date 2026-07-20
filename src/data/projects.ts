@@ -31,6 +31,7 @@ export type Project = {
   metrics: { label: string; value: string }[]
   repoPath: string
   color: string
+  liveUrl?: string
 }
 
 export const projects: Project[] = [
@@ -285,6 +286,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/astrnt-dashboard-v2",
     color: "from-blue-600 to-indigo-700",
+    liveUrl: "https://app-v2.astrnt.co",
   },
   {
     slug: "recruiter",
@@ -435,6 +437,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/recruiter",
     color: "from-purple-600 to-violet-700",
+    liveUrl: "https://app.astrnt.co",
   },
   {
     slug: "api-qna",
@@ -612,6 +615,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/qna-web",
     color: "from-sky-600 to-cyan-700",
+    liveUrl: "https://qna.astrnt.co",
   },
   {
     slug: "public-web",
@@ -671,6 +675,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/public-web",
     color: "from-orange-500 to-amber-600",
+    liveUrl: "https://astrnt.co",
   },
   {
     slug: "support-dashboard",
@@ -806,6 +811,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/university-dashboard",
     color: "from-lime-600 to-green-700",
+    liveUrl: "https://dashuniv.astrnt.co",
   },
   {
     slug: "custom-landing-page",
@@ -873,6 +879,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/custom-landing-page",
     color: "from-fuchsia-600 to-purple-700",
+    liveUrl: "https://landing.astrnt.co",
   },
   {
     slug: "popskul-frontend",
@@ -953,6 +960,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/popskul-frontend",
     color: "from-violet-600 to-indigo-700",
+    liveUrl: "https://awalkarir.id",
   },
   {
     slug: "popskul-backend",
@@ -1501,6 +1509,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/cdc-fe-repo",
     color: "from-blue-500 to-cyan-600",
+    liveUrl: "https://cdc-ui.astrnt.co",
   },
   {
     slug: "cdc-backend",
@@ -1665,6 +1674,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Users/mac/Astrnt/kognisi-frontend",
     color: "from-yellow-500 to-orange-500",
+    liveUrl: "https://kognisi.id",
   },
   {
     slug: "kognisi-backend",
@@ -2039,6 +2049,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Volumes/Work/MyJobs/Smooets/yamaha-revamp",
     color: "from-red-500 to-rose-600",
+    liveUrl: "https://yamaha-motor.co.id",
   },
 
   {
@@ -2311,6 +2322,7 @@ export const projects: Project[] = [
     ],
     repoPath: "/Volumes/Work/MyJobs/Freelance/paskomnas",
     color: "from-yellow-500 to-orange-500",
+    liveUrl: "https://paskomnas.com",
   },
 
   {

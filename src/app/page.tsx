@@ -662,7 +662,24 @@ export default function HomePage() {
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-end">
+                <div className="flex items-center justify-between">
+                  {project.liveUrl ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-1 text-[11px] font-medium transition-opacity hover:opacity-80"
+                      style={{ color: "#818CF8" }}
+                    >
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      Live Demo
+                    </a>
+                  ) : (
+                    <span />
+                  )}
                   <span className="text-xs font-medium transition-colors text-blue-500 group-hover:text-blue-400">
                     View Case Study →
                   </span>

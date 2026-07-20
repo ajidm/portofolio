@@ -54,6 +54,20 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             Back to projects
           </Link>
           <div className="flex items-center gap-3">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full transition-opacity hover:opacity-80"
+                style={{ background: "rgba(99,102,241,0.15)", color: "#818CF8", border: "1px solid rgba(99,102,241,0.3)" }}
+              >
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Live
+              </a>
+            )}
             <span
               className="text-[10px] font-medium px-2 py-0.5 rounded-full"
               style={{
@@ -90,9 +104,29 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <p className="text-lg mb-4" style={{ color: "#94A3B8" }}>
             {project.subtitle}
           </p>
-          <p className="text-sm" style={{ color: "#475569" }}>
-            {project.period} · {project.role}
-          </p>
+          <div className="flex items-center gap-4 mt-5">
+            <p className="text-sm" style={{ color: "#475569" }}>
+              {project.period} · {project.role}
+            </p>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all hover:opacity-90 active:scale-95"
+                style={{
+                  background: "linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2))",
+                  color: "#A5B4FC",
+                  border: "1px solid rgba(99,102,241,0.35)",
+                }}
+              >
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                  <path d="M2 11L11 2M11 2H4.5M11 2V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Live Demo
+              </a>
+            )}
+          </div>
         </div>
 
         {/* Description */}
