@@ -596,12 +596,10 @@ export default function HomePage() {
           {/* Featured 6 — 3-col grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             {featuredProjects.map((project) => (
-              <Link
+              <div
                 key={project.slug}
-                href={`/projects/${project.slug}`}
-                className="card card-glow block p-6 group"
+                className="card card-glow p-6 group flex flex-col"
                 style={{ borderRadius: "16px" }}
-                aria-label={`${project.title} — case study`}
               >
                 {/* Top accent bar */}
                 <div className={`h-0.5 w-12 rounded-full bg-gradient-to-r ${project.color} mb-5`} aria-hidden="true" />
@@ -620,7 +618,7 @@ export default function HomePage() {
 
                 {/* Title */}
                 <h3
-                  className="text-sm font-semibold mb-1 leading-snug transition-colors group-hover:text-blue-300"
+                  className="text-sm font-semibold mb-1 leading-snug"
                   style={{ color: "#F1F5F9" }}
                 >
                   {project.title}
@@ -664,13 +662,12 @@ export default function HomePage() {
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-auto">
                   {project.liveUrl ? (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
                       className="flex items-center gap-1 text-[11px] font-medium transition-opacity hover:opacity-80"
                       style={{ color: "#818CF8" }}
                     >
@@ -682,11 +679,15 @@ export default function HomePage() {
                   ) : (
                     <span />
                   )}
-                  <span className="text-xs font-medium transition-colors text-blue-500 group-hover:text-blue-400">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="text-xs font-medium transition-colors text-blue-500 hover:text-blue-400"
+                    aria-label={`${project.title} — case study`}
+                  >
                     View Case Study →
-                  </span>
+                  </Link>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
 
