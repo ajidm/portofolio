@@ -52,6 +52,7 @@ const achievements = [
 
 const otherExperience = [
   {
+    slug: "smooets",
     company: "PT. SMOOETS TEKNOLOGI OUTSOURCING",
     role: "Full Stack Web Developer",
     period: "Apr 2016 – Jun 2019",
@@ -68,6 +69,7 @@ const otherExperience = [
     ],
   },
   {
+    slug: "freelance",
     company: "Freelance",
     role: "Fullstack Developer",
     period: "Jun 2019 – Feb 2020",
@@ -555,7 +557,7 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <Link
-                  href={`/experience/${exp.company.toLowerCase()}`}
+                  href={`/experience/${exp.slug}`}
                   className="inline-flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-white"
                   style={{ color: "#6366F1" }}
                 >
