@@ -30,7 +30,7 @@ export const experience = [
       "ASTRNT gives recruiters the tools to run structured, asynchronous interviews — candidates record responses on their own time, and the platform handles transcription, scoring, shortlisting, and reporting. I've been responsible for end-to-end delivery across 22+ applications: the recruiter dashboard, candidate interfaces, public-facing marketing site, support tools, marketplace platforms, background job infrastructure, and all the APIs that connect them.",
       "The most challenging — and most rewarding — part of the role has been owning the full platform rewrite. The original Laravel monolith served its purpose well, but as the product matured, we needed a foundation that could support AI features, faster iteration, and enterprise-grade reliability. I architected and led the migration to Next.js 15 App Router with 383+ API routes and 60+ page flows, without disrupting live production traffic.",
       "On the AI side, I built the multi-LLM integration layer (Claude, Gemini, OpenAI) with automatic key rotation on rate limits, the AI Matching Engine with shadow mode and similarity scoring, and the media pipeline that turns interview recordings into structured data — Speech-to-Text, FFmpeg transcoding, JWPlayer streaming, and Tesseract OCR for document parsing.",
-      "Beyond engineering, I've been involved in the product documentation side — contributing to PRDs and DUCs on Confluence for features like Live Interview Feedback, Interview Scheduling, and the Synchronous Interview flow. These are collaborative documents maintained by the team, and my involvement ranged from initial authoring to iterative updates alongside other engineers and product stakeholders.",
+      "Beyond engineering, I've been involved in the product documentation side — authoring PRDs and DUCs on Confluence across features including Competency Framework, Talent Pool & Matchings, Pre-screening Assessment, Assessment Delivery (TM), Individual Talent Report, Rating Report Generation, Online Proctoring, and Import Candidate via CV Upload. These are collaborative documents that the team maintains together, and my role ranged from initial authoring to iterative updates as features evolved.",
     ],
     phases: [
       {
@@ -62,7 +62,7 @@ export const experience = [
       "Shipped mandatory 80% unit test coverage (Vitest) + 128 Cypress E2E specs as a pre-merge gate",
       "Integrated Stripe credit-based billing: Checkout Sessions, webhooks, expiry alerts, and per-company tracking",
       "Built full media pipeline: Google Cloud Speech-to-Text, FFmpeg transcoding, JWPlayer streaming, Tesseract OCR",
-      "Contributed to writing and maintaining PRDs & DUCs on Confluence for key product features (Live Interview Feedback, Interview Scheduling, Synchronous Interview Questions)",
+      "Authored 16 PRDs and 20 DUCs on Confluence — covering Competency Framework, Talent Pool & Matchings, Pre-screening Assessment, Assessment Delivery (TM), Rating Report Generation, Online Proctoring, and more",
       "Introduced team-wide AI-assisted engineering workflow — reducing PR review cycle time and improving test coverage throughput",
       "Led multi-product delivery across 22 repositories: dashboard, recruiter, candidate apps, marketplaces, APIs, and infra",
       "Managed multi-cloud infrastructure: Azure Blob, AWS S3, Docker, Azure Pipelines, GitHub Actions CI/CD",
