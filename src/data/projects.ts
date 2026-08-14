@@ -57,6 +57,8 @@ export const projects: Project[] = [
       "Talent Management module: 360-degree assessments, peer nominations, talent mapping programs, and framework-linked instruments",
       "Employee Org Hierarchy: manager/skip-level chain resolution, rater auto-assign, deterministic 360 score engine, Calibration Dashboard, and IDP lifecycle",
       "Dual-mode database migration: per-company DB_MODE=old/new, route-by-route read-switch, bidirectional write-mirroring, zero downtime",
+      "Pre-Screening Assessment: per-field minimum requirement rules with auto-disqualify flow, backed by 100 unit tests + 50 E2E specs",
+      "AI Auto Scoring surfaced on Answers row + Applicants table (AI Match / Competency columns and filters), re-sourced from real AI-scoring data",
       "AI Matching Engine with Gemini adapter, shadow mode, similarity scoring, and trigger-based candidate recommendations",
       "Offer Management: candidate offer letter flow with phase-gated lifecycle and digital accept/decline response",
       "WhatsApp notifications alongside email and SMS for candidate communications",
@@ -137,6 +139,16 @@ export const projects: Project[] = [
         title: "Candidate Profile & Review",
         description:
           "Comprehensive candidate profile: video/text answers, documents, education & work history, skills, achievements, notes, and email history. Scoring per section, voting system, proctoring evidence, generate ART PDF and Special PDF reports.",
+      },
+      {
+        title: "Pre-Screening Assessment with Minimum Requirement",
+        description:
+          "Job-level toggle lets recruiters set a minimum requirement per profiling field (e.g. years of experience, an 'in list' rule). Candidates are evaluated against the rule at registration; those who fail are auto-disqualified — routed into an auto-created 'Disqualified' pipeline stage, skipped from invite/assessment emails, and shown a dedicated handoff confirmation screen with a status-check link. Backed by 100 unit tests + 50 Cypress E2E specs covering the evaluation engine and disqualification flow.",
+      },
+      {
+        title: "AI Auto Scoring Visibility",
+        description:
+          "Surfaces AI-generated competency scores where recruiters actually look: an 'AI Scored' badge on the collapsed Answers row (previously only visible after expanding each answer), and working AI Match / Competency columns and range filters on the Applicants table — re-sourced from the real AI-scoring tables (automatic_video_scoring_competencies) after finding the original field was almost always empty in production. Included a fix for a data-integrity gap where candidates without a company talent pool silently lost their AI Match linkage.",
       },
       {
         title: "Review Collaboration System",
