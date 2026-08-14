@@ -51,12 +51,20 @@ export const experience = [
         description:
           "Architected and executed the full platform rewrite to Next.js 15 App Router + React 19. Integrated multi-LLM (Claude, Gemini, OpenAI), built the AI Matching Engine, shipped Stripe billing, mandatory 80% unit test coverage, and 128 Cypress E2E specs.",
       },
+      {
+        title: "Dual-Mode Database Migration",
+        period: "2026 – Present",
+        description:
+          "Leading the live, zero-downtime migration from the legacy schema to a new-arch database, run in dual-mode per company (DB_MODE=old/new). Rolled out read-switches and write-mirroring route by route — question library, templates, assessment builder, media — while keeping both databases in parity for companies mid-migration.",
+      },
     ],
     achievements: [
       "Led full platform rewrite from Laravel monolith to Next.js 15 App Router — 383+ API routes, 60+ page flows",
       "Architected multi-LLM integration (Claude, Gemini, OpenAI) with automatic key rotation on rate limits — zero downtime",
       "Built AI Matching Engine with Gemini adapter, shadow mode, similarity scoring, and trigger-based candidate recommendations",
       "Designed Talent Management module: 360-degree assessments, peer nominations, talent mapping programs",
+      "Built Employee Directory & Org Hierarchy module: manager/skip-level chain resolution, rater auto-assign, 360 Score Calculation Engine (deterministic L1-L4 scoring), Calibration Dashboard, and IDP lifecycle — grew from 65 to 81 real-data E2E specs",
+      "Leading a live zero-downtime migration to a new-arch database: per-company dual-mode (DB_MODE=old/new), route-by-route read-switches, bidirectional write-mirroring, and a unified media table across both schemas",
       "Implemented atomic background job queue (bg_transactions) with priority processing, stale job recovery, and progress tracking",
       "Delivered 24 GitHub Actions cron jobs for smart-send, cascade retry, digest processing, and automated alerts",
       "Shipped mandatory 80% unit test coverage (Vitest) + 128 Cypress E2E specs as a pre-merge gate",

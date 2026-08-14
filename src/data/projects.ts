@@ -55,6 +55,8 @@ export const projects: Project[] = [
       "Talent Pool management: collect candidates across jobs, AI matching, assign to job/review session",
       "Competency Framework builder: create framework, add competencies + indicators, publish, link to job",
       "Talent Management module: 360-degree assessments, peer nominations, talent mapping programs, and framework-linked instruments",
+      "Employee Org Hierarchy: manager/skip-level chain resolution, rater auto-assign, deterministic 360 score engine, Calibration Dashboard, and IDP lifecycle",
+      "Dual-mode database migration: per-company DB_MODE=old/new, route-by-route read-switch, bidirectional write-mirroring, zero downtime",
       "AI Matching Engine with Gemini adapter, shadow mode, similarity scoring, and trigger-based candidate recommendations",
       "Offer Management: candidate offer letter flow with phase-gated lifecycle and digital accept/decline response",
       "WhatsApp notifications alongside email and SMS for candidate communications",
@@ -225,6 +227,31 @@ export const projects: Project[] = [
         title: "Talent Management (TM) Module",
         description:
           "Full 360-degree assessment system: create TM programs (talent mapping, regular feedback), define frameworks, run peer nomination via token-gated portal, assign instruments per employee, manage rater invites, and track completion across the org.",
+      },
+      {
+        title: "Employee Directory & Org Hierarchy",
+        description:
+          "Dedicated employees table (dual-mode across legacy and new-arch DBs) with manager/skip-level chain resolution — resolved iteratively rather than via recursive CTE since the legacy DB runs MySQL 5.7. Powers rater auto-assign for 360 programs, an expandable org chart, department/job-position/job-level master data, CSV/XLSX bulk import with two-pass manager linking, audit trail, XLSX export, and bulk actions (deactivate, reassign manager). Grew from 65 to 81 real-data Cypress specs, with every flaky test root-caused rather than skipped.",
+      },
+      {
+        title: "360 Score Calculation Engine",
+        description:
+          "Deterministic L1-L4 scoring: mode with lower-value tie-break, weight redistribution across rater categories when a category has zero valid raters, and a final weighted sum — verified against the PRD's own hand-computed worked example. Includes fairness bias-flag detection (single-rater and low-agreement categories, advisory-only, scores never auto-adjusted) surfaced on the Calibration Dashboard.",
+      },
+      {
+        title: "TM Reports & Calibration",
+        description:
+          "Individual Report (per-competency score vs. grade target, self-other gap, strengths/development areas), Manager Calibration Pack (direct reports vs. grade target with population-average overlay), and Group/Functional Report (department/grade attainment rates). Calibration Dashboard lets HR/managers record a categorical decision (development track, succession flag, watch list, no action) per participant.",
+      },
+      {
+        title: "Individual Debrief & IDP Module",
+        description:
+          "HR creates Individual Development Plan entries linked to real competency gaps (gap_priority: strength / near_target / priority_gap); participants fill development actions via the Employee Portal, HR approves. Full assigned -> in_progress -> submitted -> approved lifecycle with post-approval locking.",
+      },
+      {
+        title: "Dual-Mode Database Migration (New-Arch)",
+        description:
+          "Live migration from the legacy schema to a re-architected database, run per-company via a DB_MODE=old/new switch — no downtime, no big-bang cutover. Rolled out incrementally: read-switches per route (question library, template list/detail, question pool, job-assign preview, doc-upload), bidirectional write-mirroring (assessment answer options, grouped-passage media), and a unified media table remapping image_id/media_id across both schemas. Includes dedicated dual-DB E2E coverage and fixes for cross-DB gaps (job-id collisions, job_status vocabulary mismatches, competency framework CRUD parity).",
       },
       {
         title: "Employee Assessment Portal",
