@@ -147,6 +147,11 @@ export const projects: Project[] = [
           "Comprehensive candidate profile: video/text answers, documents, education & work history, skills, achievements, notes, and email history. Scoring per section, voting system, proctoring evidence, generate ART PDF and Special PDF reports.",
       },
       {
+        title: "Multi-View Candidate List (Grid / Table / Kanban)",
+        description:
+          "Three view modes over the same candidate data and filters: a Grid view, a Table view with dynamic column selection, and a Kanban/Board view grouped by pipeline stage. Table view supports save-able named views — a column selection plus a filter combination saved together for one-click reuse, similar to Jira's saved filters. Third view mode (Kanban) added on top of the original two-mode (Grid + Table) system built on the legacy platform; filtering and the data returned are driven dynamically by whatever criteria the frontend sends, not fixed server-side logic.",
+      },
+      {
         title: "Pre-Screening Assessment with Minimum Requirement",
         description:
           "Job-level toggle lets recruiters set a minimum requirement per profiling field (e.g. years of experience, an 'in list' rule). Candidates are evaluated against the rule at registration; those who fail are auto-disqualified — routed into an auto-created 'Disqualified' pipeline stage, skipped from invite/assessment emails, and shown a dedicated handoff confirmation screen with a status-check link. Backed by 100 unit tests + 50 Cypress E2E specs covering the evaluation engine and disqualification flow.",
@@ -159,7 +164,7 @@ export const projects: Project[] = [
       {
         title: "Review Collaboration System",
         description:
-          "Multi-user review with swipe interface (right/left), deep review mode, batch decision, candidate bookmarking, comments with @mention team members, undo decisions, review sessions with timer and summary, and public sharing via token for external stakeholders.",
+          "Multi-user review with swipe interface (right/left), deep review mode, batch decision, candidate bookmarking, comments with @mention team members, undo decisions, review sessions with timer and summary, and public sharing via token for external stakeholders. Third-generation rebuild of the Candidate Share & Reviewer workflow originally built from scratch on the legacy platform in 2020 — the new version reads/writes the exact same underlying database tables, cleanly split into a session-authenticated internal-reviewer path and a public token-based external-reviewer path.",
       },
       {
         title: "Bulk Import with Duplicate Resolution",
@@ -328,7 +333,7 @@ export const projects: Project[] = [
       },
     ],
     architecture:
-      "Next.js Full-Stack Monolith with App Router. Server Components + Server Actions for form submissions; API Routes for REST endpoints, webhooks, and cron triggers. Business logic in src/lib/ (265+ files) and src/services/. Data access via Prisma ORM with raw SQL for critical queries. Background jobs: GitHub Actions trigger → POST /api/cron/* → enqueue to bg_transactions → worker scripts (tsx) claim & process. Redis for rate limiting and caching. Azure Blob Storage for all files/media with SAS token generation.",
+      "Next.js Full-Stack Monolith with App Router. Server Components + Server Actions for form submissions; API Routes for REST endpoints, webhooks, and cron triggers. Business logic in src/lib/ (265+ files) and src/services/. Data access via Prisma ORM with raw SQL for critical queries. Background jobs: GitHub Actions trigger → POST /api/cron/* → enqueue to bg_transactions → worker scripts (tsx) claim & process. Redis for rate limiting and caching. Azure Blob Storage for all files/media with SAS token generation. A dedicated Elasticsearch sync layer keeps a search index continuously up to date with fire-and-forget writes from every candidate-mutation path (registration, profiling, assessment completion, review decisions), so recruiter search stays fast without querying the primary database on every lookup.",
     metrics: [
       { label: "API Routes", value: "383+" },
       { label: "Pages & Flows", value: "60+" },
@@ -362,6 +367,8 @@ export const projects: Project[] = [
       "SAML2 SSO for enterprise clients (KAI, NTU, NUS) with custom auth flow",
       "8+ psychometric assessment types: ART, RIASEC, Creative Thinking, Writing Test, Reading Test, Values Reflection, etc.",
       "Client-specific modules per company: KAI, NTU, NUS, and other enterprise clients",
+      "Candidate Share & Reviewer workflow built from scratch in 2020 — token-based external review access, voting, encrypted PII — still evolving 5 years later",
+      "Custom AES field-level encryption layer + Azure SAS signed-URL media access, designed and built from scratch",
       "Rearchitected credit billing into an itemized rule-based model — 100-400× fewer queries, 6× less memory on bulk exports",
       "Fixed a Talent Pool N+1 bottleneck: 203 queries → 5 (97.5% fewer), 90% faster bulk delete",
     ],
@@ -486,6 +493,31 @@ export const projects: Project[] = [
         description:
           "Automatic text extraction from image-based documents (ID photos, diplomas, certificates) using Tesseract OCR for verification and candidate profile filling.",
       },
+      {
+        title: "Candidate Share & Reviewer Workflow (built from scratch, 2020)",
+        description:
+          "Lets a recruiter share a candidate — video answers, ratings, documents — with a hiring-team member or an outside reviewer who has no ASTRNT account, via a cryptographically hashed, token-based link enforced by a dedicated middleware. Reviewers can rate, comment, and cast a thumbs up/down/maybe vote (sortable, filterable). Privacy layer: AES-encrypted reviewer/candidate emails and an option to hide which reviewer left which feedback. Led a full 2025 redesign adding per-reviewer progress tracking, internal hiring-team reviewers with role-based visibility, and full candidate anonymization for bias-resistant review — still evolving 5 years after the original build.",
+      },
+      {
+        title: "Candidate List — Grid & Table Views with Nested Filters",
+        description:
+          "Two-mode candidate list: a search-engine-backed (Elasticsearch) Grid view for fast full-text search, and a Table view over direct database queries supporting nested, grouped filter conditions similar to Jira's advanced issue search. Both the filter logic and the data returned are driven dynamically by whatever criteria the frontend sends, not a fixed set of hardcoded filters.",
+      },
+      {
+        title: "Custom AES Encryption Layer",
+        description:
+          "Built the platform's own AES-based field-level encryption helpers and applied them across every sensitive data model — candidate personal data, company records, CVs, email logs, document/media links — so sensitive fields are unreadable even with raw database access. Long-term owned the layer's real-world edge cases: broken email-based lookups on encrypted fields, targeted decrypt-failure fixes, a manual data-repair utility, and removal of a legacy master-password bypass mechanism.",
+      },
+      {
+        title: "Anonymous Candidate Identity (Blind Hiring)",
+        description:
+          "A bias-reduction layer beyond reviewer-side blind review: candidate names are replaced with consistent, sequential aliases generated uniformly across every candidate-creation path (web application, mobile registration, bulk import), with email/phone masked throughout the candidate list, search, exports, and email history, and video thumbnails/audio hidden by default.",
+      },
+      {
+        title: "Third-Party ATS Integration",
+        description:
+          "Outbound integrations (Greenhouse, TeamTailor) automatically notifying external Applicant Tracking Systems of candidate interview-status changes in real time, so enterprise clients can keep their existing ATS in sync with ASTRNT interview data without manual re-entry.",
+      },
     ],
     architecture:
       "Laravel monolith with nwidart/laravel-modules for per-domain/client isolation. Dingo API for versioned REST endpoints, JWT Auth for stateless authentication. React SPA (416 JSX files) built with Webpack 4, state management via Redux + redux-saga. Media pipeline: upload → AWS S3/Azure → FFmpeg transcoding → JWPlayer streaming. Speech-to-text via Google Cloud Speech API. PDF via multiple engines (DOMPDF, Snappy, FPDI).",
@@ -518,6 +550,8 @@ export const projects: Project[] = [
       "Chunk upload for large videos + AWS S3 / Azure Blob dual storage",
       "Proctoring evidence tracking per interview session",
       "OTP authentication for candidates without an account",
+      "Third-party ATS integrations (Greenhouse, TeamTailor) with hardened outbound HTTP calls",
+      "Fixed a 4M+ row full-table-scan bug via safe, idempotent database indexing",
     ],
     techStack: [
       {
@@ -579,9 +613,17 @@ export const projects: Project[] = [
         title: "PDF Report Generation",
         description: "Generates assessment result reports per candidate in PDF format via DOMPDF, Snappy, and FPDI. Supports custom branding per client.",
       },
+      {
+        title: "Third-Party ATS & Assessment-Provider Integrations",
+        description: "Outbound webhook integrations (Greenhouse, TeamTailor) notifying external ATS platforms of candidate interview status in real time, plus a handshake/submission/scoring pipeline for a third-party psychometric-testing provider. All outbound calls hardened with connection timeouts and error logging so a slow or unreachable third party fails fast instead of hanging a request.",
+      },
+      {
+        title: "API Versioning for Safe Rollout",
+        description: "A URL-resolution mechanism so candidate-notification links route to the correct app version (legacy vs. current URL structure) per company, defaulting new companies to the latest version while an explicit legacy allowlist keeps old accounts working — lets the platform evolve its URL structure without breaking bookmarked or previously-emailed links.",
+      },
     ],
     architecture:
-      "Laravel monolith with nwidart/laravel-modules (Astronaut, AssessmentContent, JobLanding, TDL, Ecourse modules). Dingo API for REST versioning, stateless JWT Auth. Media pipeline: chunk upload → S3/Azure → FFmpeg transcoding → JWPlayer streaming. Speech-to-text via Google Cloud Speech API. PDF via multi-engine. Elasticsearch for search, Redis for queue.",
+      "Laravel monolith with nwidart/laravel-modules (Astronaut, AssessmentContent, JobLanding, TDL, Ecourse modules). Dingo API for REST versioning, stateless JWT Auth. Media pipeline: chunk upload → S3/Azure → FFmpeg transcoding → JWPlayer streaming. Speech-to-text via Google Cloud Speech API. PDF via multi-engine. Elasticsearch for search, Redis for queue. Found and fixed a set of tables doing full 4-million-row scans on every query due to a missing index on a soft-delete flag — resolved with a safe, idempotent migration that checks for existing indexes before adding them.",
     metrics: [
       { label: "API Endpoints", value: "80+" },
       { label: "Laravel Modules", value: "6" },
@@ -665,6 +707,14 @@ export const projects: Project[] = [
       {
         title: "Activity & Event Logging",
         description: "Every candidate action (start recording, submit, pause, etc.) is logged by qna-activity-log and astrnt-web-logger for audit trail and proctoring evidence.",
+      },
+      {
+        title: "Rating Scale Question — Built End to End",
+        description: "A fully self-contained question type built from scratch: its own section-intro screen, grouped sub-questions under one prompt, a side panel showing per-question answered/unanswered status, a self-paced-vs-timed-aware section timer, a pre-section preparation countdown, and its own practice/sample-question flow.",
+      },
+      {
+        title: "Client-Branded Completion & Retake Flow",
+        description: "A dedicated, feature-flagged \"finish\" experience per enterprise client — custom copy, pass/fail labeling, and a self-service retake capability — plus spam-click protection (disabling submit buttons during in-flight requests) and explicit error handling/retry when an answer fails to save.",
       },
     ],
     architecture:
