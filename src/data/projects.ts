@@ -40,14 +40,14 @@ export const projects: Project[] = [
     title: "ASTRNT Dashboard v2",
     subtitle: "AI-Powered Full-Stack SaaS Recruitment Platform",
     description:
-      "Enterprise SaaS recruitment platform rebuilt from scratch with Next.js 15, React 19, TypeScript, and multi-LLM integration. Handles the entire end-to-end recruitment cycle: AI job generation, campaign management, video interview assessment, proctoring, AI candidate matching, talent pools, review collaboration, bulk import, engagement sequences, and credit-based billing via Stripe — all in one monolith optimized for enterprise scale.",
+      "Enterprise SaaS recruitment platform rebuilt from scratch with Next.js 16, React 19, TypeScript, and multi-LLM integration — a from-the-ground-up replacement for the legacy Laravel platform, migrated live with zero downtime via a dual-mode database bridge. Covers the entire hiring lifecycle end to end: AI-generated job postings, multi-channel campaigns, video/audio/text assessment delivery, proctoring, dual-engine AI candidate matching, talent pools, collaborative review, bulk import, and credit-based billing. AI provider access (Claude/Gemini/OpenAI) is abstracted behind a Strategy-pattern interface with automatic key rotation and fallback, so adding or swapping a model provider never touches call-site code — one of several OOP/SOLID-driven design choices (interface-first services, single-responsibility route handlers) that keep a 265+ file business-logic layer maintainable at enterprise scale.",
     role: "Lead Frontend & Full-Stack Engineer",
     period: "2026",
     status: "production",
     category: "platform",
     highlights: [
       "Multi-LLM integration (Claude, Gemini, OpenAI) with automatic key rotation on rate limit — zero downtime",
-      "383+ API routes, 24 scheduled cron jobs via GitHub Actions, background queue with atomic job claiming",
+      "383+ API routes, 14 active scheduled cron jobs via GitHub Actions, background queue with atomic job claiming",
       "128 Cypress E2E specs + Vitest unit tests with mandatory 80% coverage — required gate before every merge",
       "AI Job Generator: recruiter describes a position in natural language, Claude generates a complete job posting with interview questions",
       "Multi-layer Review System: swipe interface, deep review, public sharing via token, batch decision, @mention comments",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     techStack: [
       {
         category: "Framework & Runtime",
-        items: ["Next.js 15 (App Router)", "React 19", "TypeScript 5", "Node.js 24"],
+        items: ["Next.js 16 (App Router)", "React 19", "TypeScript 5", "Node.js 24"],
       },
       {
         category: "Styling & UI",
@@ -182,7 +182,7 @@ export const projects: Project[] = [
           "Create custom competency frameworks: add competencies, define indicators per competency, drag-reorder, publish. Frameworks can be linked to jobs for consistent and standardized scoring.",
       },
       {
-        title: "24 Scheduled Cron Jobs",
+        title: "14 Scheduled Cron Jobs",
         description:
           "Automation system via GitHub Actions: smart-send (5 min), cascade retry, reminders, notification-processor (1 min), sequence-processor & triggers, recommendation-availability, MCQ auto-disqualify, candidate-spotlight-digest, early-signal-digest, no-applicants-digest, job-deadline-alerts, cleanup-drafts, expire-demos, and more.",
       },
@@ -334,7 +334,7 @@ export const projects: Project[] = [
       { label: "Pages & Flows", value: "60+" },
       { label: "React Components", value: "186+" },
       { label: "Lib/Service Files", value: "265+" },
-      { label: "Cron Jobs", value: "24" },
+      { label: "Cron Jobs", value: "14" },
       { label: "E2E Test Specs", value: "128" },
       { label: "Unit Test Coverage", value: "≥80%" },
       { label: "LLM Providers", value: "3" },
@@ -348,7 +348,7 @@ export const projects: Project[] = [
     title: "ASTRNT Recruiter (Main App)",
     subtitle: "Enterprise Recruitment Platform — Large-Scale Laravel + React SPA",
     description:
-      "The backbone of ASTRNT's first-generation recruitment platform. Laravel monolith with Dingo API as the REST backend, serving a React SPA (416 JSX files, Redux + redux-saga) as the frontend. Handles video interviews, diverse psychometric assessment types, automatic speech-to-text, video transcoding via FFmpeg, multiple payment gateways, multi-tenant client modules, and enterprise SSO integration — in a single platform used by enterprise clients including KAI, NTU, and NUS.",
+      "The backbone of ASTRNT's first-generation recruitment platform, and its longest-running codebase (2020-2026). A Laravel monolith with Dingo API as the versioned REST backend, serving a React SPA (416 JSX files, Redux + redux-saga) as the frontend. Core capabilities: video interviews with automatic speech-to-text, 8+ psychometric assessment types (ART, RIASEC, Creative Thinking, and more), FFmpeg video transcoding, multi-tenant client modules, SAML2 enterprise SSO, and dual payment-gateway billing (Stripe + Midtrans). Business logic is organized around Laravel's OOP model/service layer with single-responsibility controllers; performance-critical paths (Talent Pool bulk operations, credit billing) were rearchitected around batched queries and transactional integrity rather than per-row loops, cutting one bulk-delete flow's query count by 97.5%.",
     role: "Full-Stack Engineer",
     period: "2020 – 2026",
     status: "production",
@@ -380,7 +380,7 @@ export const projects: Project[] = [
       },
       {
         category: "Database & Search",
-        items: ["MySQL", "MongoDB (jenssegers/mongodb)", "Elasticsearch 2.x (elasticquent)", "Redis (predis)"],
+        items: ["MySQL", "MongoDB (jenssegers/mongodb)", "Elasticsearch 6.x", "Redis (predis)"],
       },
       {
         category: "Media & AI Processing",
@@ -506,7 +506,7 @@ export const projects: Project[] = [
     title: "API QnA",
     subtitle: "Asynchronous Interview Platform API Backend — Full-Featured Laravel",
     description:
-      "Laravel API backend serving all needs of the ASTRNT asynchronous interview platform. Candidates answer video/audio/text/MCQ/document questions independently at any time. The backend handles session management, media upload and transcoding, automatic speech-to-text, multiple assessment types (ART, RIASEC, Creative Thinking), proctoring, PDF report generation, and data synchronization with the recruiter platform. The stack is identical to Recruiter but focused on the candidate-facing interview flow.",
+      "Laravel API backend dedicated to the candidate-facing side of ASTRNT's asynchronous interview platform — candidates answer video/audio/text/MCQ/document questions independently, on their own schedule. Handles session management, chunked media upload with transcoding, automatic speech-to-text, 5+ assessment types (ART, RIASEC, Creative Thinking, and more), proctoring evidence capture, PDF report generation, and two-way data sync with the recruiter platform. Scoped to support 2,500+ concurrent candidates in a single event: fixed N+1 query patterns, batched inserts, added targeted indexes, and moved non-critical side effects (notifications, scoring) off the request path onto a background queue — same OOP-structured Laravel service layer as Recruiter, tuned specifically for high-concurrency reads/writes.",
     role: "Backend Engineer",
     period: "2025 – 2026",
     status: "production",
@@ -526,7 +526,7 @@ export const projects: Project[] = [
       },
       {
         category: "Media & AI",
-        items: ["Google Cloud Speech (speech-to-text)", "php-ffmpeg (transcoding)", "JWPlayer (streaming)", "Tesseract OCR", "intervention/image"],
+        items: ["Google Cloud Speech (speech-to-text)", "php-ffmpeg (transcoding)", "JWPlayer (streaming)", "intervention/image"],
       },
       {
         category: "Database & Storage",
@@ -596,7 +596,7 @@ export const projects: Project[] = [
     title: "QnA Web",
     subtitle: "Asynchronous Interview Application — Candidate-Facing React SPA",
     description:
-      "React SPA (320 JS/JSX files) serving as the primary interface for candidates participating in ASTRNT asynchronous interview sessions. Supports 6 question types: video recording (WebRTC + RecordRTC), audio recording, free text, MCQ, rating scale, and document upload. Features OTP authentication, pre-interview device check, proctoring monitoring, session recovery via localforage, real-time progress tracking via Socket.io, and custom activity logging.",
+      "React SPA (321 JS/JSX files) — the primary interface candidates use to take ASTRNT asynchronous interviews. Supports 6 question types (video via WebRTC + RecordRTC, audio, free text, MCQ, rating scale, document upload), OTP authentication, a pre-interview device check, proctoring monitoring, session recovery via localforage (survives tab close/refresh mid-interview), real-time progress tracking via Socket.io, and custom activity logging. Redux + redux-saga separates async side effects (uploads, API calls) from UI state, keeping each of the 13 saga modules focused on one concern.",
     role: "Frontend Engineer",
     period: "2020 – 2025",
     status: "production",
@@ -672,7 +672,7 @@ export const projects: Project[] = [
     metrics: [
       { label: "JS/JSX Files", value: "320" },
       { label: "Question Types", value: "6" },
-      { label: "Redux Sagas", value: "20+" },
+      { label: "Redux Sagas", value: "13" },
       { label: "Pages/Flows", value: "11" },
     ],
     repoPath: "/Users/mac/Astrnt/qna-web",
@@ -684,7 +684,7 @@ export const projects: Project[] = [
     title: "Public Web",
     subtitle: "ASTRNT Public Website & Marketing Site — Dual React Architecture",
     description:
-      "ASTRNT's public website serving marketing pages, product landing pages, blog, developer portal, and job-specific landing pages. Built as two separate React components (component_public & component_job_landing) that are built independently then served by a single Express.js server. Multi-environment build for AWS (production) and Azure (staging/beta) with different env vars per target.",
+      "ASTRNT's public-facing website: marketing pages, product landing pages, blog, developer portal, and per-job landing pages for organic candidate discovery. Split into two independently built React apps (component_public + component_job_landing) served together by one Express.js server, so either half can ship without rebuilding the other. Multi-environment pipeline targets AWS for production and Azure for staging/beta with distinct env vars per target. Longest-lived app in the portfolio (2020-2026) — still receiving active feature work six years in.",
     role: "Frontend Engineer",
     period: "2020 – 2026",
     status: "production",
@@ -744,7 +744,7 @@ export const projects: Project[] = [
     title: "Support Dashboard",
     subtitle: "Internal CS Team Tool — React SPA for Monitoring & Troubleshooting",
     description:
-      "Internal React SPA (130 JS files) used by the ASTRNT Customer Support team to monitor client accounts, investigate candidate issues, and manage platform data. Built with Create React App + custom Webpack config via react-app-rewired, Redux for state management, and connected to the ASTRNT backend API with JWT authentication.",
+      "Internal React SPA (75 JS + 55 JSX files) for the ASTRNT Customer Support team: monitor client accounts, investigate candidate issues, manage credit/plan state, and impersonate users for troubleshooting. Built with Create React App + a custom Webpack config via react-app-rewired, Redux for state management, connected to the ASTRNT backend API. Longest-serving internal tool in the portfolio (2021-2026), grown incrementally alongside every major CS workflow the platform added.",
     role: "Frontend Engineer",
     period: "2021 – 2026",
     status: "internal",
@@ -799,7 +799,7 @@ export const projects: Project[] = [
     title: "University Dashboard",
     subtitle: "Student Assessment Platform for University Clients",
     description:
-      "Laravel platform designed specifically for academic institutions to manage student assessments. Features student management, events/exams, campus job postings, social login via Laravel Socialite, bulk data import via Excel, PDF reports, and interactive DataTables. Has separate branding and flow from the corporate recruitment platform.",
+      "Standalone Laravel MVC platform built specifically for academic institutions to manage student assessments — separate branding and flow from the corporate recruitment product. Core features: student & event/exam management, campus job postings, one-click social login via Laravel Socialite, bulk student import from Excel, PDF report generation, and server-side DataTables (yajra) built to stay fast at university-scale enrollment lists.",
     role: "Full-Stack Engineer",
     period: "2024 – 2025",
     status: "production",
@@ -823,7 +823,7 @@ export const projects: Project[] = [
       },
       {
         category: "Auth & Integration",
-        items: ["Laravel Socialite (social login)", "JWT Auth", "ezyang/htmlpurifier (XSS sanitize)"],
+        items: ["Laravel Socialite (social login)", "Laravel session auth", "ezyang/htmlpurifier (XSS sanitize)"],
       },
       {
         category: "File & Storage",
@@ -831,7 +831,7 @@ export const projects: Project[] = [
       },
       {
         category: "Infrastructure",
-        items: ["Azure Pipelines", "Docker", "Nginx"],
+        items: ["Azure Pipelines"],
       },
     ],
     integrations: [
@@ -867,7 +867,7 @@ export const projects: Project[] = [
     architecture:
       "Laravel MVC monolith with Blade + Bootstrap for server-side rendering. Server-side DataTables via yajra/laravel-datatables for performance on large data. Azure Blob Storage for files. PDF via DOMPDF. Social auth via Socialite. Deployment via Azure Pipelines.",
     metrics: [
-      { label: "Controllers", value: "12" },
+      { label: "Controllers", value: "16" },
       { label: "Client Type", value: "University" },
       { label: "Storage", value: "Azure Blob" },
     ],
@@ -880,7 +880,7 @@ export const projects: Project[] = [
     title: "Custom Landing Page",
     subtitle: "Multi-Client Enterprise Branded Landing Page — Laravel Multi-Tenant",
     description:
-      "Laravel multi-tenant application for custom landing pages per ASTRNT enterprise client. Each client (KAI, NTU, NUS, TalentBuzz, etc.) gets a landing page with their own branding, content, and domain. Backend connected to AWS S3 for media and JWT Auth for API integration.",
+      "Laravel multi-tenant application serving a dedicated, on-brand landing page per ASTRNT enterprise client (KAI, TalentBuzz, and other named/anonymized accounts) — its own domain, branding, content, and custom SSL, resolved automatically by hostname-based middleware routing rather than per-client hardcoding. AWS S3 backs client-specific media; JWT auth connects each landing page's apply flow to the ASTRNT recruitment API.",
     role: "Full-Stack Engineer",
     period: "2024 – 2025",
     status: "production",
@@ -907,7 +907,7 @@ export const projects: Project[] = [
       },
       {
         category: "Infrastructure",
-        items: ["Azure Pipelines", "Nginx", "SSL per domain", "Docker"],
+        items: ["Azure Pipelines", "Envoy (deploy scripts)", "Nginx", "SSL per domain"],
       },
     ],
     integrations: [
@@ -948,7 +948,7 @@ export const projects: Project[] = [
     title: "Popskul Frontend",
     subtitle: "E-Learning & Career Platform — Nuxt.js SSR with Video Assessment",
     description:
-      "Nuxt.js (Vue 2) SSR frontend for Popskul — a platform that combines e-learning, job marketplace, and competency-based assessment. More than just a job board: candidates can take courses, complete assessments (MCQ + FTQ + video recording), bookmark favorite companies, apply for scholarships, and apply to jobs — all in one platform with real-time via Socket.io and video recording via videojs-record.",
+      "Nuxt.js (Vue 2) SSR frontend for Popskul, ASTRNT's job-seeker-facing career platform — e-learning, a job marketplace, and competency-based self-assessment in one product, not just a job board. Job seekers take courses, complete MCQ/FTQ/video assessments in-browser (videojs-record, no plugins), bookmark companies, apply for scholarships, and apply to jobs, all with real-time status updates via Socket.io. Includes WOSAP, a self-directed career-interest assessment distinct from the employer-facing hiring assessments elsewhere in the ASTRNT ecosystem.",
     role: "Frontend Engineer",
     period: "2023 – 2025",
     status: "production",
@@ -1020,7 +1020,7 @@ export const projects: Project[] = [
     architecture:
       "Nuxt.js SSR with Vuex for state management. @nuxtjs/auth handles the JWT auth flow. nuxt-socket-io for real-time connection to the backend. videojs-record for browser-based video capture. @nuxtjs/sitemap auto-generates XML sitemap from all dynamic routes.",
     metrics: [
-      { label: "Nuxt Pages", value: "45+" },
+      { label: "Nuxt Pages", value: "55+" },
       { label: "Vue Components", value: "80+" },
       { label: "Platform Features", value: "Jobs + Courses + Assessment" },
     ],
@@ -1033,7 +1033,7 @@ export const projects: Project[] = [
     title: "Popskul Backend",
     subtitle: "E-Learning & Career Platform API Backend — Full-Featured Laravel",
     description:
-      "Laravel backend serving all needs of the Popskul platform: e-learning (courses, attempts, progress), job board, assessment (MCQ + FTQ), media management, company profiles, and user management. Built with an API-first architecture using Laravel resource controllers with cron jobs for automation.",
+      "Laravel API backend powering the full Popskul platform: e-learning (courses, attempts, progress tracking), job board, MCQ/FTQ assessment scoring, media management, company profiles, and user accounts. API-first design via Laravel resource controllers (38+ controllers, 128+ endpoints), each scoped to a single resource per REST/SOLID conventions, with scheduled cron jobs handling report generation and data cleanup.",
     role: "Backend Engineer",
     period: "2021 – 2025",
     status: "production",
@@ -1103,7 +1103,7 @@ export const projects: Project[] = [
     title: "CV Parsing",
     subtitle: "ATS-Friendly Resume Builder & Parser",
     description:
-      "Next.js application based on OpenResume for automatic CV parsing and generation. Users can upload an existing CV and the system extracts key information (education, experience, skills) and presents it in a modern, ATS-friendly PDF format.",
+      "Next.js internal tool built on the open-source OpenResume codebase for automatic CV parsing and generation. Users upload an existing CV and the system extracts structured data across 6 sections (Profile, Work Experience, Education, Projects, Skills, Custom) and renders it into a modern, ATS-friendly PDF via @react-pdf/renderer.",
     role: "Full-Stack Engineer",
     period: "2025",
     status: "internal",
@@ -1152,7 +1152,7 @@ export const projects: Project[] = [
     architecture:
       "Next.js App Router with Redux Toolkit for CV data state management. Client-side PDF generation via @react-pdf/renderer for a privacy-first approach.",
     metrics: [
-      { label: "CV Sections", value: "8+" },
+      { label: "CV Sections", value: "6" },
       { label: "Export Format", value: "PDF" },
     ],
     repoPath: "/Users/mac/Astrnt/cv-parsing",
@@ -1344,7 +1344,7 @@ export const projects: Project[] = [
     title: "E-Course Web",
     subtitle: "Candidate Interview & E-Learning Hybrid — React SPA with Real-time",
     description:
-      "React 16 SPA serving as ASTRNT's e-learning and video interview hybrid platform for candidates. Candidates complete video interviews, MCQs, and free-text questions within a course-like interface. Uses Redux + redux-saga for async state, JWPlayer for video playback, Socket.IO for real-time session coordination, and AWS Amplify for analytics.",
+      "React 16 SPA blending ASTRNT's video-interview and e-learning flows into one course-like interface — candidates complete video interviews, MCQs, and free-text questions in a single guided session. Redux + redux-saga separates async orchestration from UI, JWPlayer handles video playback, Socket.IO keeps session state live across reconnects, and AWS Amplify feeds usage analytics.",
     role: "Frontend Engineer",
     period: "2020 – 2022",
     status: "production",
@@ -1368,7 +1368,7 @@ export const projects: Project[] = [
       },
       {
         category: "Analytics & Monitoring",
-        items: ["AWS Amplify", "AWS Mobile Analytics", "astrnt-web-logger (custom logger)", "@sentry/react"],
+        items: ["AWS Amplify", "AWS Mobile Analytics", "astrnt-web-logger (custom logger)", "Sentry (raven-js)"],
       },
       {
         category: "UI & UX",
@@ -1421,7 +1421,7 @@ export const projects: Project[] = [
     title: "ASTRNT API v2",
     subtitle: "Node.js REST API — Dual Database & Puppeteer PDF Generation",
     description:
-      "Node.js + Express REST API (v2 of ASTRNT's backend) serving courses, enrollments, media management, candidate data, and report generation. Notable for dual-database architecture (MySQL via Sequelize + MongoDB via Mongoose), headless Chrome automation via Puppeteer for PDF and screenshot generation, and formal API design via YAML spec.",
+      "Node.js + Express REST API (v2 of ASTRNT's backend) serving courses, enrollments, media management, candidate data, and report generation. Two ORMs behind one API surface — Sequelize for structured MySQL data, Mongoose for flexible MongoDB documents — chosen per data shape rather than forced into a single store. Puppeteer drives headless Chrome for PDF/screenshot report generation; the API contract itself is designed upfront as a formal OpenAPI 3.0 spec (api_design.yaml) before implementation, not reverse-engineered from code after the fact.",
     role: "Backend Engineer",
     period: "2021 – 2024",
     status: "production",
@@ -1502,13 +1502,13 @@ export const projects: Project[] = [
     title: "CDC Marketplace Frontend",
     subtitle: "Career Development Center — Nuxt.js Multi-Role Marketplace",
     description:
-      "Nuxt.js 2 SSR/SSG marketplace platform for ASTRNT's Career Development Center. A multi-role platform: learners browse and enroll in courses, apply for jobs and scholarships, attend webinars; creators manage course content via a creator portal. Features real-time notifications via Socket.IO and browser-based video recording via videojs-record.",
+      "Nuxt.js 2 SSR/SSG marketplace for ASTRNT's Career Development Center (CDC) — a university-partnered job board bundling courses, jobs, scholarships, and webinars under two roles: learners browse/enroll/apply, creators manage course content via a dedicated portal. Real-time updates via Socket.IO, in-browser video recording via videojs-record for skills assessments, with an outbound link into the employer-facing ASTRNT recruiter platform for the actual hiring pipeline.",
     role: "Frontend Engineer",
     period: "2023 – 2024",
     status: "production",
     category: "frontend",
     highlights: [
-      "Multi-role platform: learner + creator + employer surfaces in one app",
+      "Multi-role platform: learner + creator surfaces in one app, with an outbound link into the employer-facing ASTRNT recruiter platform",
       "videojs-record for browser-based video recording in assessments",
       "nuxt-socket-io for real-time notifications and updates",
       "Social auth login via @nuxtjs/auth",
@@ -1570,7 +1570,7 @@ export const projects: Project[] = [
     architecture:
       "Nuxt.js 2 SSR with Vuex for state management. @nuxtjs/auth handles JWT auth flow. nuxt-socket-io for real-time connection to backend. videojs-record for browser-based video capture. Deployed via Azure Pipelines.",
     metrics: [
-      { label: "User Roles", value: "3 (Learner, Creator, Employer)" },
+      { label: "User Roles", value: "2 (Learner, Creator)" },
       { label: "Platform Features", value: "Courses + Jobs + Scholarships + Webinars" },
     ],
     repoPath: "/Users/mac/Astrnt/cdc-fe-repo",
@@ -1582,7 +1582,7 @@ export const projects: Project[] = [
     title: "CDC Marketplace Backend",
     subtitle: "Career Development Center API — Laravel 8 with Dual Cloud Storage & Payments",
     description:
-      "Laravel 8 REST API backend powering the CDC marketplace. Handles authentication via Laravel Passport (OAuth2) + Socialite, course and content management, video metadata via JWPlayer, dual cloud storage (AWS S3 + Azure Blob), Midtrans payment gateway, scholarship management, MCQ/FTQ question banks, voucher system, and admin reporting.",
+      "Laravel 8 REST API powering the CDC marketplace: OAuth2 authentication via Laravel Passport + Socialite, course/content management, JWPlayer-backed video metadata, dual cloud storage (AWS S3 + Azure Blob), Midtrans payment integration, scholarship management, MCQ/FTQ question banks, a voucher/discount system, and admin reporting via Voyager — roughly 86 REST endpoints across a resource-controller-per-domain structure.",
     role: "Backend Engineer",
     period: "2021 – 2024",
     status: "production",
@@ -1678,14 +1678,14 @@ export const projects: Project[] = [
     title: "Kognisi.id Frontend",
     subtitle: "B2C Learning Platform — Nuxt.js SSG/SSR with SEO Optimization",
     description:
-      "Nuxt.js 2 SSG/SSR frontend for Kognisi.id — a public-facing B2C learning marketplace. Learners browse and enroll in courses, track progress, and access a creator portal. Distinct from CDC in its focus on public discoverability: includes Google Analytics, GTM, automated sitemap/robots.txt, and a comprehensive SEO toolchain for organic growth.",
+      "Nuxt.js 2 SSG/SSR frontend for Kognisi.id — a public-facing B2C learning marketplace. Learners browse and enroll in courses, track progress, and access a creator portal. Distinct from CDC in its focus on public discoverability: vue-gtag analytics, automated sitemap/robots.txt, and a comprehensive SEO toolchain for organic growth.",
     role: "Frontend Engineer",
     period: "2022",
     status: "production",
     category: "frontend",
     highlights: [
       "Full SEO toolchain: @nuxtjs/sitemap, @nuxtjs/robots, nuxt-seo, Google site verification",
-      "Google Analytics + GTM integration via @nuxtjs/google-analytics",
+      "Analytics via vue-gtag",
       "Splide carousel for course discovery UI",
       "Star rating system for course reviews (vue-star-rating)",
       "SSG for static public pages + SSR for authenticated/dynamic views",
@@ -1698,15 +1698,15 @@ export const projects: Project[] = [
       },
       {
         category: "Nuxt Modules",
-        items: ["@nuxtjs/auth", "@nuxtjs/axios", "@nuxtjs/google-analytics", "@nuxtjs/sitemap", "@nuxtjs/robots", "@nuxtjs/sentry", "nuxt-seo"],
+        items: ["@nuxtjs/auth", "@nuxtjs/axios", "vue-gtag", "@nuxtjs/sitemap", "@nuxtjs/robots", "@nuxtjs/sentry", "nuxt-seo"],
       },
       {
         category: "UI Components",
-        items: ["Bootstrap 4", "Splide (carousel)", "vue-star-rating", "SweetAlert2", "vue-select"],
+        items: ["Bootstrap 4", "Splide (carousel)", "vue-star-rating"],
       },
     ],
     integrations: [
-      { name: "Google Analytics + GTM", purpose: "Traffic tracking, conversion events, and tag management", type: "monitoring" },
+      { name: "Google Analytics (vue-gtag)", purpose: "Traffic tracking and conversion events", type: "monitoring" },
       { name: "Sentry", purpose: "Frontend error monitoring", type: "monitoring" },
     ],
     features: [
@@ -1715,8 +1715,8 @@ export const projects: Project[] = [
         description: "All public course and category pages statically generated for search engine indexing. Sitemap, robots.txt, and structured metadata auto-generated via Nuxt modules.",
       },
       {
-        title: "Google Analytics + GTM Integration",
-        description: "Full analytics setup with @nuxtjs/google-analytics and GTM for event tracking, conversion funnels, and remarketing audiences.",
+        title: "Analytics Tracking",
+        description: "Traffic and conversion tracking via vue-gtag for course-discovery and enrollment funnels.",
       },
       {
         title: "Course Catalog & Enrollment",
@@ -1732,7 +1732,7 @@ export const projects: Project[] = [
       },
     ],
     architecture:
-      "Nuxt.js 2 with SSG for public/discovery pages and SSR for authenticated/personalized views. @nuxtjs/auth for JWT auth. @nuxtjs/sitemap and @nuxtjs/robots for automated SEO file generation. Google Analytics and GTM injected via Nuxt modules. Deployed via Azure Pipelines.",
+      "Nuxt.js 2 with SSG for public/discovery pages and SSR for authenticated/personalized views. @nuxtjs/auth for JWT auth. @nuxtjs/sitemap and @nuxtjs/robots for automated SEO file generation. Analytics via vue-gtag. Deployed via Azure Pipelines.",
     metrics: [
       { label: "Rendering Mode", value: "SSG + SSR" },
       { label: "SEO Modules", value: "Sitemap + Robots + nuxt-seo" },
@@ -1747,7 +1747,7 @@ export const projects: Project[] = [
     title: "Kognisi.id Backend",
     subtitle: "B2C Learning Platform API — Laravel 8 with MongoDB & Certificate Generation",
     description:
-      "Laravel 8 REST API backend for Kognisi.id. Extends the CDC backend scope with hybrid MySQL + MongoDB architecture, image processing pipeline (Intervention Image), automated completion certificate generation, and SEO-friendly slug management. Same dual-cloud storage (S3 + Azure) and JWPlayer video pipeline as the CDC backend.",
+      "Laravel 8 REST API for Kognisi.id, extending the CDC backend's scope for a public B2C learning marketplace: hybrid MySQL + MongoDB storage (structured course data alongside flexible content documents), an image-processing pipeline (Intervention Image) for banners and thumbnails, automated PDF completion-certificate generation on course finish, and SEO-friendly slug management. Reuses the same dual-cloud storage (S3 + Azure) and JWPlayer video pipeline as the CDC backend rather than reinventing it.",
     role: "Backend Engineer",
     period: "2021 – 2022",
     status: "production",
@@ -1817,7 +1817,7 @@ export const projects: Project[] = [
       },
       {
         title: "Image Banner Management",
-        description: "Dedicated BannerController manages promotional banners displayed on the platform homepage and category pages.",
+        description: "Dedicated ImageBannerController manages promotional banners displayed on the platform homepage and category pages.",
       },
     ],
     architecture:

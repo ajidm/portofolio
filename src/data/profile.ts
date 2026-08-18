@@ -25,10 +25,10 @@ export const experience = [
     tagline: "AI-powered SaaS recruitment platform",
     color: "from-indigo-500 to-purple-600",
     description:
-      "For 6+ years I've been the primary engineer on ASTRNT's SaaS recruitment platform — an AI-powered system used by enterprise clients across Southeast Asia to run asynchronous video, audio, and text-based interviews at scale. I joined early and have owned the platform through every major phase: building the original multi-app Laravel architecture, scaling it to serve hundreds of thousands of interview sessions, and leading the complete rewrite to a modern Next.js 15 + React 19 stack with multi-LLM integration.",
+      "For 6+ years I've been the primary engineer on ASTRNT's SaaS recruitment platform — an AI-powered system used by enterprise clients across Southeast Asia to run asynchronous video, audio, and text-based interviews at scale. I joined early and have owned the platform through every major phase: building the original multi-app Laravel architecture, scaling it to serve hundreds of thousands of interview sessions, and leading the complete rewrite to a modern Next.js 16 + React 19 stack with multi-LLM integration.",
     narrative: [
       "ASTRNT gives recruiters the tools to run structured, asynchronous interviews — candidates record responses on their own time, and the platform handles transcription, scoring, shortlisting, and reporting. I've been responsible for end-to-end delivery across 22+ applications: the recruiter dashboard, candidate interfaces, public-facing marketing site, support tools, marketplace platforms, background job infrastructure, and all the APIs that connect them.",
-      "The most challenging — and most rewarding — part of the role has been owning the full platform rewrite. The original Laravel monolith served its purpose well, but as the product matured, we needed a foundation that could support AI features, faster iteration, and enterprise-grade reliability. I architected and led the migration to Next.js 15 App Router with 383+ API routes and 60+ page flows, without disrupting live production traffic.",
+      "The most challenging — and most rewarding — part of the role has been owning the full platform rewrite. The original Laravel monolith served its purpose well, but as the product matured, we needed a foundation that could support AI features, faster iteration, and enterprise-grade reliability. I architected and led the migration to Next.js 16 App Router with 383+ API routes and 60+ page flows, without disrupting live production traffic.",
       "On the AI side, I built the multi-LLM integration layer (Claude, Gemini, OpenAI) with automatic key rotation on rate limits, the AI Matching Engine with shadow mode and similarity scoring, and the media pipeline that turns interview recordings into structured data — Speech-to-Text, FFmpeg transcoding, JWPlayer streaming, and Tesseract OCR for document parsing.",
       "Beyond engineering, I've been involved in the product documentation side — authoring PRDs and DUCs on Confluence across features including Competency Framework, Talent Pool & Matchings, Pre-screening Assessment, Assessment Delivery (TM), Individual Talent Report, Rating Report Generation, Online Proctoring, and Import Candidate via CV Upload. These are collaborative documents that the team maintains together, and my role ranged from initial authoring to iterative updates as features evolved.",
     ],
@@ -43,13 +43,13 @@ export const experience = [
         title: "Scale & Expansion",
         period: "2022 – 2023",
         description:
-          "Led the development of adjacent products: CDC marketplace, Kognisi e-learning platform, Popskul career platform. Expanded to 22+ applications and introduced the atomic job queue, 24 GitHub Actions cron jobs, and structured CI/CD pipelines.",
+          "Led the development of adjacent products: CDC marketplace, Kognisi e-learning platform, Popskul career platform. Expanded to 22+ applications and introduced the atomic job queue, 14 active GitHub Actions cron jobs, and structured CI/CD pipelines.",
       },
       {
         title: "Platform Rewrite",
         period: "2026 – Present",
         description:
-          "Architected and executed the full platform rewrite to Next.js 15 App Router + React 19. Integrated multi-LLM (Claude, Gemini, OpenAI), built the AI Matching Engine, shipped Stripe billing, mandatory 80% unit test coverage, and 128 Cypress E2E specs.",
+          "Architected and executed the full platform rewrite to Next.js 16 App Router + React 19. Integrated multi-LLM (Claude, Gemini, OpenAI), built the AI Matching Engine, shipped Stripe billing, mandatory 80% unit test coverage, and 128 Cypress E2E specs.",
       },
       {
         title: "Dual-Mode Database Migration",
@@ -59,7 +59,7 @@ export const experience = [
       },
     ],
     achievements: [
-      "Led full platform rewrite from Laravel monolith to Next.js 15 App Router — 383+ API routes, 60+ page flows",
+      "Led full platform rewrite from Laravel monolith to Next.js 16 App Router — 383+ API routes, 60+ page flows",
       "Architected multi-LLM integration (Claude, Gemini, OpenAI) with automatic key rotation on rate limits — zero downtime",
       "Built a dual-engine AI Matching Engine (Gemini + self-hosted local-embedding engine) with a per-company feature flag and shadow-mode validation — 120-252× faster than the Gemini-only pipeline at near-zero marginal cost",
       "Shipped 'Import Job from URL' — smart-paste job-posting extraction (two-tier fetch + Puppeteer fallback) cutting job-draft creation from 3-10 minutes to under 60 seconds",
@@ -73,7 +73,7 @@ export const experience = [
       "Built Employee Directory & Org Hierarchy module: manager/skip-level chain resolution, rater auto-assign, 360 Score Calculation Engine (deterministic L1-L4 scoring), Calibration Dashboard, and IDP lifecycle — grew from 65 to 81 real-data E2E specs",
       "Leading a live zero-downtime migration to a new-arch database: per-company dual-mode (DB_MODE=old/new), route-by-route read-switches, bidirectional write-mirroring, and a unified media table across both schemas",
       "Implemented atomic background job queue (bg_transactions) with priority processing, stale job recovery, and progress tracking",
-      "Delivered 24 GitHub Actions cron jobs for smart-send, cascade retry, digest processing, and automated alerts",
+      "Delivered 14 active GitHub Actions cron jobs for smart-send, cascade retry, digest processing, and automated alerts",
       "Shipped mandatory 80% unit test coverage (Vitest) + 128 Cypress E2E specs as a pre-merge gate",
       "Integrated Stripe credit-based billing: Checkout Sessions, webhooks, expiry alerts, and per-company tracking",
       "Built full media pipeline: Google Cloud Speech-to-Text, FFmpeg transcoding, JWPlayer streaming, Tesseract OCR",
@@ -216,7 +216,7 @@ export const skills = [
     category: "Frontend",
     color: "#3B82F6",
     bg: "rgba(59,130,246,0.08)",
-    items: ["React 19", "Next.js 15", "TypeScript 5", "Nuxt.js", "Vue.js", "Tailwind CSS", "Redux", "shadcn/ui", "Radix UI"],
+    items: ["React 19", "Next.js 16", "TypeScript 5", "Nuxt.js", "Vue.js", "Tailwind CSS", "Redux", "shadcn/ui", "Radix UI"],
   },
   {
     category: "Backend",
