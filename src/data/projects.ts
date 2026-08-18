@@ -366,6 +366,7 @@ export const projects: Project[] = [
       "Multi-payment gateway: Stripe (global) + Veritrans/Midtrans (Indonesia)",
       "SAML2 SSO for enterprise clients (KAI, NTU, NUS) with custom auth flow",
       "8+ psychometric assessment types: ART, RIASEC, Creative Thinking, Writing Test, Reading Test, Values Reflection, etc.",
+      "TDL third-party integration powering Personality/Cognitive (IQ) testing and RIASEC scoring, feeding the branded 'Career Compass' report",
       "Client-specific modules per company: KAI, NTU, NUS, and other enterprise clients",
       "Candidate Share & Reviewer workflow built from scratch in 2020 — token-based external review access, voting, encrypted PII — still evolving 5 years later",
       "Custom AES field-level encryption layer + Azure SAS signed-URL media access, designed and built from scratch",
@@ -437,6 +438,11 @@ export const projects: Project[] = [
         title: "8+ Psychometric Assessment Types",
         description:
           "The platform supports a variety of tests: Analytical Reasoning Test (ART), RIASEC career interest, Creative Thinking Assessment, Reading Test, Writing Test, Values Reflection Assessment, General Scoring, and PsychoMetric. Each test has its own scoring engine.",
+      },
+      {
+        title: "TDL Integration — Personality & Cognitive Testing",
+        description:
+          "Core integration with TDL, a third-party psychometric provider, powering the platform's Personality and Cognitive (IQ) assessments and RIASEC scoring — built and maintained via a dedicated TDLController making authenticated outbound API calls per candidate. TDL returns raw stanine scores, which the platform converts into ASTRNT's own score levels and packages into the branded 'Career Compass' report (candidate-facing PDF + in-app result page). Later re-architected on the candidate-facing API to run through a background queue for reliability at scale.",
       },
       {
         title: "Multi-Tenant Client Modules",
@@ -547,6 +553,7 @@ export const projects: Project[] = [
       "Google Cloud Speech-to-Text for automatic transcription of candidate video answers",
       "FFmpeg video transcoding + JWPlayer streaming for interview playback",
       "5+ assessment types: ART, RIASEC, Creative Thinking, General Scoring, Values Reflection",
+      "TDL provider integration for Personality/Cognitive testing, queue-based for reliability at scale",
       "Chunk upload for large videos + AWS S3 / Azure Blob dual storage",
       "Proctoring evidence tracking per interview session",
       "OTP authentication for candidates without an account",
@@ -604,6 +611,10 @@ export const projects: Project[] = [
       {
         title: "5+ Psychometric Assessments",
         description: "Supports Analytical Reasoning Test (ART), RIASEC career interest, Creative Thinking Assessment, General Scoring, Values Reflection Assessment. Scoring engine per test type.",
+      },
+      {
+        title: "TDL Personality/Cognitive Provider Integration",
+        description: "Candidate-facing handshake, answer submission, and score-calculation pipeline connecting to TDL, the third-party provider behind the platform's Personality, Cognitive (IQ), and RIASEC assessments — the results feed the branded 'Career Compass' report. Re-architected onto a background queue (moved off the request-response path) as part of the 2,500-concurrent-candidate performance epic.",
       },
       {
         title: "Proctoring Evidence Recording",

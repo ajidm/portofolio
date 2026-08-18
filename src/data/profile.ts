@@ -76,6 +76,7 @@ export const experience = [
       "Designed the platform's original data-security foundation from scratch: a custom AES field-level encryption layer for sensitive records (candidates, companies, CVs, email logs) and a signed, expiring-URL system (Azure Blob SAS tokens) so private candidate media is never publicly accessible",
       "Built a bias-reduction 'Anonymous Candidate Identity' layer — sequential alias generation applied consistently across every candidate-creation path (web, mobile, bulk import), with PII masked throughout lists, search, exports, and email history",
       "Built outbound integrations syncing candidate interview status in real time to external ATS platforms (Greenhouse, TeamTailor) for enterprise clients running their hiring process outside ASTRNT",
+      "Built and maintained the TDL integration — the third-party provider behind Personality, Cognitive (IQ), and RIASEC assessments — converting raw stanine scores into ASTRNT's own score levels for the branded 'Career Compass' report, later moved onto a background queue for reliability at scale",
       "Leading a live zero-downtime migration to a new-arch database: per-company dual-mode (DB_MODE=old/new), route-by-route read-switches, bidirectional write-mirroring, and a unified media table across both schemas",
       "Implemented atomic background job queue (bg_transactions) with priority processing, stale job recovery, and progress tracking",
       "Delivered 14 active GitHub Actions cron jobs for smart-send, cascade retry, digest processing, and automated alerts",
