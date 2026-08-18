@@ -245,7 +245,7 @@ export default function HomePage() {
             className="gradient-text font-bold"
             style={{ fontSize: "clamp(22px, 4vw, 36px)", letterSpacing: "-0.015em" }}
           >
-            Senior AI-Augmented Fullstack Engineer
+            Senior Fullstack Engineer
           </p>
         </div>
 
@@ -1012,7 +1012,7 @@ export default function HomePage() {
         style={{ borderColor: "rgba(255,255,255,0.06)", color: "#334155" }}
       >
         <p>
-          Ajid Muhamad · Senior AI-Augmented Fullstack Engineer · Bandung, Indonesia ·{" "}
+          Ajid Muhamad · Senior Fullstack Engineer · Bandung, Indonesia ·{" "}
           <a href="mailto:ajidisme@gmail.com" className="hover:text-white transition-colors">
             ajidisme@gmail.com
           </a>{" "}

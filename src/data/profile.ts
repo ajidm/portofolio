@@ -1,6 +1,6 @@
 export const profile = {
   name: "Ajid Muhamad",
-  title: "Senior AI-Augmented Fullstack Engineer",
+  title: "Senior Fullstack Engineer",
   email: "ajidisme@gmail.com",
   github: "github.com/ajidm",
   linkedin: "linkedin.com/in/ajid-muhamad",
@@ -9,7 +9,7 @@ export const profile = {
   yearsTotal: "9+",
   yearsAtAstrnt: "6+",
   summary:
-    "Senior AI-Augmented Fullstack Engineer with 9+ years delivering production software at scale. For the past 6+ years at ASTRNT, I've led engineering across an AI-powered SaaS recruitment platform — 22+ applications spanning web, API, AI pipelines, and infrastructure. I take end-to-end ownership: architecture, implementation, testing, documentation, and deployment. I ship AI-powered product features using Claude, Gemini, and OpenAI, and integrate AI tooling into my daily engineering practice.",
+    "Senior Fullstack Engineer with 9+ years delivering production software at scale. For the past 6+ years at ASTRNT, I've led engineering across an AI-powered SaaS recruitment platform — 22+ applications spanning web, API, AI pipelines, and infrastructure. I take end-to-end ownership: architecture, implementation, testing, documentation, and deployment. I ship AI-powered product features using Claude, Gemini, and OpenAI, and integrate AI tooling into my daily engineering practice.",
 }
 
 export const experience = [

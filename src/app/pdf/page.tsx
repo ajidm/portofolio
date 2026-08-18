@@ -46,7 +46,7 @@ export default function PdfPage() {
             Ajid Muhamad
           </h1>
           <p className="font-sans text-2xl mb-6" style={{ color: "#818cf8" }}>
-            Senior AI-Augmented Fullstack Engineer
+            Senior Fullstack Engineer
           </p>
           <p className="font-sans text-base max-w-lg" style={{ color: "#94a3b8", lineHeight: "1.8" }}>
             9+ years of experience designing, building, and scaling SaaS platforms, modern web applications,
