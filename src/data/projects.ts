@@ -42,7 +42,7 @@ export const projects: Project[] = [
     description:
       "Enterprise SaaS recruitment platform rebuilt from scratch with Next.js 15, React 19, TypeScript, and multi-LLM integration. Handles the entire end-to-end recruitment cycle: AI job generation, campaign management, video interview assessment, proctoring, AI candidate matching, talent pools, review collaboration, bulk import, engagement sequences, and credit-based billing via Stripe — all in one monolith optimized for enterprise scale.",
     role: "Lead Frontend & Full-Stack Engineer",
-    period: "2024 – 2026",
+    period: "2026",
     status: "production",
     category: "platform",
     highlights: [
@@ -59,7 +59,8 @@ export const projects: Project[] = [
       "Dual-mode database migration: per-company DB_MODE=old/new, route-by-route read-switch, bidirectional write-mirroring, zero downtime",
       "Pre-Screening Assessment: per-field minimum requirement rules with auto-disqualify flow, backed by 100 unit tests + 50 E2E specs",
       "AI Auto Scoring surfaced on Answers row + Applicants table (AI Match / Competency columns and filters), re-sourced from real AI-scoring data",
-      "AI Matching Engine with Gemini adapter, shadow mode, similarity scoring, and trigger-based candidate recommendations",
+      "Dual-engine AI matching (Gemini + self-hosted local-embedding engine) with shadow-mode validation — 120-252× faster at near-zero marginal cost",
+      "Import Job from URL: paste a job-board link, get a publish-ready draft in under 60 seconds",
       "Offer Management: candidate offer letter flow with phase-gated lifecycle and digital accept/decline response",
       "WhatsApp notifications alongside email and SMS for candidate communications",
     ],
@@ -123,7 +124,7 @@ export const projects: Project[] = [
       {
         title: "AI Job Generator",
         description:
-          "Recruiter describes a position in natural language, Claude generates a complete job posting: description, requirements, and interview questions. Results can be edited, accepted, rejected, or regenerated. Every generation is logged for auditing.",
+          "Recruiter describes a position in natural language, Claude generates a complete job posting: description, requirements, and interview questions. Results can be edited, accepted, rejected, or regenerated. Every generation is logged for auditing. One wizard serves 3 distinct tracks (Talent Acquisition / Talent Management / University Admission) via a single recruitment_type field, each with its own AI prompt, content structure, and terminology — rate-limited generation with retry/timeout handling, use-case mismatch detection, 30-second draft autosave, and content-quality gates. Cut the AI-generation step's drop-off from 61.7% and time-to-first-publish from 1.5 weeks to under 2 minutes, shipped with 803 passing tests across 26 files and a clean security review.",
       },
       {
         title: "Multi-Step Job Creation Wizard",
@@ -131,9 +132,14 @@ export const projects: Project[] = [
           "8-step flow: describe → details → pipeline stages → profile setup → review → publish. Includes auto-save draft, clone job, custom pipeline stages (drag-reorder), welcome video upload, landing page customization, and anonymous mode.",
       },
       {
+        title: "Import Job from URL",
+        description:
+          "Recruiters paste any job-board URL (LinkedIn, Jobstreet, Indeed, a company career page) directly into the Job Title field — no new UI, just smart-paste detection. A two-tier fetch strategy (plain HTTP fetch for server-rendered pages, falling back to headless-Chromium Puppeteer for JS-rendered SPAs) extracts the posting and feeds it straight into the AI-generation pipeline, with a fast-fail path for known-blocking domains. Cuts paste-to-publish-ready time to under 60 seconds (from 3-10 minutes of manual copy-paste), validated against 40+ EN/ID keywords before acceptance, shipped with 17 Cypress E2E specs.",
+      },
+      {
         title: "Campaign Management System",
         description:
-          "Create campaigns per job with full lifecycle: draft → validate → launch → pause → resume → cancel. Features: duplicate campaign, per-channel configuration, smart-send (5-minute cron), cascade retry, automated reminders, bounce alerts, email history tracking with export.",
+          "Multi-channel (email/WhatsApp/SMS) candidate invitation platform with timezone-aware smart scheduling: a 5-step wizard (candidates → channels/template → smart send → reminders → preview & launch), 9 default templates per channel/segment, jittered reminder cascades with a race-condition guard, timing-safe HMAC-signed ESP webhooks, and CAN-SPAM/GDPR-compliant opt-out. Full lifecycle: draft → validate → launch → pause → resume → cancel, with duplicate campaign, bounce alerts, and exportable email history. Built as lead implementing engineer on a spec designed by product colleagues — authored the largest share of the feature's commits (56%+) across its full build period.",
       },
       {
         title: "Candidate Profile & Review",
@@ -193,7 +199,7 @@ export const projects: Project[] = [
       {
         title: "Engagement Sequences",
         description:
-          "Define automated multi-step communication workflows: email → delay → SMS → in-app notification. Sequence triggers automatically based on candidate events, processor runs every 30 minutes.",
+          "Part of a 7-table event-driven notification platform (notification_events, preferences, templates, engagement_sequences, digests, channels) with a suppression pipeline (preference/frequency-cap/dedup/quiet-hours) and a generic drip-campaign engine reused across 7 re-engagement scenarios (abandoned assessment, incomplete profile, unreviewed backlog, etc.), tone escalating gradually from gentle to firm. Define automated multi-step communication workflows: email → delay → SMS → in-app notification, triggered automatically from candidate events, processor runs every 30 minutes. Built as lead implementing engineer on a spec designed by product colleagues — authored the largest share of the feature's commits (56%+) across its full build period.",
       },
       {
         title: "Fast Apply (Open Code)",
@@ -278,7 +284,7 @@ export const projects: Project[] = [
       {
         title: "AI Matching Engine",
         description:
-          "Dedicated matching engine with Gemini adapter, ASTRNT-specific similarity scoring, shadow mode for safe rollout, fallback engine, and trigger-based automatic candidate recommendations. Powers the 'Why Recommended' explainer page linked from digest emails.",
+          "Dual-engine architecture with a per-company feature flag (Gemini / self-hosted ASTRNT engine / shadow): the self-hosted engine runs local sentence-transformer embeddings and a deterministic 4-dimension scorer (skills/experience/job_family/education), replacing a Gemini-API pipeline that cost $400-1,600 and took up to 9 days per full enterprise-scale rescore. Shadow mode runs both engines in parallel — recruiters always see the Gemini score while the self-hosted score is validated offline (Pearson correlation, MAE, eligibility agreement) before any traffic switch. Benchmarked within 2 points of Gemini's scores at 120-252× the speed (41-67ms vs 8-10s per pair). Powers the 'Why Recommended' explainer page linked from digest emails.",
       },
       {
         title: "Smart Notification Scheduling",
@@ -310,6 +316,16 @@ export const projects: Project[] = [
         description:
           "Full demo infrastructure: time-limited demo instance activation, demo expiry page, and dev tooling. Enables sales team to spin up sandboxed ASTRNT environments for prospect demos with automatic expiry.",
       },
+      {
+        title: "Conditional Terminology System",
+        description:
+          "The word 'Candidate' must never appear in the UI — it's rendered as Applicant (Talent Acquisition), Employee (Talent Management), or Student (University Admission) depending on context, sourced only from terminology config modules, never hardcoded. Keeps one shared codebase coherent across three distinct product segments.",
+      },
+      {
+        title: "RBAC / Permission Model",
+        description:
+          "6-role permission model (Account Holder, Manager, Coordinator, Support, Guest, Reviewer) covering ~25 independently role-gated menus/features, checked redundantly client-side (hide UI) and server-side (403). Includes a gap-analysis and fix for candidate-comment visibility that corrected several cross-platform (legacy/mobile/new-platform) inconsistencies in who could see and edit comments.",
+      },
     ],
     architecture:
       "Next.js Full-Stack Monolith with App Router. Server Components + Server Actions for form submissions; API Routes for REST endpoints, webhooks, and cron triggers. Business logic in src/lib/ (265+ files) and src/services/. Data access via Prisma ORM with raw SQL for critical queries. Background jobs: GitHub Actions trigger → POST /api/cron/* → enqueue to bg_transactions → worker scripts (tsx) claim & process. Redis for rate limiting and caching. Azure Blob Storage for all files/media with SAS token generation.",
@@ -334,7 +350,7 @@ export const projects: Project[] = [
     description:
       "The backbone of ASTRNT's first-generation recruitment platform. Laravel monolith with Dingo API as the REST backend, serving a React SPA (416 JSX files, Redux + redux-saga) as the frontend. Handles video interviews, diverse psychometric assessment types, automatic speech-to-text, video transcoding via FFmpeg, multiple payment gateways, multi-tenant client modules, and enterprise SSO integration — in a single platform used by enterprise clients including KAI, NTU, and NUS.",
     role: "Full-Stack Engineer",
-    period: "2022 – 2024",
+    period: "2020 – 2026",
     status: "production",
     category: "platform",
     highlights: [
@@ -346,6 +362,8 @@ export const projects: Project[] = [
       "SAML2 SSO for enterprise clients (KAI, NTU, NUS) with custom auth flow",
       "8+ psychometric assessment types: ART, RIASEC, Creative Thinking, Writing Test, Reading Test, Values Reflection, etc.",
       "Client-specific modules per company: KAI, NTU, NUS, and other enterprise clients",
+      "Rearchitected credit billing into an itemized rule-based model — 100-400× fewer queries, 6× less memory on bulk exports",
+      "Fixed a Talent Pool N+1 bottleneck: 203 queries → 5 (97.5% fewer), 90% faster bulk delete",
     ],
     techStack: [
       {
@@ -436,7 +454,12 @@ export const projects: Project[] = [
       {
         title: "Talent Pool & Team Management",
         description:
-          "Recruiters can collect top candidates into a Talent Pool, assign hiring team members to jobs, and set permissions per member for review access.",
+          "Recruiters can collect top candidates into a Talent Pool, assign hiring team members to jobs, and set permissions per member for review access. Performance-engineered: fixed an N+1 pattern in the bulk-delete flow (203 queries/3-5s → 5 queries/0.3-0.5s, 97.5% fewer queries, 90% faster), added a per-request cache for company-stage lookups (98% hit rate), and wrapped the operation in a transaction that was previously absent.",
+      },
+      {
+        title: "Self-Serve Credit Consumption",
+        description:
+          "Rearchitected billing from a flat 'one credit per completed candidate' model into a rule-based itemized system (Candidate Invite / Premium Assessment / AI Features, deduplicated per candidate) across 4 DB migrations, with a staged rollout that excluded active Enterprise contracts until renewal. Fixed the N+1 queries and unbounded memory usage the new itemization surfaced in the reporting path: 100-400× fewer queries, a 100,000-record CSV export that used to crash past 512MB now completes at ~80MB (6× less memory), and a 1,000-record export sped up 10-15× (30-60s to 2-5s). Backed by 28 new unit tests.",
       },
       {
         title: "Competency Generation",
@@ -485,7 +508,7 @@ export const projects: Project[] = [
     description:
       "Laravel API backend serving all needs of the ASTRNT asynchronous interview platform. Candidates answer video/audio/text/MCQ/document questions independently at any time. The backend handles session management, media upload and transcoding, automatic speech-to-text, multiple assessment types (ART, RIASEC, Creative Thinking), proctoring, PDF report generation, and data synchronization with the recruiter platform. The stack is identical to Recruiter but focused on the candidate-facing interview flow.",
     role: "Backend Engineer",
-    period: "2022 – 2024",
+    period: "2025 – 2026",
     status: "production",
     category: "api",
     highlights: [
@@ -575,7 +598,7 @@ export const projects: Project[] = [
     description:
       "React SPA (320 JS/JSX files) serving as the primary interface for candidates participating in ASTRNT asynchronous interview sessions. Supports 6 question types: video recording (WebRTC + RecordRTC), audio recording, free text, MCQ, rating scale, and document upload. Features OTP authentication, pre-interview device check, proctoring monitoring, session recovery via localforage, real-time progress tracking via Socket.io, and custom activity logging.",
     role: "Frontend Engineer",
-    period: "2022 – 2024",
+    period: "2020 – 2025",
     status: "production",
     category: "frontend",
     highlights: [
@@ -663,7 +686,7 @@ export const projects: Project[] = [
     description:
       "ASTRNT's public website serving marketing pages, product landing pages, blog, developer portal, and job-specific landing pages. Built as two separate React components (component_public & component_job_landing) that are built independently then served by a single Express.js server. Multi-environment build for AWS (production) and Azure (staging/beta) with different env vars per target.",
     role: "Frontend Engineer",
-    period: "2022 – 2023",
+    period: "2020 – 2026",
     status: "production",
     category: "frontend",
     highlights: [
@@ -723,7 +746,7 @@ export const projects: Project[] = [
     description:
       "Internal React SPA (130 JS files) used by the ASTRNT Customer Support team to monitor client accounts, investigate candidate issues, and manage platform data. Built with Create React App + custom Webpack config via react-app-rewired, Redux for state management, and connected to the ASTRNT backend API with JWT authentication.",
     role: "Frontend Engineer",
-    period: "2022 – 2023",
+    period: "2021 – 2026",
     status: "internal",
     category: "frontend",
     highlights: [
@@ -778,7 +801,7 @@ export const projects: Project[] = [
     description:
       "Laravel platform designed specifically for academic institutions to manage student assessments. Features student management, events/exams, campus job postings, social login via Laravel Socialite, bulk data import via Excel, PDF reports, and interactive DataTables. Has separate branding and flow from the corporate recruitment platform.",
     role: "Full-Stack Engineer",
-    period: "2023 – 2024",
+    period: "2024 – 2025",
     status: "production",
     category: "platform",
     highlights: [
@@ -859,7 +882,7 @@ export const projects: Project[] = [
     description:
       "Laravel multi-tenant application for custom landing pages per ASTRNT enterprise client. Each client (KAI, NTU, NUS, TalentBuzz, etc.) gets a landing page with their own branding, content, and domain. Backend connected to AWS S3 for media and JWT Auth for API integration.",
     role: "Full-Stack Engineer",
-    period: "2022 – 2023",
+    period: "2024 – 2025",
     status: "production",
     category: "platform",
     highlights: [
@@ -927,7 +950,7 @@ export const projects: Project[] = [
     description:
       "Nuxt.js (Vue 2) SSR frontend for Popskul — a platform that combines e-learning, job marketplace, and competency-based assessment. More than just a job board: candidates can take courses, complete assessments (MCQ + FTQ + video recording), bookmark favorite companies, apply for scholarships, and apply to jobs — all in one platform with real-time via Socket.io and video recording via videojs-record.",
     role: "Frontend Engineer",
-    period: "2023 – 2024",
+    period: "2023 – 2025",
     status: "production",
     category: "frontend",
     highlights: [
@@ -982,6 +1005,10 @@ export const projects: Project[] = [
         description: "Candidates can browse and apply for scholarship programs from Popskul partner institutions.",
       },
       {
+        title: "WOSAP Self-Assessment",
+        description: "A career-guidance self-assessment module: browse job roles, register for a role-specific assessment, track interview status in real time, and retake within an expiry window. Distinct from the employer-facing job-application assessments — this is a self-directed career-interest tool for job seekers.",
+      },
+      {
         title: "Real-time via Socket.io",
         description: "Real-time notifications for assessment status, new job updates, and course progress using nuxt-socket-io.",
       },
@@ -1008,7 +1035,7 @@ export const projects: Project[] = [
     description:
       "Laravel backend serving all needs of the Popskul platform: e-learning (courses, attempts, progress), job board, assessment (MCQ + FTQ), media management, company profiles, and user management. Built with an API-first architecture using Laravel resource controllers with cron jobs for automation.",
     role: "Backend Engineer",
-    period: "2023 – 2024",
+    period: "2021 – 2025",
     status: "production",
     category: "api",
     highlights: [
@@ -1078,7 +1105,7 @@ export const projects: Project[] = [
     description:
       "Next.js application based on OpenResume for automatic CV parsing and generation. Users can upload an existing CV and the system extracts key information (education, experience, skills) and presents it in a modern, ATS-friendly PDF format.",
     role: "Full-Stack Engineer",
-    period: "2024",
+    period: "2025",
     status: "internal",
     category: "tool",
     highlights: [
@@ -1319,7 +1346,7 @@ export const projects: Project[] = [
     description:
       "React 16 SPA serving as ASTRNT's e-learning and video interview hybrid platform for candidates. Candidates complete video interviews, MCQs, and free-text questions within a course-like interface. Uses Redux + redux-saga for async state, JWPlayer for video playback, Socket.IO for real-time session coordination, and AWS Amplify for analytics.",
     role: "Frontend Engineer",
-    period: "2022 – 2023",
+    period: "2020 – 2022",
     status: "production",
     category: "frontend",
     highlights: [
@@ -1396,7 +1423,7 @@ export const projects: Project[] = [
     description:
       "Node.js + Express REST API (v2 of ASTRNT's backend) serving courses, enrollments, media management, candidate data, and report generation. Notable for dual-database architecture (MySQL via Sequelize + MongoDB via Mongoose), headless Chrome automation via Puppeteer for PDF and screenshot generation, and formal API design via YAML spec.",
     role: "Backend Engineer",
-    period: "2022 – 2023",
+    period: "2021 – 2024",
     status: "production",
     category: "api",
     highlights: [
@@ -1557,7 +1584,7 @@ export const projects: Project[] = [
     description:
       "Laravel 8 REST API backend powering the CDC marketplace. Handles authentication via Laravel Passport (OAuth2) + Socialite, course and content management, video metadata via JWPlayer, dual cloud storage (AWS S3 + Azure Blob), Midtrans payment gateway, scholarship management, MCQ/FTQ question banks, voucher system, and admin reporting.",
     role: "Backend Engineer",
-    period: "2023 – 2024",
+    period: "2021 – 2024",
     status: "production",
     category: "api",
     highlights: [
@@ -1653,7 +1680,7 @@ export const projects: Project[] = [
     description:
       "Nuxt.js 2 SSG/SSR frontend for Kognisi.id — a public-facing B2C learning marketplace. Learners browse and enroll in courses, track progress, and access a creator portal. Distinct from CDC in its focus on public discoverability: includes Google Analytics, GTM, automated sitemap/robots.txt, and a comprehensive SEO toolchain for organic growth.",
     role: "Frontend Engineer",
-    period: "2023 – 2024",
+    period: "2022",
     status: "production",
     category: "frontend",
     highlights: [
@@ -1722,7 +1749,7 @@ export const projects: Project[] = [
     description:
       "Laravel 8 REST API backend for Kognisi.id. Extends the CDC backend scope with hybrid MySQL + MongoDB architecture, image processing pipeline (Intervention Image), automated completion certificate generation, and SEO-friendly slug management. Same dual-cloud storage (S3 + Azure) and JWPlayer video pipeline as the CDC backend.",
     role: "Backend Engineer",
-    period: "2023 – 2024",
+    period: "2021 – 2022",
     status: "production",
     category: "api",
     highlights: [

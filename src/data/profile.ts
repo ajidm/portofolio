@@ -47,7 +47,7 @@ export const experience = [
       },
       {
         title: "Platform Rewrite",
-        period: "2024 – Present",
+        period: "2026 – Present",
         description:
           "Architected and executed the full platform rewrite to Next.js 15 App Router + React 19. Integrated multi-LLM (Claude, Gemini, OpenAI), built the AI Matching Engine, shipped Stripe billing, mandatory 80% unit test coverage, and 128 Cypress E2E specs.",
       },
@@ -61,11 +61,14 @@ export const experience = [
     achievements: [
       "Led full platform rewrite from Laravel monolith to Next.js 15 App Router — 383+ API routes, 60+ page flows",
       "Architected multi-LLM integration (Claude, Gemini, OpenAI) with automatic key rotation on rate limits — zero downtime",
-      "Built AI Matching Engine with Gemini adapter, shadow mode, similarity scoring, and trigger-based candidate recommendations",
+      "Built a dual-engine AI Matching Engine (Gemini + self-hosted local-embedding engine) with a per-company feature flag and shadow-mode validation — 120-252× faster than the Gemini-only pipeline at near-zero marginal cost",
+      "Shipped 'Import Job from URL' — smart-paste job-posting extraction (two-tier fetch + Puppeteer fallback) cutting job-draft creation from 3-10 minutes to under 60 seconds",
+      "Cut AI-powered job/program creation drop-off from 61.7% and time-to-first-publish from 1.5 weeks to under 2 minutes — 38 tickets, 803 passing tests, clean security review",
+      "Lead implementing engineer on two large colleague-designed systems — a multi-channel (email/WhatsApp/SMS) candidate campaign platform and an event-driven notification/engagement-sequence engine — authoring 56%+ of all commits on each",
       "Accelerated AI candidate-matching inference from 90s to 30s via concurrent thread pooling, then to ~3s with result caching — 30× speedup",
       "Stabilized core database infrastructure serving 2,500+ concurrent users — eliminated N+1 query chains and 4.2M+ full-table scans via indexing and query refactoring",
       "Redesigned Talent Pool batch processing from 203 queries to 5 queries — 10× faster while preserving ACID compliance",
-      "Optimized bulk data export execution time by 99.8%, enabling chunked streaming of 100k+ records while cutting memory footprint 6×",
+      "Rearchitected bulk data export with chunked streaming — 100-400× fewer database queries, cutting memory footprint 6× (100k+ records, >512MB crash to ~80MB) and export time 10-15× (30-60s to 2-5s per 1,000 records)",
       "Designed Talent Management module: 360-degree assessments, peer nominations, talent mapping programs",
       "Built Employee Directory & Org Hierarchy module: manager/skip-level chain resolution, rater auto-assign, 360 Score Calculation Engine (deterministic L1-L4 scoring), Calibration Dashboard, and IDP lifecycle — grew from 65 to 81 real-data E2E specs",
       "Leading a live zero-downtime migration to a new-arch database: per-company dual-mode (DB_MODE=old/new), route-by-route read-switches, bidirectional write-mirroring, and a unified media table across both schemas",
