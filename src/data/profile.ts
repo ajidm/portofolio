@@ -77,6 +77,8 @@ export const experience = [
       "Built a bias-reduction 'Anonymous Candidate Identity' layer — sequential alias generation applied consistently across every candidate-creation path (web, mobile, bulk import), with PII masked throughout lists, search, exports, and email history",
       "Built outbound integrations syncing candidate interview status in real time to external ATS platforms (Greenhouse, TeamTailor) for enterprise clients running their hiring process outside ASTRNT",
       "Built and maintained the TDL integration — the third-party provider behind Personality, Cognitive (IQ), and RIASEC assessments — converting raw stanine scores into ASTRNT's own score levels for the branded 'Career Compass' report, later moved onto a background queue for reliability at scale",
+      "Built the foundation of the Rating Report Excel generation engine — sectioned/non-sectioned/summary layouts with per-rater and per-competency score breakdowns across multiple raters, later extended by other engineers as the reporting model grew",
+      "Built the job publish/preview moderation workflow from scratch — a review queue gating job postings before they go live on ASTRNT's external job boards (Popskul, CDC), with EN/ID terminology switching depending on listing type",
       "Leading a live zero-downtime migration to a new-arch database: per-company dual-mode (DB_MODE=old/new), route-by-route read-switches, bidirectional write-mirroring, and a unified media table across both schemas",
       "Implemented atomic background job queue (bg_transactions) with priority processing, stale job recovery, and progress tracking",
       "Delivered 14 active GitHub Actions cron jobs for smart-send, cascade retry, digest processing, and automated alerts",

@@ -367,6 +367,8 @@ export const projects: Project[] = [
       "SAML2 SSO for enterprise clients (KAI, NTU, NUS) with custom auth flow",
       "8+ psychometric assessment types: ART, RIASEC, Creative Thinking, Writing Test, Reading Test, Values Reflection, etc.",
       "TDL third-party integration powering Personality/Cognitive (IQ) testing and RIASEC scoring, feeding the branded 'Career Compass' report",
+      "Built the foundation of the Rating Report Excel generation engine — sectioned/summary layouts with per-rater, per-competency breakdowns",
+      "Built the job publish/preview moderation workflow gating listings before they go live on the Popskul and CDC job boards",
       "Client-specific modules per company: KAI, NTU, NUS, and other enterprise clients",
       "Candidate Share & Reviewer workflow built from scratch in 2020 — token-based external review access, voting, encrypted PII — still evolving 5 years later",
       "Custom AES field-level encryption layer + Azure SAS signed-URL media access, designed and built from scratch",
@@ -443,6 +445,16 @@ export const projects: Project[] = [
         title: "TDL Integration — Personality & Cognitive Testing",
         description:
           "Core integration with TDL, a third-party psychometric provider, powering the platform's Personality and Cognitive (IQ) assessments and RIASEC scoring — built and maintained via a dedicated TDLController making authenticated outbound API calls per candidate. TDL returns raw stanine scores, which the platform converts into ASTRNT's own score levels and packages into the branded 'Career Compass' report (candidate-facing PDF + in-app result page). Later re-architected on the candidate-facing API to run through a background queue for reliability at scale.",
+      },
+      {
+        title: "Rating Report Generation Engine",
+        description:
+          "Built the foundation of the platform's Excel report generation engine — a 2,000+ line module producing per-job candidate rating reports in multiple layouts (sectioned, non-sectioned, summary) with per-rater and per-competency score breakdowns aggregated across multiple raters. Builds a temporary joined table per report run (candidate, invite, and job data) to keep large exports performant. Later extended by other engineers as the reporting model grew.",
+      },
+      {
+        title: "Job Publish/Preview Workflow (Popskul & CDC Job Board)",
+        description:
+          "Built the internal moderation workflow that gates a job posting before it goes live on ASTRNT's external job boards (Popskul, CDC): a searchable/sortable queue of pending publish requests, an approve/reject action, and a preview endpoint rendering the job exactly as it will appear externally — including EN/ID terminology switching depending on whether the job is a Popskul listing or a CDC/university scholarship posting. Built the model and controller from scratch.",
       },
       {
         title: "Multi-Tenant Client Modules",
