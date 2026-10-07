@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "Employee Org Hierarchy: manager/skip-level chain resolution, rater auto-assign, deterministic 360 score engine, Calibration Dashboard, and IDP lifecycle",
       "Dual-mode database migration: per-company DB_MODE=old/new, route-by-route read-switch, bidirectional write-mirroring, zero downtime",
       "Pre-Screening Assessment: per-field minimum requirement rules with auto-disqualify flow, backed by 100 unit tests + 50 E2E specs",
-      "AI Auto Scoring surfaced on Answers row + Applicants table (AI Match / Competency columns and filters), re-sourced from real AI-scoring data",
+      "Extended the AI Auto Scoring system with fairness bias-flag detection and a new English Fluency AI-scoring dimension, plus fixed data-integrity and visibility gaps",
       "Dual-engine AI matching (Gemini + self-hosted local-embedding engine) with shadow-mode validation — 120-252× faster at near-zero marginal cost",
       "Import Job from URL: paste a job-board link, get a publish-ready draft in under 60 seconds",
       "Offer Management: candidate offer letter flow with phase-gated lifecycle and digital accept/decline response",
@@ -157,9 +157,9 @@ export const projects: Project[] = [
           "Job-level toggle lets recruiters set a minimum requirement per profiling field (e.g. years of experience, an 'in list' rule). Candidates are evaluated against the rule at registration; those who fail are auto-disqualified — routed into an auto-created 'Disqualified' pipeline stage, skipped from invite/assessment emails, and shown a dedicated handoff confirmation screen with a status-check link. Backed by 100 unit tests + 50 Cypress E2E specs covering the evaluation engine and disqualification flow.",
       },
       {
-        title: "AI Auto Scoring Visibility",
+        title: "AI Auto Scoring — Extended & Hardened on the New Platform",
         description:
-          "Surfaces AI-generated competency scores where recruiters actually look: an 'AI Scored' badge on the collapsed Answers row (previously only visible after expanding each answer), and working AI Match / Competency columns and range filters on the Applicants table — re-sourced from the real AI-scoring tables (automatic_video_scoring_competencies) after finding the original field was almost always empty in production. Included a fix for a data-integrity gap where candidates without a company talent pool silently lost their AI Match linkage.",
+          "Extended the platform's existing AI video-scoring system (originally built by other engineers on the legacy platform) with real fixes and new capability on the rewrite: surfaced AI-generated competency scores where recruiters actually look (an 'AI Scored' badge on the collapsed Answers row, working AI Match / Competency columns and range filters on the Applicants table — re-sourced from the real AI-scoring tables after finding the original field was almost always empty in production), fixed a data-integrity gap where candidates without a company Talent Pool silently lost their AI Match linkage, corrected MCQ auto- vs. manual-score calculation across retake chains, added statistical fairness/bias-flag detection to the scoring engine, and shipped a new AI-scored dimension (English Fluency Speaking/Writing) alongside the existing competency scores.",
       },
       {
         title: "Review Collaboration System",
